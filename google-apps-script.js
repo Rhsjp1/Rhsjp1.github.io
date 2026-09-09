@@ -1,24 +1,7 @@
-/**
- * RHS AI Solutions — Google Apps Script Form Handler
- * 
- * Handle form submissions from rhsjp1.github.io:
- * - Send notification emails to RHS team
- * - Send confirmation emails to leads
- * - Log submissions to Google Sheet for lead tracking
- * - Auto-trigger PDF download for lead magnets
- * 
- * Setup:
- * 1. Go to https://script.google.com
- * 2. Create new project
- * 3. Paste this code
- * 4. Create a Google Sheet and copy its ID into SHEET_ID below
- * 5. Deploy > New deployment > Web app
- *    - Execute as: Me
- *    - Who has access: Anyone
- * 6. Copy the deployment URL and paste into form-handler.js line 17
- */
+// RHS AI Solutions — Google Apps Script Form Handler
+// Handles form submissions from rhsjp1.github.io
 
-const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID';
+var SHEET_ID = '1TFyjHLSmOicNIRJivqXMf7j_Fj62DxpPx2pPZulROwo';
 
 function doPost(e) {
   try {
@@ -32,7 +15,7 @@ function doPost(e) {
     // 1. Send notification to RHS team
     MailApp.sendEmail({
       to: 'righthandservicesbyjp@gmail.com,rhsjp01@gmail.com',
-      subject: '🔔 RHS ' + type + ' submission from ' + page,
+      subject: 'RHS ' + type + ' submission from ' + page,
       htmlBody: '<h2>New RHS Website Lead</h2>' +
         '<table style="border-collapse:collapse;font-family:sans-serif;">' +
         '<tr><td style="padding:8px;background:#f3f4f6;"><strong>Email</strong></td><td style="padding:8px;">' + email + '</td></tr>' +
@@ -63,11 +46,11 @@ function doPost(e) {
     var emailBody = '<div style="font-family:sans-serif;max-width:600px;margin:0 auto;">' +
       '<div style="background:#111827;padding:20px;text-align:center;">' +
       '<h1 style="color:#D97706;margin:0;">Right Hand Services by JP</h1>' +
-      '<p style="color:#9ca3af;margin:4px 0 0;">Property Intelligence & Regenerative Landscaping</p>' +
+      '<p style="color:#9ca3af;margin:4px 0 0;">Property Intelligence and Regenerative Landscaping</p>' +
       '</div>' +
       '<div style="padding:24px;">' +
       '<h2>Thanks for your interest!</h2>' +
-      '<p>You requested content from <strong>' + page + '</strong>.</p>';
+      '<p>You requested content from <strong>' + page + '.</strong></p>';
     
     if (pdfUrl) {
       emailBody += '<p><a href="' + pdfUrl + '" style="display:inline-block;background:#D97706;color:#111827;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Download Your PDF</a></p>';
@@ -93,7 +76,6 @@ function doPost(e) {
       var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
       sheet.appendRow([new Date(), email, page, type, source, timestamp]);
     } catch (sheetErr) {
-      // Sheet logging failed but email still sent — don't block response
       Logger.log('Sheet logging failed: ' + sheetErr.message);
     }
     
@@ -112,7 +94,6 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  // Health check endpoint
   return ContentService.createTextOutput(JSON.stringify({
     status: 'ok',
     message: 'RHS AI Solutions form handler is running'
