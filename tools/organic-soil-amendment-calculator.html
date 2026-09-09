@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organic Soil Amendment & Nutrient Balancing Tool | RHS AI Solutions</title>
+  <meta name="description" content="Calculate precise organic inputs—greensand, bone meal, composted manure—to correct mineral deficiencies in Southern turf soils." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/organic-soil-amendment-calculator" />
+  <meta property="og:title" content="Organic Soil Amendment & Nutrient Balancing Tool" />
+  <meta property="og:description" content="Calculate organic inputs for soil nutrient correction." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/organic-soil-amendment-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Organic Soil Amendment & Nutrient Balancing Tool",
+    "description": "Calculate precise organic inputs for soil nutrient correction.",
+    "url": "https://Rhsjp1.github.io/tools/organic-soil-amendment-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Organic Soil Amendment & Nutrient Balancing Tool</h1>
+      <p>Calculate organic inputs to correct mineral deficiencies in Southern turf soils.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="deficiency">Primary Deficiency</label>
+      <select id="deficiency">
+        <option value="nitrogen">Nitrogen (N) — yellowing, slow growth</option>
+        <option value="phosphorus">Phosphorus (P) — purple tint, poor roots</option>
+        <option value="potassium">Potassium (K) — brown edges, weak stems</option>
+        <option value="calcium">Calcium (Ca) — blossom end rot, weak cell walls</option>
+        <option value="magnesium">Magnesium (Mg) — interveinal chlorosis</option>
+        <option value="iron">Iron (Fe) — yellowing between veins</option>
+      </select>
+
+      <label for="area">Area to Treat (square feet)</label>
+      <input type="number" id="area" value="1000" min="100" />
+
+      <label for="soilType">Soil Type</label>
+      <select id="soilType">
+        <option value="sandy">Sandy (fast drainage, low CEC)</option>
+        <option value="clay">Clay (slow drainage, high CEC)</option>
+        <option value="loam">Loam (balanced)</option>
+      </select>
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Recommended Organic Amendments</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Order Amendments from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const amendments = {
+        nitrogen: [
+          { name: "Composted Manure", rate: 2, unit: "lbs/100 sq ft", note: "Well-aged only, avoid fresh" },
+          { name: "Blood Meal", rate: 0.5, unit: "lbs/100 sq ft", note: "Fast-acting, use sparingly" },
+          { name: "Alfalfa Meal", rate: 1, unit: "lbs/100 sq ft", note: "Slow-release, adds trace minerals" }
+        ],
+        phosphorus: [
+          { name: "Bone Meal", rate: 1, unit: "lbs/100 sq ft", note: "Slow-release, also adds calcium" },
+          { name: "Rock Phosphate", rate: 0.5, unit: "lbs/100 sq ft", note: "Very slow, best for long-term" },
+          { name: "Bat Guano", rate: 0.25, unit: "lbs/100 sq ft", note: "Fast-acting, water-soluble" }
+        ],
+        potassium: [
+          { name: "Greensand", rate: 2, unit: "lbs/100 sq ft", note: "Slow-release, adds iron too" },
+          { name: "Kelp Meal", rate: 0.5, unit: "lbs/100 sq ft", note: "Fast-acting, adds trace minerals" },
+          { name: "Wood Ash", rate: 0.5, unit: "lbs/100 sq ft", note: "Raises pH, use on acidic soils only" }
+        ],
+        calcium: [
+          { name: "Gypsum", rate: 2, unit: "lbs/100 sq ft", note: "Does not raise pH" },
+          { name: "Lime (Calcitic)", rate: 1.5, unit: "lbs/100 sq ft", note: "Raises pH, use on acidic soils" },
+          { name: "Oyster Shell Flour", rate: 1, unit: "lbs/100 sq ft", note: "Slow-release, sustainable source" }
+        ],
+        magnesium: [
+          { name: "Epsom Salt", rate: 0.25, unit: "lbs/100 sq ft", note: "Fast-acting, also adds sulfur" },
+          { name: "Dolomitic Lime", rate: 1.5, unit: "lbs/100 sq ft", note: "Raises pH, adds calcium too" }
+        ],
+        iron: [
+          { name: "Iron Sulfate", rate: 0.25, unit: "lbs/100 sq ft", note: "Fast-acting, may stain" },
+          { name: "Chelated Iron", rate: 0.1, unit: "lbs/100 sq ft", note: "More expensive, highly available" },
+          { name: "Greensand", rate: 2, unit: "lbs/100 sq ft", note: "Slow-release, adds potassium" }
+        ]
+      };
+
+      function calculate() {
+        const def = document.getElementById('deficiency').value;
+        const area = parseFloat(document.getElementById('area').value) || 0;
+        const soil = document.getElementById('soilType').value;
+        const items = amendments[def] || [];
+        const factor = area / 100;
+
+        let html = '';
+        items.forEach(item => {
+          const qty = (item.rate * factor).toFixed(1);
+          html += `<div style="padding:0.5rem 0;border-bottom:1px solid var(--border);">
+            <strong style="color:var(--brand);">${item.name}</strong> — ${qty} ${item.unit}<br/>
+            <span style="font-size:0.875rem;color:var(--text-secondary);">${item.note}</span>
+          </div>`;
+        });
+
+        if (soil === 'clay') {
+          html += '<div style="margin-top:0.5rem;padding:0.5rem;background:var(--bg-secondary);border-radius:0.25rem;font-size:0.875rem;">⚠️ Clay soils: Consider adding gypsum to improve structure and nutrient availability.</div>';
+        } else if (soil === 'sandy') {
+          html += '<div style="margin-top:0.5rem;padding:0.5rem;background:var(--bg-secondary);border-radius:0.25rem;font-size:0.875rem;">⚠️ Sandy soils: Add organic matter (compost) to improve nutrient retention.</div>';
+        }
+
+        document.getElementById('result-value').textContent = items.length + " amendment options";
+        document.getElementById('result-desc').innerHTML = html;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

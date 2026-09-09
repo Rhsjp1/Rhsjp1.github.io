@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soil Compaction & Aeration Timing Calculator | RHS AI Solutions</title>
+  <meta name="description" content="Estimate root-zone density limits based on soil texture and foot-traffic frequency to recommend mechanical vs. biological aeration windows." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/soil-compaction-aeration-calculator" />
+  <meta property="og:title" content="Soil Compaction & Aeration Timing Calculator" />
+  <meta property="og:description" content="Estimate root-zone density and recommend aeration windows." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/soil-compaction-aeration-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Soil Compaction & Aeration Timing Calculator",
+    "description": "Estimate root-zone density limits based on soil texture and foot-traffic frequency to recommend mechanical vs. biological aeration windows.",
+    "url": "https://Rhsjp1.github.io/tools/soil-compaction-aeration-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Soil Compaction & Aeration Timing Calculator</h1>
+      <p>Estimate root-zone density limits and get personalized aeration recommendations.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="soilTexture">Soil Texture</label>
+      <select id="soilTexture">
+        <option value="sand">Sandy Loam</option>
+        <option value="clay">Clay / Clay Loam</option>
+        <option value="silt">Silt Loam</option>
+        <option value="loam">Loam (Mixed)</option>
+      </select>
+
+      <label for="traffic">Foot-Traffic Frequency</label>
+      <select id="traffic">
+        <option value="low">Low (&lt; 5 passes/week)</option>
+        <option value="moderate">Moderate (5-15 passes/week)</option>
+        <option value="high">High (15-30 passes/week)</option>
+        <option value="extreme">Extreme (Daily heavy use)</option>
+      </select>
+
+      <label for="rootDepth">Target Root Depth (inches)</label>
+      <input type="number" id="rootDepth" value="6" min="2" max="12" />
+
+      <label for="moisture">Current Soil Moisture</label>
+      <select id="moisture">
+        <option value="dry">Dry (crumbles easily)</option>
+        <option value="optimal">Optimal (holds shape, breaks apart)</option>
+        <option value="wet">Wet (muddy, sticky)</option>
+      </select>
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Compaction Risk Level</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--brand);" id="result-rec"></div>
+        <a href="#contact" class="tool-cta">Schedule a Site Assessment &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const soilDensity = { sand: 1.6, clay: 1.4, silt: 1.5, loam: 1.55 };
+      const trafficPressure = { low: 0.05, moderate: 0.12, high: 0.2, extreme: 0.3 };
+      const moistureFactor = { dry: 0.9, optimal: 1.0, wet: 1.3 };
+
+      function calculate() {
+        const texture = document.getElementById('soilTexture').value;
+        const traffic = document.getElementById('traffic').value;
+        const depth = parseInt(document.getElementById('rootDepth').value) || 6;
+        const moist = document.getElementById('moisture').value;
+
+        const densityLimit = soilDensity[texture] * depth * trafficPressure[traffic] * moistureFactor[moist];
+        const riskPct = Math.min(100, Math.max(0, Math.round((densityLimit / 2.0) * 100)));
+
+        let risk, desc, rec;
+        if (riskPct < 25) {
+          risk = "Low";
+          desc = "Root zone within acceptable limits. Monitor seasonally.";
+          rec = "Biological aeration (core aeration in fall) is sufficient.";
+        } else if (riskPct < 50) {
+          risk = "Moderate";
+          desc = "Compaction detected. Root penetration may be restricted.";
+          rec = "Mechanical core aeration recommended. Schedule in fall or spring when soil is moist.";
+        } else if (riskPct < 75) {
+          risk = "High";
+          desc = "Significant compaction. Water infiltration and root growth impaired.";
+          rec = "Immediate mechanical aeration + organic amendment. Consider deep-tine aeration for high-traffic zones.";
+        } else {
+          risk = "Critical";
+          desc = "Severe compaction. Root zone essentially sealed.";
+          rec = "Deep ripping required. Follow with heavy compost topdress and core aeration. Avoid foot traffic for 30 days.";
+        }
+
+        document.getElementById('result-value').textContent = riskPct + "% — " + risk;
+        document.getElementById('result-desc').textContent = desc;
+        document.getElementById('result-rec').textContent = rec;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

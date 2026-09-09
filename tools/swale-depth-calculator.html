@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passive Micro-Drainage Swale Depth Calculator | RHS AI Solutions</title>
+  <meta name="description" content="Estimate optimal swale depth, width, and contour length for slowing, sinking, and spreading stormwater runoff organically." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/swale-depth-calculator" />
+  <meta property="og:title" content="Passive Micro-Drainage Swale Depth Calculator" />
+  <meta property="og:description" content="Estimate swale dimensions for stormwater management." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/swale-depth-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Passive Micro-Drainage Swale Depth Calculator",
+    "description": "Estimate optimal swale depth, width, and contour length.",
+    "url": "https://Rhsjp1.github.io/tools/swale-depth-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Passive Micro-Drainage Swale Depth Calculator</h1>
+      <p>Estimate optimal swale depth, width, and contour length for stormwater management.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="slope">Slope Grade (%)</label>
+      <input type="number" id="slope" value="5" min="1" max="30" step="0.5" />
+
+      <label for="catchment">Catchment Area (square feet)</label>
+      <input type="number" id="catchment" value="2000" min="100" />
+
+      <label for="soilType">Soil Type</label>
+      <select id="soilType">
+        <option value="sand">Sandy (high infiltration)</option>
+        <option value="loam">Loam (moderate infiltration)</option>
+        <option value="clay">Clay (low infiltration)</option>
+      </select>
+
+      <label for="stormIntensity">Design Storm (24-hour rainfall, inches)</label>
+      <select id="stormIntensity">
+        <option value="1">1 inch (frequent storm)</option>
+        <option value="2" selected>2 inches (moderate storm)</option>
+        <option value="3">3 inches (heavy storm)</option>
+        <option value="5">5+ inches (extreme event)</option>
+      </select>
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Recommended Swale Dimensions</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Install Swales with RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const infiltration = { sand: 2.0, loam: 0.5, clay: 0.1 };
+
+      function calculate() {
+        const slope = parseFloat(document.getElementById('slope').value) || 5;
+        const catchment = parseFloat(document.getElementById('catchment').value) || 0;
+        const soil = document.getElementById('soilType').value;
+        const storm = parseFloat(document.getElementById('stormIntensity').value) || 2;
+
+        const runoff = catchment * (storm / 12) * 0.623;
+        const infRate = infiltration[soil];
+        const depth = Math.max(6, Math.min(24, Math.round(slope * 3)));
+        const width = Math.max(2, Math.min(8, Math.round(slope * 1.5)));
+        const length = Math.max(10, Math.round(Math.sqrt(catchment) * 1.5));
+        const volume = length * width * (depth / 12);
+        const canHandle = volume >= runoff * 0.5;
+
+        document.getElementById('result-value').textContent = depth + "\" deep × " + width + "\" wide × " + length + "\" long";
+        document.getElementById('result-desc').innerHTML =
+          `<strong>Runoff volume:</strong> ${Math.round(runoff).toLocaleString()} gal<br/>
+           <strong>Swale capacity:</strong> ${Math.round(volume).toLocaleString()} cu ft<br/>
+           <strong>Infiltration rate:</strong> ${infRate} in/hr (${soil})<br/>
+           <strong>Can handle design storm:</strong> ${canHandle ? '✅ Yes' : '⚠️ Partial — consider larger swale or overflow'}`;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual vs. Powered Ergonomic Labor Index | RHS AI Solutions</title>
+  <meta name="description" content="Compare physical strain, vibration exposure, and caloric expenditure between gas-powered and ergonomic manual tools." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/ergonomic-labor-index" />
+  <meta property="og:title" content="Manual vs. Powered Ergonomic Labor Index" />
+  <meta property="og:description" content="Compare physical strain between gas and manual tools." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/ergonomic-labor-index" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Manual vs. Powered Ergonomic Labor Index",
+    "description": "Compare physical strain, vibration exposure, and caloric expenditure.",
+    "url": "https://Rhsjp1.github.io/tools/ergonomic-labor-index",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Manual vs. Powered Ergonomic Labor Index</h1>
+      <p>Compare physical strain, vibration exposure, and caloric expenditure between tool types.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="task">Maintenance Task</label>
+      <select id="task">
+        <option value="mowing">Lawn Mowing (push vs. self-propelled vs. riding)</option>
+        <option value="edging">Lawn Edging (manual vs. powered)</option>
+        <option value="trimming">Weed Trimming (manual vs. string trimmer)</option>
+        <option value="raking">Leaf Raking (manual vs. blower)</option>
+        <option value="pruning">Hedge Pruning (manual shears vs. electric)</option>
+      </select>
+
+      <label for="duration">Duration (minutes)</label>
+      <input type="number" id="duration" value="60" min="10" max="480" />
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Compare</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="label">Ergonomic Comparison</div>
+        <div id="comparison-table" style="margin-top:0.75rem;"></div>
+        <a href="#contact" class="tool-cta">Get Ergonomic Training from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const data = {
+        mowing: {
+          manual: { strain: 6, vibration: 0, calories: 320, noise: 60, cost: 0 },
+          powered: { strain: 4, vibration: 3, calories: 220, noise: 85, cost: 50 },
+          riding: { strain: 2, vibration: 2, calories: 120, noise: 80, cost: 200 }
+        },
+        edging: {
+          manual: { strain: 7, vibration: 0, calories: 280, noise: 55, cost: 0 },
+          powered: { strain: 5, vibration: 6, calories: 180, noise: 90, cost: 40 }
+        },
+        trimming: {
+          manual: { strain: 6, vibration: 0, calories: 250, noise: 50, cost: 0 },
+          powered: { strain: 5, vibration: 7, calories: 200, noise: 92, cost: 45 }
+        },
+        raking: {
+          manual: { strain: 5, vibration: 0, calories: 300, noise: 50, cost: 0 },
+          powered: { strain: 3, vibration: 4, calories: 150, noise: 88, cost: 60 }
+        },
+        pruning: {
+          manual: { strain: 5, vibration: 0, calories: 200, noise: 45, cost: 0 },
+          powered: { strain: 3, vibration: 5, calories: 120, noise: 82, cost: 55 }
+        }
+      };
+
+      function calculate() {
+        const task = document.getElementById('task').value;
+        const dur = parseInt(document.getElementById('duration').value) || 60;
+        const d = data[task];
+        const table = document.getElementById('comparison-table');
+
+        let html = '<table style="width:100%;border-collapse:collapse;font-size:0.875rem;">';
+        html += '<tr style="background:var(--bg-secondary);"><th style="padding:0.5rem;text-align:left;">Metric</th>';
+        for (const tool in d) {
+          html += `<th style="padding:0.5rem;text-align:center;">${tool.charAt(0).toUpperCase() + tool.slice(1)}</th>`;
+        }
+        html += '</tr>';
+
+        const metrics = [
+          { key: 'strain', label: 'Strain (1-10)', invert: true },
+          { key: 'vibration', label: 'Vibration (1-10)', invert: true },
+          { key: 'calories', label: `Calories (${dur} min)`, invert: false },
+          { key: 'noise', label: 'Noise (dB)', invert: true },
+          { key: 'cost', label: 'Fuel/Wear ($/hr)', invert: true }
+        ];
+
+        metrics.forEach(m => {
+          html += `<tr style="border-bottom:1px solid var(--border);"><td style="padding:0.5rem;">${m.label}</td>`;
+          for (const tool in d) {
+            const val = Math.round(d[tool][m.key] * (dur / 60));
+            const color = m.invert ? (val < 4 ? '#22c55e' : val < 7 ? '#f59e0b' : '#ef4444') : '#f3f4f6';
+            html += `<td style="padding:0.5rem;text-align:center;color:${color};">${val}</td>`;
+          }
+          html += '</tr>';
+        });
+
+        html += '</table>';
+        table.innerHTML = html;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

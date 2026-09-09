@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No-Till Sheet Mulching Calculator | RHS AI Solutions</title>
+  <meta name="description" content="Calculate exact cubic yards of organic compost, wood chips, and cardboard layers needed to sheet-mulch a given square-footage plot." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/no-till-sheet-mulching-calculator" />
+  <meta property="og:title" content="No-Till Sheet Mulching Calculator" />
+  <meta property="og:description" content="Calculate compost, wood chips, and cardboard for sheet mulching." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/no-till-sheet-mulching-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "No-Till Sheet Mulching Calculator",
+    "description": "Calculate organic inputs for no-till sheet mulching.",
+    "url": "https://Rhsjp1.github.io/tools/no-till-sheet-mulching-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>No-Till Sheet Mulching Calculator</h1>
+      <p>Calculate organic inputs for sheet mulching without disturbing soil biology.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="area">Plot Area (square feet)</label>
+      <input type="number" id="area" value="500" min="10" />
+
+      <label for="depth">Mulch Depth (inches)</label>
+      <select id="depth">
+        <option value="2">2 inches (light topdress)</option>
+        <option value="3" selected>3 inches (standard)</option>
+        <option value="4">4 inches (heavy kill / new bed)</option>
+        <option value="6">6 inches (deep suppression)</option>
+      </select>
+
+      <label for="material">Primary Mulch Material</label>
+      <select id="material">
+        <option value="wood_chips">Wood Chips (free/cheap, slow breakdown)</option>
+        <option value="pine_straw">Pine Straw (acidic, good for slopes)</option>
+        <option value="compost">Compost (nutrient-rich, fast breakdown)</option>
+        <option value="leaves">Shredded Leaves (free, excellent biology)</option>
+      </select>
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Materials Required</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Order Materials from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const cuPerCubicFt = 27;
+      const coverage = { wood_chips: 100, pine_straw: 80, compost: 120, leaves: 90 };
+
+      function calculate() {
+        const area = parseFloat(document.getElementById('area').value) || 0;
+        const depth = parseFloat(document.getElementById('depth').value) || 3;
+        const mat = document.getElementById('material').value;
+
+        const cuFt = area * (depth / 12);
+        const cuYd = (cuFt / cuPerCubicFt).toFixed(2);
+        const tons = (cuYd * 0.5).toFixed(1);
+        const bags = Math.ceil(cuYd * 14);
+
+        const cardboard = Math.ceil(area / 10);
+        const compost_inches = 1;
+        const compost_cuYd = ((area * (compost_inches / 12)) / cuPerCubicFt).toFixed(2);
+
+        document.getElementById('result-value').textContent = cuYd + " cubic yards";
+        document.getElementById('result-desc').innerHTML =
+          `<strong>Cardboard layer:</strong> ~${cardboard} large boxes (overlapping)<br/>
+           <strong>Compost layer:</strong> ${compost_cuYd} cu yd (1" under mulch)<br/>
+           <strong>Mulch:</strong> ${cuYd} cu yd (${tons} tons)<br/>
+           <strong>Or:</strong> ~${bags} bags (2 cu ft each)`;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

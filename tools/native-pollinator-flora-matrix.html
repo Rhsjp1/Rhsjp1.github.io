@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Native Pollinator & Flora Selection Matrix | RHS AI Solutions</title>
+  <meta name="description" content="Match Montgomery County, NC micro-climates with perennial native plants that improve biodiversity and reduce chemical dependency." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/native-pollinator-flora-matrix" />
+  <meta property="og:title" content="Native Pollinator & Flora Selection Matrix" />
+  <meta property="og:description" content="Match NC micro-climates with native plants for biodiversity." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/native-pollinator-flora-matrix" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Native Pollinator & Flora Selection Matrix",
+    "description": "Match Montgomery County, NC micro-climates with perennial native plants.",
+    "url": "https://Rhsjp1.github.io/tools/native-pollinator-flora-matrix",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Native Pollinator & Flora Selection Matrix</h1>
+      <p>Find native plants matched to your micro-climate for biodiversity and reduced chemical use.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="microclimate">Micro-Climate Zone</label>
+      <select id="microclimate">
+        <option value="full_sun_dry">Full Sun, Dry Upland</option>
+        <option value="full_sun_moist">Full Sun, Moist Lowland</option>
+        <option value="partial_shade">Partial Shade, Woodland Edge</option>
+        <option value="full_shade">Full Shade, Forest Understory</option>
+        <option value="riparian">Riparian / Stream Bank</option>
+      </select>
+
+      <label for="goal">Primary Goal</label>
+      <select id="goal">
+        <option value="pollinator">Pollinator Support</option>
+        <option value="erosion">Erosion Control</option>
+        <option value="wildlife">Wildlife Habitat</option>
+        <option value="aesthetic">Aesthetic / Seasonal Color</option>
+      </select>
+
+      <button onclick="lookup()" class="tool-cta" style="border:none;cursor:pointer;">Find Plants</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="label">Recommended Native Species</div>
+        <div id="plant-list" style="margin-top:0.75rem;"></div>
+        <a href="#contact" class="tool-cta">Get a Custom Planting Plan &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const flora = {
+        full_sun_dry: {
+          pollinator: [
+            { name: "Butterfly Weed (Asclepias tuberosa)", note: "Host for monarchs, drought-tolerant" },
+            { name: "Purple Coneflower (Echinacea purpurea)", note: "Long bloom, attracts bees and butterflies" },
+            { name: "Blazing Star (Liatris spicata)", note: "Vertical accent, pollinator magnet" }
+          ],
+          erosion: [
+            { name: "Little Bluestem (Schizachyrium scoparium)", note: "Deep roots stabilize slopes" },
+            { name: "Switchgrass (Panicum virgatum)", note: "3-ft root depth, excellent for banks" }
+          ],
+          wildlife: [
+            { name: "American Beautyberry (Callicarpa americana)", note: "Berries for birds, deer-resistant" },
+            { name: "Eastern Red Cedar (Juniperus virginiana)", note: "Year-round cover, winter berries" }
+          ],
+          aesthetic: [
+            { name: "Black-eyed Susan (Rudbeckia hirta)", note: "Cheerful yellow, self-seeds readily" },
+            { name: "Coreopsis (Coreopsis lanceolata)", note: "Long-blooming, low maintenance" }
+          ]
+        },
+        full_sun_moist: {
+          pollinator: [
+            { name: "Joe-Pye Weed (Eutrochium purpureum)", note: "Tall, late-summer pollinator feast" },
+            { name: "Cardinal Flower (Lobelia cardinalis)", note: "Hummingbird favorite, loves moisture" }
+          ],
+          erosion: [
+            { name: "River Birch (Betula nigra)", note: "Thrives in wet soils, stabilizes banks" },
+            { name: "Soft Rush (Juncus effusus)", note: "Filters runoff, prevents scouring" }
+          ],
+          wildlife: [
+            { name: "Winterberry Holly (Ilex verticillata)", note: "Winter berries for birds" },
+            { name: "Buttonbush (Cephalanthus occidentalis)", note: "Unique flowers, waterfowl cover" }
+          ],
+          aesthetic: [
+            { name: "Blue Flag Iris (Iris versicolor)", note: "Striking spring blooms" },
+            { name: "Swamp Milkweed (Asclepias incarnata)", note: "Pink flowers, monarch host" }
+          ]
+        },
+        partial_shade: {
+          pollinator: [
+            { name: "Wild Geranium (Geranium maculatum)", note: "Spring bloom, shade-tolerant" },
+            { name: "Columbine (Aquilegia canadensis)", note: "Hummingbird favorite, delicate foliage" }
+          ],
+          erosion: [
+            { name: "Christmas Fern (Polystichum acrostichoides)", note: "Evergreen, holds soil year-round" },
+            { name: "Alumroot (Heuchera americana)", note: "Low-growing groundcover for slopes" }
+          ],
+          wildlife: [
+            { name: "Serviceberry (Amelanchier arborea)", note: "Early fruit for birds" },
+            { name: "Spicebush (Lindera benzoin)", note: "Host for spicebush swallowtail" }
+          ],
+          aesthetic: [
+            { name: "Foamflower (Tiarella cordifolia)", note: "Delicate white blooms, spreads gently" },
+            { name: "Wild Ginger (Asarum canadense)", note: "Groundcover, heart-shaped leaves" }
+          ]
+        },
+        full_shade: {
+          pollinator: [
+            { name: "Woodland Phlox (Phlox divaricata)", note: "Spring carpet of blue, shade-loving" },
+            { name: "Golden Ragwort (Packera aurea)", note: "Early yellow blooms in deep shade" }
+          ],
+          erosion: [
+            { name: "Allegheny Pachysandra (Pachysandra procumbens)", note: "Native groundcover, evergreen" },
+            { name: "Sedge (Carex pensylvanica)", note: "Grass-like, holds shaded slopes" }
+          ],
+          wildlife: [
+            { name: "Solomon's Seal (Polygonatum biflorum)", note: "Arching stems, berries for birds" },
+            { name: "Trillium (Trillium cuneatum)", note: "Iconic spring ephemeral" }
+          ],
+          aesthetic: [
+            { name: "Virginia Bluebells (Mertensia virginica)", note: "Spring blue, goes dormant in summer" },
+            { name: "Bloodroot (Sanguinaria canadensis)", note: "Early white blooms, medicinal" }
+          ]
+        },
+        riparian: {
+          pollinator: [
+            { name: "Turtlehead (Chelone glabra)", note: "Late bloom, loves stream banks" },
+            { name: "Obedient Plant (Physostegia virginiana)", note: "Tall spikes, pollinator favorite" }
+          ],
+          erosion: [
+            { name: "Silky Dogwood (Cornus amomum)", note: "Thicket-forming, stabilizes banks" },
+            { name: "Black Willow (Salix nigra)", note: "Fast-growing, roots lock soil" }
+          ],
+          wildlife: [
+            { name: "Elderberry (Sambucus canadensis)", note: "Edible berries, dense cover" },
+            { name: "Sycamore (Platanus occidentalis)", note: "Massive shade, water-tolerant" }
+          ],
+          aesthetic: [
+            { name: "Swamp Rose (Rosa palustris)", note: "Pink summer blooms, wetland native" },
+            { name: "Blue Verbena (Verbena hastata)", note: "Tall purple spikes, butterfly magnet" }
+          ]
+        }
+      };
+
+      function lookup() {
+        const mc = document.getElementById('microclimate').value;
+        const goal = document.getElementById('goal').value;
+        const plants = flora[mc][goal] || [];
+        const list = document.getElementById('plant-list');
+        list.innerHTML = plants.map(p =>
+          `<div style="padding:0.5rem 0;border-bottom:1px solid var(--border);">
+            <strong style="color:var(--brand);">${p.name}</strong><br/>
+            <span style="font-size:0.875rem;color:var(--text-secondary);">${p.note}</span>
+          </div>`
+        ).join('');
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

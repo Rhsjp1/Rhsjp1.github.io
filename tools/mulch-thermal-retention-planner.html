@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Heat-Island & Mulch Thermal Retention Planner | RHS AI Solutions</title>
+  <meta name="description" content="Evaluate surface temperature differentials across organic mulch types to optimize root-zone moisture retention." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/mulch-thermal-retention-planner" />
+  <meta property="og:title" content="Solar Heat-Island & Mulch Thermal Retention Planner" />
+  <meta property="og:description" content="Evaluate mulch types for thermal retention and moisture conservation." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/mulch-thermal-retention-planner" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Solar Heat-Island & Mulch Thermal Retention Planner",
+    "description": "Evaluate surface temperature differentials across organic mulch types.",
+    "url": "https://Rhsjp1.github.io/tools/mulch-thermal-retention-planner",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Solar Heat-Island & Mulch Thermal Retention Planner</h1>
+      <p>Evaluate surface temperature differentials across organic mulch types.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="mulchType">Mulch Type</label>
+      <select id="mulchType">
+        <option value="pine_straw">Pine Straw (light, airy)</option>
+        <option value="hardwood">Double-Shredded Hardwood</option>
+        <option value="cedar">Cedar Chips (aromatic, long-lasting)</option>
+        <option value="pine_bark">Pine Bark Nuggets</option>
+        <option value="compost">Compost / Leaf Mold</option>
+      </select>
+
+      <label for="climateZone">Climate Zone</label>
+      <select id="climateZone">
+        <option value="hot_arid">Hot & Arid (full sun, &gt;90°F common)</option>
+        <option value="hot_humid">Hot & Humid (full sun, high moisture)</option>
+        <option value="mixed">Mixed / Partial Shade</option>
+        <option value="cool">Cool / Northern Exposure</option>
+      </select>
+
+      <label for="depth">Mulch Depth (inches)</label>
+      <input type="number" id="depth" value="3" min="1" max="6" step="0.5" />
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Analyze</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Thermal Performance Analysis</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Get Mulch Installation from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const mulchData = {
+        pine_straw: { r_value: 0.8, moisture_retention: 0.7, temp_reduction: 15, cost_per_cuyd: 35, lifespan_months: 6 },
+        hardwood: { r_value: 1.2, moisture_retention: 0.85, temp_reduction: 20, cost_per_cuyd: 45, lifespan_months: 12 },
+        cedar: { r_value: 1.0, moisture_retention: 0.75, temp_reduction: 18, cost_per_cuyd: 55, lifespan_months: 18 },
+        pine_bark: { r_value: 0.9, moisture_retention: 0.8, temp_reduction: 17, cost_per_cuyd: 40, lifespan_months: 12 },
+        compost: { r_value: 0.6, moisture_retention: 0.9, temp_reduction: 12, cost_per_cuyd: 30, lifespan_months: 4 }
+      };
+
+      const climateMultiplier = {
+        hot_arid: 1.3,
+        hot_humid: 1.1,
+        mixed: 1.0,
+        cool: 0.8
+      };
+
+      function calculate() {
+        const mulch = document.getElementById('mulchType').value;
+        const climate = document.getElementById('climateZone').value;
+        const depth = parseFloat(document.getElementById('depth').value) || 3;
+        const m = mulchData[mulch];
+        const cm = climateMultiplier[climate];
+
+        const effectiveR = (m.r_value * depth).toFixed(1);
+        const moistureScore = Math.round(m.moisture_retention * 100);
+        const tempReduction = Math.round(m.temp_reduction * cm * depth / 3);
+        const costPerSqFt = (m.cost_per_cuyd / 27 * depth / 12).toFixed(2);
+        const replacementFreq = m.lifespan_months;
+
+        document.getElementById('result-value').textContent = effectiveR + " R-value | " + tempReduction + "°F reduction";
+        document.getElementById('result-desc').innerHTML =
+          `<strong>Moisture retention:</strong> ${moistureScore}%<br/>
+           <strong>Cost per sq ft:</strong> $${costPerSqFt}<br/>
+           <strong>Replacement frequency:</strong> Every ${replacementFreq} months<br/>
+           <strong>Best for:</strong> ${mulch === 'pine_straw' ? 'Slopes, erosion control, acid-loving plants' :
+                                          mulch === 'hardweed' ? 'Formal beds, long-term weed suppression' :
+                                          mulch === 'cedar' ? 'Pathways, pest-prone areas' :
+                                          mulch === 'pine_bark' ? 'Decorative beds, moisture retention' :
+                                          'Soil building, vegetable gardens'}`;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

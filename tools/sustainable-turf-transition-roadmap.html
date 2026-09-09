@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainable Turf Transition Roadmap Generator | RHS AI Solutions</title>
+  <meta name="description" content="Build a step-by-step, multi-season transition schedule for moving high-chemical lawns toward low-input regenerative management." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/sustainable-turf-transition-roadmap" />
+  <meta property="og:title" content="Sustainable Turf Transition Roadmap Generator" />
+  <meta property="og:description" content="Build a multi-season transition schedule for your lawn." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/sustainable-turf-transition-roadmap" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sustainable Turf Transition Roadmap Generator",
+    "description": "Build a step-by-step, multi-season transition schedule for moving high-chemical lawns toward low-input regenerative management.",
+    "url": "https://Rhsjp1.github.io/tools/sustainable-turf-transition-roadmap",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Sustainable Turf Transition Roadmap Generator</h1>
+      <p>Build a step-by-step, multi-season transition schedule for your lawn.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="currentTurf">Current Turf Type</label>
+      <select id="currentTurf">
+        <option value="bermuda">Bermuda (high-input, warm-season)</option>
+        <option value="centipede">Centipede (low-fertility, warm-season)</option>
+        <option value="fescue">Tall Fescue (cool-season, transition zone)</option>
+        <option value="zoysia">Zoysia (slow-growing, dense)</option>
+        <option value="bluegrass">Kentucky Bluegrass (cool-season, high water)</option>
+      </select>
+
+      <label for="goal">Transition Goal</label>
+      <select id="goal">
+        <option value="low_input">Low-Input Turf (reduce chemicals 50-75%)</option>
+        <option value="no_mow">No-Mow / Meadow Conversion</option>
+        <option value="food_forest">Food Forest / Edible Landscape</option>
+        <option value="pollinator">Pollinator Meadow</option>
+        <option value="clover">Clover-Turf Mix (nitrogen-fixing)</option>
+      </select>
+
+      <label for="area">Lawn Area (square feet)</label>
+      <input type="number" id="area" value="5000" min="500" />
+
+      <label for="timeline">Timeline (years)</label>
+      <select id="timeline">
+        <option value="1">1 year (aggressive)</option>
+        <option value="2" selected>2 years (moderate)</option>
+        <option value="3">3 years (gradual)</option>
+        <option value="5">5 years (slow transition)</option>
+      </select>
+
+      <button onclick="generateRoadmap()" class="tool-cta" style="border:none;cursor:pointer;">Generate Roadmap</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="label">Your Transition Roadmap</div>
+        <div id="roadmap-content" style="margin-top:0.75rem;"></div>
+        <a href="#contact" class="tool-cta">Get Professional Transition Support &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const turfData = {
+        bermuda: { growth_rate: "aggressive", drought_tolerance: "high", shade_tolerance: "low", nitrogen_need: "high" },
+        centipede: { growth_rate: "slow", drought_tolerance: "moderate", shade_tolerance: "moderate", nitrogen_need: "low" },
+        fescue: { growth_rate: "moderate", drought_tolerance: "moderate", shade_tolerance: "moderate", nitrogen_need: "moderate" },
+        zoysia: { growth_rate: "slow", drought_tolerance: "high", shade_tolerance: "moderate", nitrogen_need: "moderate" },
+        bluegrass: { growth_rate: "moderate", drought_tolerance: "low", shade_tolerance: "low", nitrogen_need: "high" }
+      };
+
+      const goalSteps = {
+        low_input: [
+          { season: "Year 1 Spring", action: "Soil test + begin organic fertilization program", detail: "Apply compost topdress (1/4\"), reduce synthetic N by 50%" },
+          { season: "Year 1 Summer", action: "Overseed with microclover", detail: "Clover fixes nitrogen, reduces fertilizer need" },
+          { season: "Year 1 Fall", action: "Core aeration + compost tea", detail: "Improve soil biology, reduce thatch" },
+          { season: "Year 2 Spring", action: "Switch to organic fertilizer only", detail: "Use compost, bone meal, greensand as needed" },
+          { season: "Year 2 Summer", action: "Raise mowing height, leave clippings", detail: "Taller grass shades weeds, clippings feed soil" },
+          { season: "Year 2 Fall", action: "Final synthetic fertilizer elimination", detail: "Soil biology now sufficient for nutrient cycling" }
+        ],
+        no_mow: [
+          { season: "Year 1 Spring", action: "Stop all fertilization, reduce mowing frequency", detail: "Let grass grow naturally, observe weed pressure" },
+          { season: "Year 1 Summer", action: "Introduce low-growing natives", detail: "Wild strawberry, violets, self-heal" },
+          { season: "Year 1 Fall", action: "Sheet-mulch remaining turf areas", detail: "Cardboard + wood chips to kill remaining lawn" },
+          { season: "Year 2 Spring", action: "Plant meadow species", detail: "Native grasses, wildflowers, groundcovers" },
+          { season: "Year 2 Summer", action: "First meadow mow (2-3x/year)", detail: "Cut to 6\" to control woody plants" },
+          { season: "Year 2 Fall", action: "Add spring bulbs for early color", detail: "Crocus, snowdrops, daffodils" }
+        ],
+        food_forest: [
+          { season: "Year 1 Spring", action: "Soil test + sheet-mulch perimeter", detail: "Kill outer 10' for tree/shrub planting" },
+          { season: "Year 1 Summer", action: "Plant fruit trees (dwarf)", detail: "Apples, pears, peaches — 15' spacing" },
+          { season: "Year 1 Fall", action: "Plant berry bushes", detail: "Blueberries, blackberries, raspberries" },
+          { season: "Year 2 Spring", action: "Sheet-mulch remaining lawn", detail: "Cardboard + wood chips around trees" },
+          { season: "Year 2 Summer", action: "Plant groundcover layer", detail: "Strawberry, clover, comfrey" },
+          { season: "Year 2 Fall", action: "Add herb layer", detail: "Chives, oregano, thyme, echinacea" }
+        ],
+        pollinator: [
+          { season: "Year 1 Spring", action: "Stop all pesticides, reduce mowing", detail: "Let existing wildflowers bloom" },
+          { season: "Year 1 Summer", action: "Identify existing natives", detail: "Keep what's there, remove invasives" },
+          { season: "Year 1 Fall", action: "Overseed with native wildflower mix", detail: "Black-eyed Susan, coneflower, milkweed, coreopsis" },
+          { season: "Year 2 Spring", action: "First controlled mow (if needed)", detail: "Cut to 6\" to reduce woody competition" },
+          { season: "Year 2 Summer", action: "Add host plants", detail: "Milkweed for monarchs, parsley for swallowtails" },
+          { season: "Year 2 Fall", action: "Leave stems standing for winter habitat", detail: "Cut in spring, not fall" }
+        ],
+        clover: [
+          { season: "Year 1 Spring", action: "Overseed with microclover", detail: "2-3 lbs per 1000 sq ft, rake in lightly" },
+          { season: "Year 1 Summer", action: "Stop all nitrogen fertilizer", detail: "Clover fixes 50-150 lbs N/acre/year" },
+          { season: "Year 1 Fall", action: "Mow normally, leave clippings", detail: "Clover + grass = self-feeding lawn" },
+          { season: "Year 2 Spring", action: "Reduce irrigation by 30%", detail: "Clover + deep roots = drought tolerance" },
+          { season: "Year 2 Summer", action: "Spot-treat broadleaf weeds only", detail: "Avoid broadleaf herbicides — they kill clover" },
+          { season: "Year 2 Fall", action: "Evaluate clover coverage", detail: "Overseed thin areas, enjoy low-maintenance lawn" }
+        ]
+      };
+
+      function generateRoadmap() {
+        const turf = document.getElementById('currentTurf').value;
+        const goal = document.getElementById('goal').value;
+        const area = parseFloat(document.getElementById('area').value) || 0;
+        const years = parseInt(document.getElementById('timeline').value) || 2;
+        const t = turfData[turf];
+        const steps = goalSteps[goal] || [];
+
+        let html = `<div style="margin-bottom:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:0.5rem;">
+          <strong>Current:</strong> ${turf.charAt(0).toUpperCase() + turf.slice(1)} (${t.growth_rate} growth, ${t.nitrogen_need} N need)<br/>
+          <strong>Goal:</strong> ${goal.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}<br/>
+          <strong>Area:</strong> ${area.toLocaleString()} sq ft | <strong>Timeline:</strong> ${years} years
+        </div>`;
+
+        html += '<div style="border-left:3px solid var(--brand);padding-left:1rem;">';
+        steps.forEach((step, i) => {
+          const year = Math.floor(i / (6 / years)) + 1;
+          html += `<div style="margin-bottom:1rem;">
+            <div style="color:var(--brand);font-weight:600;">${step.season}</div>
+            <div style="font-weight:500;">${step.action}</div>
+            <div style="font-size:0.875rem;color:var(--text-secondary);">${step.detail}</div>
+          </div>`;
+        });
+        html += '</div>';
+
+        document.getElementById('roadmap-content').innerHTML = html;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>

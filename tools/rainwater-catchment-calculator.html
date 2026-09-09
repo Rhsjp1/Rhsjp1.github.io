@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rainwater Catchment & Cistern Sizing Calculator | RHS AI Solutions</title>
+  <meta name="description" content="Compute roof runoff harvesting capacity and recommend optimal cistern size based on NC regional rainfall data." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/rainwater-catchment-calculator" />
+  <meta property="og:title" content="Rainwater Catchment & Cistern Sizing Calculator" />
+  <meta property="og:description" content="Compute roof runoff and cistern sizing for your property." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/rainwater-catchment-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Rainwater Catchment & Cistern Sizing Calculator",
+    "description": "Compute roof runoff harvesting capacity and optimal cistern size.",
+    "url": "https://Rhsjp1.github.io/tools/rainwater-catchment-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Rainwater Catchment & Cistern Sizing Calculator</h1>
+      <p>Compute roof runoff harvesting capacity and optimal cistern size for your property.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="roofArea">Roof Catchment Area (square feet)</label>
+      <input type="number" id="roofArea" value="1500" min="100" />
+
+      <label for="region">NC Region</label>
+      <select id="region">
+        <option value="piedmont">Piedmont (Montgomery/Randolph area)</option>
+        <option value="coastal">Coastal Plain</option>
+        <option value="mountains">Mountains</option>
+      </select>
+
+      <label for="irrigation">Weekly Irrigation Need (gallons)</label>
+      <input type="number" id="irrigation" value="200" min="0" />
+
+      <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">--</div>
+        <div class="label">Annual Runoff Potential</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Install a System with RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      const rainfall = { piedmont: 45, coastal: 50, mountains: 55 };
+
+      function calculate() {
+        const area = parseFloat(document.getElementById('roofArea').value) || 0;
+        const reg = document.getElementById('region').value;
+        const irrig = parseFloat(document.getElementById('irrigation').value) || 0;
+
+        const inches = rainfall[reg];
+        const gallons = Math.round(area * (inches / 12) * 0.623);
+        const weekly = Math.round(gallons / 52);
+        const dryWeeks = irrig > 0 ? Math.floor(gallons / irrig) : 0;
+        const cisternMin = Math.ceil(irrig * 2 / 1000) * 1000;
+        const cisternMax = Math.ceil(gallons / 12 / 1000) * 1000;
+
+        document.getElementById('result-value').textContent = gallons.toLocaleString() + " gal/year";
+        document.getElementById('result-desc').innerHTML =
+          `<strong>Weekly average:</strong> ${weekly.toLocaleString()} gal<br/>
+           <strong>Covers irrigation for:</strong> ${dryWeeks} weeks<br/>
+           <strong>Recommended cistern:</strong> ${cisternMin.toLocaleString()}–${cisternMax.toLocaleString()} gal<br/>
+           <strong>Roof efficiency:</strong> ~62% (0.623 gal/sq ft/inch)`;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+
+    <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
+      <h3>Want these results emailed to you?</h3>
+      <p>Enter your email and we'll send a summary — no spam, just your results.</p>
+      <form class="lead-form" data-form-type="tool">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Email My Results</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/form-handler.js"></script>
+</body>
+</html>
