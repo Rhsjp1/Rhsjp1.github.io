@@ -146,3 +146,58 @@ a, button {
     scroll-behavior: auto;
   }
 }
+
+/* ===== Service Card Interactive States ===== */
+.service-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::before,
+.service-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.service-card:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Secondary asset link inside cards */
+.service-card-secondary {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .service-card-secondary,
+.service-card:focus-visible .service-card-secondary {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth icon scale on card hover */
+.service-card .w-12 {
+  transition: transform 0.3s ease, background-color 0.2s ease;
+}
+
+.service-card:hover .w-12,
+.service-card:focus-visible .w-12 {
+  transform: scale(1.1);
+}

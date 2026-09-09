@@ -121,10 +121,10 @@
 <body class="bg-gray-950 text-gray-100 antialiased">
 
   <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800" role="navigation" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <span class="w-10 h-10 rounded-lg bg-brand flex items-center justify-center text-gray-950 font-bold text-lg">R</span>
+      <a href="#" class="flex items-center gap-3" aria-label="RHS AI Solutions home">
+        <span class="w-10 h-10 rounded-lg bg-brand flex items-center justify-center text-gray-950 font-bold text-lg" aria-hidden="true">R</span>
         <span class="font-semibold text-lg tracking-tight">Right Hand Services <span class="text-brand">by JP</span></span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm text-gray-300">
@@ -132,25 +132,25 @@
         <a href="#about" class="hover:text-brand transition-colors">About</a>
         <a href="#contact" class="hover:text-brand transition-colors">Contact</a>
       </div>
-      <a href="tel:+13173953309" class="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-semibold px-4 py-2 rounded-lg text-sm transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      <a href="tel:+13173953309" class="hidden sm:inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-semibold px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Call RHS at 317-395-3309">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         317-395-3309
       </a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"></div>
-    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl"></div>
+  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden" aria-labelledby="hero-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" aria-hidden="true"></div>
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand/10 rounded-full blur-3xl" aria-hidden="true"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" aria-hidden="true"></div>
     <div class="relative max-w-7xl mx-auto px-5 py-24 grid lg:grid-cols-2 gap-12 items-center">
       <div>
         <div class="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 text-brand px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-          <span class="w-2 h-2 bg-brand rounded-full animate-pulse"></span>
+          <span class="w-2 h-2 bg-brand rounded-full animate-pulse" aria-hidden="true"></span>
           Serving Candor, NC & Montgomery County
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+        <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
           Property Intelligence<br />
           <span class="text-brand">& Regenerative Landscaping</span>
         </h1>
@@ -158,30 +158,30 @@
           Right Hand Services by JP combines professional turf management, drainage solutions, and AI-driven automation to protect and elevate your property. Founded and operated by James Anthony Person, Jr.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="#services" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-semibold px-6 py-3 rounded-lg transition-colors">
+          <a href="#services" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-semibold px-6 py-3 rounded-lg transition-colors" aria-label="Explore RHS services">
             Explore Services
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#contact" class="inline-flex items-center gap-2 border border-gray-700 hover:border-brand text-gray-200 hover:text-brand font-semibold px-6 py-3 rounded-lg transition-colors">
+          <a href="#contact" class="inline-flex items-center gap-2 border border-gray-700 hover:border-brand text-gray-200 hover:text-brand font-semibold px-6 py-3 rounded-lg transition-colors" aria-label="Get in touch with RHS">
             Get In Touch
           </a>
         </div>
-        <div class="mt-12 grid grid-cols-3 gap-6 text-center">
-          <div>
+        <div class="mt-12 grid grid-cols-3 gap-6 text-center" role="list" aria-label="RHS statistics">
+          <div role="listitem">
             <div class="text-2xl font-bold text-brand">100+</div>
             <div class="text-sm text-gray-500 mt-1">Properties Served</div>
           </div>
-          <div>
+          <div role="listitem">
             <div class="text-2xl font-bold text-brand">3</div>
             <div class="text-sm text-gray-500 mt-1">Core Services</div>
           </div>
-          <div>
+          <div role="listitem">
             <div class="text-2xl font-bold text-brand">24/7</div>
             <div class="text-sm text-gray-500 mt-1">AI Automation</div>
           </div>
         </div>
       </div>
-      <div class="relative hidden lg:block">
+      <div class="relative hidden lg:block" aria-hidden="true">
         <div class="relative bg-gray-900 border border-gray-800 rounded-2xl p-8 shadow-2xl">
           <div class="absolute -top-3 -right-3 bg-brand text-gray-950 text-xs font-bold px-3 py-1 rounded-full">RHS AI</div>
           <div class="space-y-4">
@@ -206,70 +206,101 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-24 bg-gray-900">
+  <section id="services" class="py-24 bg-gray-900" aria-labelledby="services-heading">
     <div class="max-w-7xl mx-auto px-5">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Core Services</h2>
+        <h2 id="services-heading" class="text-3xl sm:text-4xl font-bold tracking-tight">Core Services</h2>
         <p class="mt-4 text-gray-400 max-w-2xl mx-auto">From regenerative landscaping to AI-driven automation — comprehensive property solutions built on real expertise.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Service Card 1 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" role="list" aria-label="RHS service categories">
+
+        <!-- Service Card 1: Regenerative Landscaping & Turf Care -->
+        <a href="https://rhsjp1.github.io/guides/bermuda-turf-maintenance.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Regenerative Landscaping & Turf Care — Bermuda turf maintenance guide">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Regenerative Landscaping & Turf Care</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Specializing in Bermuda, Centipede, and Bluegrass turf varieties, soil conditioning, and professional drainage systems including French drains.</p>
-        </div>
-        <!-- Service Card 2 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">Regenerative Landscaping & Turf Care</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Specializing in Bermuda, Centipede, and Bluegrass turf varieties, soil conditioning, and professional drainage systems including French drains.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Free asset: Turf Grass Selection Guide">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Free: Turf Grass Selection Guide
+          </span>
+        </a>
+
+        <!-- Service Card 2: Property Intelligence & Due Diligence -->
+        <a href="https://rhsjp1.github.io/guides/property-due-diligence-overview.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Property Intelligence & Due Diligence — Due diligence overview guide">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Property Intelligence & Due Diligence</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Digital lawn care planners, property evaluation templates, chemical mixing guides, and real estate property reports for informed decisions.</p>
-        </div>
-        <!-- Service Card 3 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">Property Intelligence & Due Diligence</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Digital lawn care planners, property evaluation templates, chemical mixing guides, and real estate property reports for informed decisions.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Free asset: Sample Due Diligence Report">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Free: Sample Due Diligence Report
+          </span>
+        </a>
+
+        <!-- Service Card 3: RHS AI Solutions -->
+        <a href="https://rhsjp1.github.io/guides/ai-receptionist-setup.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="RHS AI Solutions — AI receptionist setup guide">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">RHS AI Solutions</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Custom Python scripts, Google Apps Script automation, Supabase/Vercel integrations, and AI-driven workflow solutions for local business optimization.</p>
-        </div>
-        <!-- Service Card 4 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">RHS AI Solutions</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Custom Python scripts, Google Apps Script automation, Supabase/Vercel integrations, and AI-driven workflow solutions for local business optimization.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Tool: AI ROI Calculator">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            Tool: AI ROI Calculator
+          </span>
+        </a>
+
+        <!-- Service Card 4: Drainage Systems -->
+        <a href="https://rhsjp1.github.io/guides/drainage-assessment-overview.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Drainage Systems — Drainage assessment overview guide">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Drainage Systems</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Professional French drain installation, exterior drainage solutions, and water management systems to protect your property from erosion and flooding.</p>
-        </div>
-        <!-- Service Card 5 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">Drainage Systems</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Professional French drain installation, exterior drainage solutions, and water management systems to protect your property from erosion and flooding.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Free asset: French Drain Cheat Sheet">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Free: French Drain Cheat Sheet
+          </span>
+        </a>
+
+        <!-- Service Card 5: Digital Lawn Care Planners -->
+        <a href="https://rhsjp1.github.io/free/seasonal-maintenance-calendar.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Digital Lawn Care Planners — Seasonal maintenance calendar">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Digital Lawn Care Planners</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Custom digital planning tools for property maintenance schedules, chemical application tracking, and seasonal turf management programs.</p>
-        </div>
-        <!-- Service Card 6 -->
-        <div class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors">
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">Digital Lawn Care Planners</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Custom digital planning tools for property maintenance schedules, chemical application tracking, and seasonal turf management programs.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Tool: Maintenance Frequency Planner">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Tool: Maintenance Frequency Planner
+          </span>
+        </a>
+
+        <!-- Service Card 6: AI Automation Systems -->
+        <a href="https://rhsjp1.github.io/guides/ai-receptionist-setup.html" class="service-card group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="AI Automation Systems — AI receptionist setup guide">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">AI Automation Systems</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">End-to-end business automation — from AI receptionists to workflow orchestration — built to streamline operations and reduce overhead.</p>
-        </div>
+          <h3 class="text-xl font-semibold mb-2 group-hover:text-brand transition-colors">AI Automation Systems</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">End-to-end business automation — from AI receptionists to workflow orchestration — built to streamline operations and reduce overhead.</p>
+          <span class="service-card-secondary inline-flex items-center gap-1 text-brand text-sm font-medium" aria-label="Tool: AI ROI Calculator">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            Tool: AI ROI Calculator
+          </span>
+        </a>
+
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-24 bg-gray-950">
+  <section id="about" class="py-24 bg-gray-950" aria-labelledby="about-heading">
     <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">About <span class="text-brand">RHS</span></h2>
+        <h2 id="about-heading" class="text-3xl sm:text-4xl font-bold tracking-tight">About <span class="text-brand">RHS</span></h2>
         <p class="mt-6 text-gray-400 leading-relaxed">
           Right Hand Services by JP is a property services and technology company founded and operated by <strong class="text-gray-200">James Anthony Person, Jr.</strong> Based in Candor, North Carolina, RHS serves Montgomery County and surrounding areas with a dual focus: regenerative landscaping and AI-driven business automation.
         </p>
@@ -300,7 +331,7 @@
           "We combine hands-on property expertise with AI-driven tools to deliver results that are measurable, repeatable, and built to last."
         </blockquote>
         <div class="mt-6 flex items-center gap-3">
-          <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center text-gray-950 font-bold">JP</div>
+          <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center text-gray-950 font-bold" aria-hidden="true">JP</div>
           <div>
             <div class="font-semibold text-gray-200">James Anthony Person, Jr.</div>
             <div class="text-sm text-gray-500">Founder, Right Hand Services</div>
@@ -311,29 +342,29 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 bg-gray-900">
+  <section id="contact" class="py-24 bg-gray-900" aria-labelledby="contact-heading">
     <div class="max-w-7xl mx-auto px-5">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Get In Touch</h2>
+        <h2 id="contact-heading" class="text-3xl sm:text-4xl font-bold tracking-tight">Get In Touch</h2>
         <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Ready to discuss your property needs? Contact RHS today.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <a href="tel:+13173953309" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors">
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto" role="list" aria-label="Contact options">
+        <a href="tel:+13173953309" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Call RHS at 317-395-3309">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
           </div>
           <h3 class="font-semibold mb-1">Call Us</h3>
           <p class="text-brand text-sm">317-395-3309</p>
         </a>
-        <a href="mailto:righthandservicesbyjp@gmail.com" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors">
+        <a href="mailto:righthandservicesbyjp@gmail.com" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Email RHS at righthandservicesbyjp@gmail.com">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="font-semibold mb-1">Email Us</h3>
           <p class="text-brand text-sm">righthandservicesbyjp@gmail.com</p>
         </a>
-        <a href="mailto:rhsjp01@gmail.com" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5">
-          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors">
+        <a href="mailto:rhsjp01@gmail.com" class="group bg-gray-950 border border-gray-800 hover:border-brand/50 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-brand/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" role="listitem" aria-label="Email RHS secondary at rhsjp01@gmail.com">
+          <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-brand/20 transition-colors" aria-hidden="true">
             <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </div>
           <h3 class="font-semibold mb-1">Secondary Email</h3>
@@ -347,14 +378,14 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-950 border-t border-gray-800 py-12">
+  <footer class="bg-gray-950 border-t border-gray-800 py-12" role="contentinfo">
     <div class="max-w-7xl mx-auto px-5">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-gray-950 font-bold text-sm">R</span>
+          <span class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-gray-950 font-bold text-sm" aria-hidden="true">R</span>
           <span class="font-semibold">Right Hand Services <span class="text-brand">by JP</span></span>
         </div>
-        <div class="flex items-center gap-6 text-sm text-gray-500">
+        <div class="flex items-center gap-6 text-sm text-gray-500" role="navigation" aria-label="Footer navigation">
           <a href="#services" class="hover:text-brand transition-colors">Services</a>
           <a href="#about" class="hover:text-brand transition-colors">About</a>
           <a href="#contact" class="hover:text-brand transition-colors">Contact</a>
