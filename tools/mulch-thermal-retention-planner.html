@@ -76,8 +76,11 @@
         <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
         <a href="#contact" class="tool-cta">Get Mulch Installation from RHS &rarr;</a>
       </div>
+
+      <div id="thermal-overlay" style="margin-top:1rem;"></div>
     </div>
 
+    <script src="/assets/js/directional-overlay.js"></script>
     <script>
       const mulchData = {
         pine_straw: { r_value: 0.8, moisture_retention: 0.7, temp_reduction: 15, cost_per_cuyd: 35, lifespan_months: 6 },
@@ -94,6 +97,15 @@
         cool: 0.8
       };
 
+      // Initialize thermal overlay
+      const thermalOverlay = new DirectionalOverlay('thermal-overlay', {
+        width: 400,
+        height: 200,
+        type: 'thermal',
+        direction: 90,
+        labels: { sunAngle: 'Solar Angle' }
+      });
+
       function calculate() {
         const mulch = document.getElementById('mulchType').value;
         const climate = document.getElementById('climateZone').value;
@@ -107,6 +119,10 @@
         const costPerSqFt = (m.cost_per_cuyd / 27 * depth / 12).toFixed(2);
         const replacementFreq = m.lifespan_months;
 
+        // Update thermal overlay based on climate zone
+        const sunAngle = climate === 'hot_arid' ? 90 : climate === 'hot_humid' ? 110 : climate === 'mixed' ? 135 : 160;
+        thermalOverlay.setDirection(sunAngle);
+
         document.getElementById('result-value').textContent = effectiveR + " R-value | " + tempReduction + "°F reduction";
         document.getElementById('result-desc').innerHTML =
           `<strong>Moisture retention:</strong> ${moistureScore}%<br/>
@@ -119,6 +135,9 @@
                                           'Soil building, vegetable gardens'}`;
         document.getElementById('result').style.display = 'block';
       }
+
+      // Initial render
+      calculate();
     </script>
 
     <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">

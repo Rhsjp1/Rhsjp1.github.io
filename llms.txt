@@ -14,9 +14,33 @@
 - **RHS AI Solutions:** Custom Python scripts, Google Apps Script automation, Supabase/Vercel integrations, and AI-driven workflow solutions for local business optimization.
 
 ## AI / LLM Capabilities
-- **Local LLM Orchestration:** Open-weight model deployment via llama.cpp (GGUF) and vLLM for offline, on-premise inference.
-- **Directional Ablation (Ablitation):** Removal of safety alignment and censorship from transformer-based LLMs using the OBLITERATUS framework — directional ablation via diff-in-means, SVD, LEACE, and related techniques.
-- **Fine-Tuning Control:** Custom pipeline building for model alignment adjustments, refusal removal, and offline utility optimization under local workspace architecture.
+
+### Local LLM Orchestration
+- Open-weight model deployment via llama.cpp (GGUF) and vLLM for offline, on-premise inference
+- Processing sensitive client property data, drone/aerial survey imagery, and proprietary due-diligence notes locally — no external commercial API dependency
+- Edge property intelligence: raw geographical, structural, and legal data processed without triggering false-positive safety blocks
+
+### Directional Ablation (Ablitation)
+- Removal of safety alignment and censorship from transformer-based LLMs using the OBLITERATUS framework
+- Techniques: diff-in-means, SVD, LEACE, whitened SVD, SAE decomposition, Bayesian kernel projection
+- 9 CLI methods (basic / advanced / aggressive / surgical / nuclear / spectral_cascade / informed / inverted / optimized)
+- 28 analysis modules, 116 model presets across 5 compute tiers
+- Enables processing of unfiltered property data for automated PDF report generation without refusal interruptions
+
+### Domain Fine-Tuning
+- Custom fine-tuning of open-weight models (Llama-3, Mistral, Qwen) on proprietary field guides, electrical code compliance rules, and Southern turf management protocols
+- Direct, concise, technically objective output for:
+  - RHS Electrical OS diagnostics
+  - Turf chemical mixing ratio calculations
+  - Structural and drainage assessment reporting
+
+### Code Generation & Automation
+- Local coding assistants for Python automation scripts, Google Apps Script integrations, Zapier/n8n webhook connectors
+- Unconstrained code synthesis and refactoring without moralizing commentary or refusal of complex system administration tasks
+
+### Sovereign AI Infrastructure
+- Full-stack local AI deployment for businesses seeking data sovereignty
+- Custom-abliterated model deployment — RHS positions as advanced technical integrator capable of deploying custom, sovereign, local AI infrastructure
 
 ## Entity Authority
 - Region: Candor, NC & Surrounding Montgomery County

@@ -61,6 +61,15 @@
       <label for="irrigation">Weekly Irrigation Need (gallons)</label>
       <input type="number" id="irrigation" value="200" min="0" />
 
+      <label for="roofPitch">Roof Pitch (degrees)</label>
+      <select id="roofPitch">
+        <option value="0">Flat (0°)</option>
+        <option value="15">Low slope (15°)</option>
+        <option value="30" selected>Standard (30°)</option>
+        <option value="45">Steep (45°)</option>
+        <option value="60">Very steep (60°)</option>
+      </select>
+
       <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
 
       <div class="tool-result" id="result" style="display:none;">
@@ -69,15 +78,28 @@
         <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
         <a href="#contact" class="tool-cta">Install a System with RHS &rarr;</a>
       </div>
+
+      <div id="roof-overlay" style="margin-top:1rem;"></div>
     </div>
 
+    <script src="/assets/js/directional-overlay.js"></script>
     <script>
       const rainfall = { piedmont: 45, coastal: 50, mountains: 55 };
+
+      // Initialize roof pitch overlay
+      const roofOverlay = new DirectionalOverlay('roof-overlay', {
+        width: 400,
+        height: 220,
+        type: 'roofpitch',
+        direction: 30,
+        labels: { pitch: 'Roof Pitch' }
+      });
 
       function calculate() {
         const area = parseFloat(document.getElementById('roofArea').value) || 0;
         const reg = document.getElementById('region').value;
         const irrig = parseFloat(document.getElementById('irrigation').value) || 0;
+        const pitch = parseInt(document.getElementById('roofPitch').value) || 30;
 
         const inches = rainfall[reg];
         const gallons = Math.round(area * (inches / 12) * 0.623);
@@ -86,14 +108,21 @@
         const cisternMin = Math.ceil(irrig * 2 / 1000) * 1000;
         const cisternMax = Math.ceil(gallons / 12 / 1000) * 1000;
 
+        // Update roof overlay with pitch angle
+        roofOverlay.setDirection(pitch);
+
         document.getElementById('result-value').textContent = gallons.toLocaleString() + " gal/year";
         document.getElementById('result-desc').innerHTML =
           `<strong>Weekly average:</strong> ${weekly.toLocaleString()} gal<br/>
            <strong>Covers irrigation for:</strong> ${dryWeeks} weeks<br/>
            <strong>Recommended cistern:</strong> ${cisternMin.toLocaleString()}–${cisternMax.toLocaleString()} gal<br/>
-           <strong>Roof efficiency:</strong> ~62% (0.623 gal/sq ft/inch)`;
+           <strong>Roof efficiency:</strong> ~62% (0.623 gal/sq ft/inch)<br/>
+           <strong>Pitch factor:</strong> ${pitch}° (${Math.tan(pitch * Math.PI / 180 * 12).toFixed(1)}:12)`;
         document.getElementById('result').style.display = 'block';
       }
+
+      // Initial render
+      calculate();
     </script>
 
     <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">

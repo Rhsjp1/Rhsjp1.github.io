@@ -69,6 +69,18 @@
         <option value="5">5+ inches (extreme event)</option>
       </select>
 
+      <label for="flowDirection">Flow Direction (cardinal)</label>
+      <select id="flowDirection">
+        <option value="0">N (North)</option>
+        <option value="45">NE (Northeast)</option>
+        <option value="90">E (East)</option>
+        <option value="135" selected>SE (Southeast)</option>
+        <option value="180">S (South)</option>
+        <option value="225">SW (Southwest)</option>
+        <option value="270">W (West)</option>
+        <option value="315">NW (Northwest)</option>
+      </select>
+
       <button onclick="calculate()" class="tool-cta" style="border:none;cursor:pointer;">Calculate</button>
 
       <div class="tool-result" id="result" style="display:none;">
@@ -77,16 +89,30 @@
         <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
         <a href="#contact" class="tool-cta">Install Swales with RHS &rarr;</a>
       </div>
+
+      <div id="swale-overlay" style="margin-top:1rem;"></div>
     </div>
 
+    <script src="/assets/js/directional-overlay.js"></script>
     <script>
       const infiltration = { sand: 2.0, loam: 0.5, clay: 0.1 };
+
+      // Initialize swale overlay
+      const swaleOverlay = new DirectionalOverlay('swale-overlay', {
+        width: 400,
+        height: 200,
+        type: 'slope',
+        direction: 5,
+        secondaryDirection: 135,
+        labels: { direction: 'Slope Grade' }
+      });
 
       function calculate() {
         const slope = parseFloat(document.getElementById('slope').value) || 5;
         const catchment = parseFloat(document.getElementById('catchment').value) || 0;
         const soil = document.getElementById('soilType').value;
         const storm = parseFloat(document.getElementById('stormIntensity').value) || 2;
+        const flowDir = parseInt(document.getElementById('flowDirection').value) || 0;
 
         const runoff = catchment * (storm / 12) * 0.623;
         const infRate = infiltration[soil];
@@ -96,6 +122,10 @@
         const volume = length * width * (depth / 12);
         const canHandle = volume >= runoff * 0.5;
 
+        // Update overlay with new slope and flow direction
+        swaleOverlay.setDirection(slope);
+        swaleOverlay.setSecondaryDirection(flowDir);
+
         document.getElementById('result-value').textContent = depth + "\" deep × " + width + "\" wide × " + length + "\" long";
         document.getElementById('result-desc').innerHTML =
           `<strong>Runoff volume:</strong> ${Math.round(runoff).toLocaleString()} gal<br/>
@@ -104,6 +134,9 @@
            <strong>Can handle design storm:</strong> ${canHandle ? '✅ Yes' : '⚠️ Partial — consider larger swale or overflow'}`;
         document.getElementById('result').style.display = 'block';
       }
+
+      // Initial render
+      calculate();
     </script>
 
     <div class="lead-capture" style="max-width:80rem;margin:2rem auto;padding:0 1.25rem;">
