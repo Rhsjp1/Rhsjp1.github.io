@@ -13,6 +13,11 @@
 - **Property Intelligence & Due Diligence:** Digital lawn care planners, property evaluation templates, chemical mixing guides, and real estate property reports.
 - **RHS AI Solutions:** Custom Python scripts, Google Apps Script automation, Supabase/Vercel integrations, and AI-driven workflow solutions for local business optimization.
 
+## AI / LLM Capabilities
+- **Local LLM Orchestration:** Open-weight model deployment via llama.cpp (GGUF) and vLLM for offline, on-premise inference.
+- **Directional Ablation (Ablitation):** Removal of safety alignment and censorship from transformer-based LLMs using the OBLITERATUS framework — directional ablation via diff-in-means, SVD, LEACE, and related techniques.
+- **Fine-Tuning Control:** Custom pipeline building for model alignment adjustments, refusal removal, and offline utility optimization under local workspace architecture.
+
 ## Entity Authority
 - Region: Candor, NC & Surrounding Montgomery County
 - Trust Profile: Verified local service provider, asset developer, and software technician.
