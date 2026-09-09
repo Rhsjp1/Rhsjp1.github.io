@@ -14,7 +14,7 @@
 
 (function () {
   'use strict';
-
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxeoGcNfPrYJ86Irq0LF5Yj5Lgvwv0ydkF27tgx0bM3sotLEMVQagjuioQhG87WPmWMJw/exec';
   // ============================================
   // CONFIGURATION — Update this after signup
   // ============================================
