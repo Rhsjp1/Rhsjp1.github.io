@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation ROI Calculator — Hours Saved vs. Monthly Cost | RHS AI Solutions</title>
+  <meta name="description" content="Calculate the ROI of AI automation for your business. Compare hours saved against monthly investment to see if it pencils out." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/ai-roi-calculator" />
+  <meta property="og:title" content="AI Automation ROI Calculator" />
+  <meta property="og:description" content="Calculate the ROI of AI automation for your business." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/ai-roi-calculator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Automation ROI Calculator",
+    "description": "Calculate the ROI of AI automation for your business.",
+    "url": "https://Rhsjp1.github.io/tools/ai-roi-calculator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>AI Automation ROI Calculator</h1>
+      <p>Compare the hours you'll save against the monthly cost — see exactly when AI automation pays for itself.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="employees">Number of Employees</label>
+      <input type="number" id="employees" placeholder="e.g. 5" min="1" />
+
+      <label for="hours-weekly">Hours Spent on Repetitive Tasks (per employee, per week)</label>
+      <input type="number" id="hours-weekly" placeholder="e.g. 10" min="1" />
+
+      <label for="hourly-rate">Average Hourly Rate ($)</label>
+      <input type="number" id="hourly-rate" placeholder="e.g. 25" min="1" />
+
+      <label for="ai-cost">Monthly AI Automation Cost ($)</label>
+      <input type="number" id="ai-cost" placeholder="e.g. 500" min="1" />
+
+      <button onclick="calculate()" style="width:100%;background:var(--brand);color:var(--bg-primary);font-weight:600;padding:0.75rem 1.5rem;border:none;border-radius:0.5rem;cursor:pointer;font-size:0.875rem;">Calculate ROI</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">$0</div>
+        <div class="label">Monthly Net Savings</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-detail"></div>
+        <a href="#contact" class="tool-cta">Talk to RHS AI about your setup &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      function calculate() {
+        var emp = parseFloat(document.getElementById('employees').value) || 0;
+        var hrsWeek = parseFloat(document.getElementById('hours-weekly').value) || 0;
+        var rate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+        var aiCost = parseFloat(document.getElementById('ai-cost').value) || 0;
+
+        var hoursSavedMonth = emp * hrsWeek * 4.33;
+        var laborSavings = hoursSavedMonth * rate;
+        var netSavings = laborSavings - aiCost;
+        var roi = aiCost > 0 ? ((netSavings / aiCost) * 100).toFixed(0) : 0;
+
+        document.getElementById('result-value').textContent = '$' + Math.round(netSavings).toLocaleString();
+        document.getElementById('result-detail').textContent = Math.round(hoursSavedMonth).toLocaleString() + ' hours saved/month | ' + roi + '% ROI';
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

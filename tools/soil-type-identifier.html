@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soil Type Identifier — USDA Soil Series Lookup by NC County | RHS AI Solutions</title>
+  <meta name="description" content="Look up your NC county's USDA soil series. Understand your soil type before planting, building, or buying property." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/soil-type-identifier" />
+  <meta property="og:title" content="Soil Type Identifier" />
+  <meta property="og:description" content="USDA soil series lookup by NC county." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/soil-type-identifier" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Soil Type Identifier",
+    "description": "Look up your NC county's USDA soil series.",
+    "url": "https://Rhsjp1.github.io/tools/soil-type-identifier",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Soil Type Identifier</h1>
+      <p>Select your NC county to see the dominant USDA soil series — and what it means for your property.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="county">Select Your County</label>
+      <select id="county" onchange="lookup()">
+        <option value="">-- Choose a county --</option>
+        <option value="montgomery">Montgomery County</option>
+        <option value="moore">Moore County</option>
+        <option value="randolph">Randolph County</option>
+        <option value="richmond">Richmond County</option>
+        <option value="stanly">Stanly County</option>
+        <option value="lee">Lee County</option>
+        <option value="chatham">Chatham County</option>
+        <option value="anson">Anson County</option>
+        <option value="union">Union County</option>
+        <option value="hoke">Hoke County</option>
+      </select>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value" style="font-size:1.25rem;">--</div>
+        <div class="label" id="result-label">Dominant Soil Series</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);" id="result-desc"></div>
+        <a href="#contact" class="tool-cta">Get a soil assessment from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      var soils = {
+        montgomery: { series: "Candor-Cecil complex", desc: "Sandy loam over clay — well-drained but prone to drought stress. Ideal for Bermuda with irrigation." },
+        moore: { series: "Candor-Foxworth series", desc: "Deep sandy soils — excellent drainage, low natural fertility. Requires organic amendment for turf." },
+        randolph: { series: "Cecil-Madison complex", desc: "Clay-rich ultisols — holds nutrients but compacts easily. Needs aeration and organic matter." },
+        richmond: { series: "Norfolk-Goldsboro series", desc: "Sandy clay loam — moderate drainage, good natural fertility. Works for most turf varieties." },
+        stanly: { series: "Cecil-Pacolet complex", desc: "Clay subsoil with sandy top — prone to hardpan. Deep tillage recommended for new installations." },
+        lee: { series: "Coxville-Johnston complex", desc: "Poorly drained clay — high water table. Requires drainage solutions before turf establishment." },
+        chatham: { series: "Cecil-Appling complex", desc: "Moderately well-drained — good for Centipede and Bluegrass. Watch for slope erosion." },
+        anson: { series: "Vance-Cecil series", desc: "Silty clay loam — moderate fertility, slow drainage. French drains often needed for low spots." },
+        union: { series: "Cecil-Enon complex", desc: "Acidic clay subsoil — requires lime amendment. Good for fescue, challenging for Bermuda." },
+        hoke: { series: "Lakeland-Candor series", desc: "Excessively drained sand — drought-prone. Best for drought-tolerant varieties with heavy mulching." }
+      };
+
+      function lookup() {
+        var county = document.getElementById('county').value;
+        if (!county) return;
+        var data = soils[county];
+        document.getElementById('result-value').textContent = data.series;
+        document.getElementById('result-desc').textContent = data.desc;
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

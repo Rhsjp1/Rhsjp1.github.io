@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Drain Cost Estimator — Materials, Length & Labor Ranges | RHS AI Solutions</title>
+  <meta name="description" content="Estimate French drain costs before you start. Get material and labor ranges based on your specific drainage project dimensions." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/french-drain-cost-estimator" />
+  <meta property="og:title" content="French Drain Cost Estimator" />
+  <meta property="og:description" content="Estimate French drain costs based on project dimensions." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/french-drain-cost-estimator" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "French Drain Cost Estimator",
+    "description": "Estimate French drain costs before you start.",
+    "url": "https://Rhsjp1.github.io/tools/french-drain-cost-estimator",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>French Drain Cost Estimator</h1>
+      <p>Get material and labor cost ranges for your specific drainage project — no surprises, no hidden fees.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="drain-length">Drain Length (feet)</label>
+      <input type="number" id="drain-length" placeholder="e.g. 50" min="1" />
+
+      <label for="pipe-size">Pipe Size</label>
+      <select id="pipe-size">
+        <option value="4">4-inch pipe (standard residential)</option>
+        <option value="6">6-inch pipe (heavy flow / commercial)</option>
+      </select>
+
+      <label for="excavation">Excavation Type</label>
+      <select id="excavation">
+        <option value="standard">Standard soil (sand/clay mix)</option>
+        <option value="rocky">Rocky / compacted (higher labor)</option>
+      </select>
+
+      <button onclick="calculate()" style="width:100%;background:var(--brand);color:var(--bg-primary);font-weight:600;padding:0.75rem 1.5rem;border:none;border-radius:0.5rem;cursor:pointer;font-size:0.875rem;">Estimate Cost</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value">$0</div>
+        <div class="label">Estimated Total Cost (materials + labor)</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);">Range: <span id="result-range">$0 - $0</span></div>
+        <a href="#contact" class="tool-cta">Get an exact quote from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      function calculate() {
+        var length = parseFloat(document.getElementById('drain-length').value) || 0;
+        var pipe = document.getElementById('pipe-size').value;
+        var excavation = document.getElementById('excavation').value;
+
+        // Base costs per linear foot
+        var pipeCost = pipe === '6' ? 12 : 8; // $/ft for pipe + fittings
+        var gravelCost = 6; // $/ft for #57 stone
+        var fabricCost = 2; // $/ft for landscape fabric
+        var baseLabor = excavation === 'rocky' ? 28 : 18; // $/ft labor
+
+        var totalPerFt = pipeCost + gravelCost + fabricCost + baseLabor;
+        var total = length * totalPerFt;
+        var low = Math.round(total * 0.85);
+        var high = Math.round(total * 1.15);
+
+        document.getElementById('result-value').textContent = '$' + total.toLocaleString();
+        document.getElementById('result-range').textContent = '$' + low.toLocaleString() + ' - $' + high.toLocaleString();
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

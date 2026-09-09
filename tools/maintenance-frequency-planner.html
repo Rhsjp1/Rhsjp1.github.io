@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Maintenance Frequency Planner — Custom Schedule Builder | RHS AI Solutions</title>
+  <meta name="description" content="Build a custom property maintenance schedule based on your turf type, property size, and service priorities." />
+  <link rel="canonical" href="https://Rhsjp1.github.io/tools/maintenance-frequency-planner" />
+  <meta property="og:title" content="Property Maintenance Frequency Planner" />
+  <meta property="og:description" content="Build a custom property maintenance schedule." />
+  <meta property="og:url" content="https://Rhsjp1.github.io/tools/maintenance-frequency-planner" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Property Maintenance Frequency Planner",
+    "description": "Build a custom property maintenance schedule.",
+    "url": "https://Rhsjp1.github.io/tools/maintenance-frequency-planner",
+    "applicationCategory": "UtilityApplication"
+  }
+  </script>
+  <link rel="stylesheet" href="/subpage.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+    </div>
+  </nav>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero-inner">
+      <div class="badge">Web Tool</div>
+      <h1>Property Maintenance Frequency Planner</h1>
+      <p>Build a custom mowing, fertilization, and inspection schedule — tailored to your turf type and property size.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="tool-container">
+      <label for="turf-type">Turf Type</label>
+      <select id="turf-type">
+        <option value="bermuda">Bermuda</option>
+        <option value="centipede">Centipede</option>
+        <option value="bluegrass">Bluegrass / Fescue</option>
+        <option value="mixed">Mixed / Unknown</option>
+      </select>
+
+      <label for="property-size">Property Size (acres)</label>
+      <input type="number" id="property-size" placeholder="e.g. 1.5" min="0.1" step="0.1" />
+
+      <label for="services">Services Needed</label>
+      <select id="services" multiple size="4" style="margin-bottom:1rem;">
+        <option value="mowing" selected>Mowing</option>
+        <option value="fertilization" selected>Fertilization</option>
+        <option value="aeration">Aeration</option>
+        <option value="drainage">Drainage Maintenance</option>
+      </select>
+
+      <button onclick="calculate()" style="width:100%;background:var(--brand);color:var(--bg-primary);font-weight:600;padding:0.75rem 1.5rem;border:none;border-radius:0.5rem;cursor:pointer;font-size:0.875rem;">Generate Schedule</button>
+
+      <div class="tool-result" id="result" style="display:none;">
+        <div class="value" id="result-value" style="font-size:1.25rem;">--</div>
+        <div class="label">Recommended Service Frequency</div>
+        <div style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-secondary);text-align:left;" id="result-detail"></div>
+        <a href="#contact" class="tool-cta">Get a custom plan from RHS &rarr;</a>
+      </div>
+    </div>
+
+    <script>
+      function calculate() {
+        var turf = document.getElementById('turf-type').value;
+        var acres = parseFloat(document.getElementById('property-size').value) || 1;
+        var services = Array.from(document.getElementById('services').selectedOptions).map(o => o.value);
+
+        var schedule = [];
+
+        if (services.includes('mowing')) {
+          var freq = turf === 'bermuda' ? 'Every 5-7 days' : turf === 'centipede' ? 'Every 7-10 days' : 'Every 7 days';
+          schedule.push('<strong>Mowing:</strong> ' + freq + ' during growing season');
+        }
+        if (services.includes('fertilization')) {
+          var apps = turf === 'bermuda' ? '4-6 applications/year' : turf === 'centipede' ? '2-3 applications/year' : '3-4 applications/year';
+          schedule.push('<strong>Fertilization:</strong> ' + apps);
+        }
+        if (services.includes('aeration')) {
+          schedule.push('<strong>Aeration:</strong> 1-2x/year (spring/fall)');
+        }
+        if (services.includes('drainage')) {
+          schedule.push('<strong>Drainage:</strong> Inspect quarterly, clean as needed');
+        }
+
+        document.getElementById('result-value').textContent = (services.length * 4) + '+ visits/year';
+        document.getElementById('result-detail').innerHTML = schedule.join('<br>');
+        document.getElementById('result').style.display = 'block';
+      }
+    </script>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon">R</span>
+        Right Hand Services <span>by JP</span>
+      </div>
+      <div class="footer-links">
+        <a href="/#services">Services</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Right Hand Services by JP. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
