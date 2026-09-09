@@ -1,0 +1,148 @@
+/* RHS AI Solutions — Modernized Color System */
+/* Primary: #111827 (gray-950) | Accent: #D97706 / #F59E0B (brand amber) */
+
+:root {
+  --brand: #D97706;
+  --brand-light: #F59E0B;
+  --brand-dark: #B45309;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --border: #374151;
+}
+
+/* Tailwind CDN Fallback — only activates if Tailwind did NOT load */
+html:not(.tw) .max-w-7xl { max-width: 80rem; margin-inline: auto; }
+html:not(.tw) .mx-auto { margin-inline: auto; }
+html:not(.tw) .px-5 { padding-inline: 1.25rem; }
+html:not(.tw) .py-24 { padding-block: 6rem; }
+html:not(.tw) .py-12 { padding-block: 3rem; }
+html:not(.tw) .grid { display: grid; }
+html:not(.tw) .hidden { display: none; }
+html:not(.tw) .flex { display: flex; }
+html:not(.tw) .items-center { align-items: center; }
+html:not(.tw) .justify-between { justify-content: space-between; }
+html:not(.tw) .justify-center { justify-content: center; }
+html:not(.tw) .text-center { text-align: center; }
+html:not(.tw) .text-sm { font-size: 0.875rem; }
+html:not(.tw) .text-lg { font-size: 1.125rem; }
+html:not(.tw) .text-xl { font-size: 1.25rem; }
+html:not(.tw) .text-2xl { font-size: 1.5rem; }
+html:not(.tw) .text-3xl { font-size: 1.875rem; }
+html:not(.tw) .text-4xl { font-size: 2.25rem; }
+html:not(.tw) .font-bold { font-weight: 700; }
+html:not(.tw) .font-semibold { font-weight: 600; }
+html:not(.tw) .font-medium { font-weight: 500; }
+html:not(.tw) .gap-3 { gap: 0.75rem; }
+html:not(.tw) .gap-4 { gap: 1rem; }
+html:not(.tw) .gap-6 { gap: 1.5rem; }
+html:not(.tw) .gap-8 { gap: 2rem; }
+html:not(.tw) .gap-12 { gap: 3rem; }
+html:not(.tw) .mb-1 { margin-bottom: 0.25rem; }
+html:not(.tw) .mb-2 { margin-bottom: 0.5rem; }
+html:not(.tw) .mb-4 { margin-bottom: 1rem; }
+html:not(.tw) .mb-6 { margin-bottom: 1.5rem; }
+html:not(.tw) .mt-1 { margin-top: 0.25rem; }
+html:not(.tw) .mt-4 { margin-top: 1rem; }
+html:not(.tw) .mt-6 { margin-top: 1.5rem; }
+html:not(.tw) .mt-8 { margin-top: 2rem; }
+html:not(.tw) .mt-12 { margin-top: 3rem; }
+html:not(.tw) .rounded-lg { border-radius: 0.5rem; }
+html:not(.tw) .rounded-xl { border-radius: 0.75rem; }
+html:not(.tw) .rounded-2xl { border-radius: 1rem; }
+html:not(.tw) .rounded-full { border-radius: 9999px; }
+html:not(.tw) .border { border-width: 1px; border-style: solid; }
+html:not(.tw) .p-4 { padding: 1rem; }
+html:not(.tw) .p-6 { padding: 1.5rem; }
+html:not(.tw) .p-8 { padding: 2rem; }
+html:not(.tw) .w-8 { width: 2rem; }
+html:not(.tw) .h-8 { height: 2rem; }
+html:not(.tw) .w-10 { width: 2.5rem; }
+html:not(.tw) .h-10 { height: 2.5rem; }
+html:not(.tw) .w-12 { width: 3rem; }
+html:not(.tw) .h-12 { height: 3rem; }
+
+@media (min-width: 768px) {
+  html:not(.tw) .md\:flex { display: flex; }
+  html:not(.tw) .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html:not(.tw) .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  html:not(.tw) .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html:not(.tw) .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  html:not(.tw) .lg\:block { display: block; }
+}
+
+/* Custom Styles */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+a, button {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--brand);
+  color: var(--bg-primary);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand);
+}
+
+/* Animation for pulse indicator */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

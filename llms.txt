@@ -1,0 +1,18 @@
+# Right Hand Services by JP (RHS / RHS AI)
+
+> Professional property maintenance, regenerative landscaping, turf management, and AI-driven business automation solutions. Founded and operated by James Anthony Person, Jr.
+
+## Contact & Location
+- **Address:** 514 Brutonville Rd, Candor, NC 27229
+- **Phone:** 317-395-3309
+- **Primary Email:** righthandservicesbyjp@gmail.com
+- **Secondary Email:** rhsjp01@gmail.com
+
+## Core Services
+- **Regenerative Landscaping & Turf Care:** Specializing in Bermuda, Centipede, and Bluegrass turf varieties, soil conditioning, and professional drainage systems (French drains).
+- **Property Intelligence & Due Diligence:** Digital lawn care planners, property evaluation templates, chemical mixing guides, and real estate property reports.
+- **RHS AI Solutions:** Custom Python scripts, Google Apps Script automation, Supabase/Vercel integrations, and AI-driven workflow solutions for local business optimization.
+
+## Entity Authority
+- Region: Candor, NC & Surrounding Montgomery County
+- Trust Profile: Verified local service provider, asset developer, and software technician.
