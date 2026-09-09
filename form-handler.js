@@ -25,7 +25,7 @@
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
   
   // Option 2: Google Apps Script (uncomment after deploying GAS)
-  // const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
   
   // Option 3: mailto fallback (works today, no backend needed)
   const ENABLE_MAILTO_FALLBACK = true;
@@ -90,19 +90,30 @@
   
   async function submitToEndpoint(payload, form, submitBtn, originalText) {
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      // Try Google Apps Script first
+      const response = await fetch(GAS_ENDPOINT, {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       
-      if (response.ok || response.status === 200) {
+      const result = await response.json();
+      
+      if (response.ok && result.status === 'ok') {
         showFormMessage(form, getSuccessMessage(payload.type), 'success');
         resetForm(form, submitBtn, originalText);
         
         // Trigger PDF download for lead magnets
-        if (payload.type === 'lead-magnet') {
-          triggerAssetDownload(payload.page);
+        if (payload.type === 'lead-magnet' && result.pdfUrl) {
+          setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = result.pdfUrl;
+            link.download = '';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }, 1500);
         }
       } else {
         throw new Error('Submission failed');
@@ -124,35 +135,7 @@
     }
   }
   
-  function triggerAssetDownload(page) {
-    // Map pages to their PDF download URLs
-    const assetMap = {
-      '/free/turf-grass-selection-guide.html': '/assets/pdfs/turf-grass-selection-guide.pdf',
-      '/free/french-drain-cheat-sheet.html': '/assets/pdfs/french-drain-cheat-sheet.pdf',
-      '/free/soil-health-starter-guide.html': '/assets/pdfs/soil-health-starter-guide.pdf',
-      '/free/seasonal-maintenance-calendar.html': '/assets/pdfs/seasonal-maintenance-calendar.pdf',
-      '/free/ai-automation-readiness-checklist.html': '/assets/pdfs/ai-automation-readiness-checklist.pdf',
-      '/promo/turf-management-brochure.html': '/assets/pdfs/turf-management-brochure.pdf',
-      '/promo/regenerative-landscaping-portfolio.html': '/assets/pdfs/regenerative-landscaping-portfolio.pdf',
-      '/promo/ai-solutions-capabilities.html': '/assets/pdfs/ai-solutions-capabilities.pdf',
-      '/promo/sample-due-diligence-report.html': '/assets/pdfs/sample-due-diligence-report.pdf',
-      '/promo/drainage-solutions-brochure.html': '/assets/pdfs/drainage-solutions-brochure.pdf'
-    };
-    
-    const pdfUrl = assetMap[page];
-    if (pdfUrl) {
-      // Small delay so user sees success message first
-      setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = pdfUrl;
-        link.download = '';
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }, 1500);
-    }
-  }
+  // PDF URLs are returned by the Google Apps Script response
   
   function triggerMailto(email, type, page) {
     const subject = encodeURIComponent(`RHS ${type === 'lead-magnet' ? 'Lead Magnet Download' : 'Website Inquiry'} — ${page}`);
