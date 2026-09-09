@@ -35,7 +35,7 @@
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
       </div>
-      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+      <a href="tel:+131****3309" class="nav-cta">317-395-3309</a>
     </div>
   </nav>
 
@@ -71,8 +71,8 @@
     <div class="lead-capture">
       <h3>Get the Full PDF</h3>
       <p>Enter your email to receive the printable seasonal calendar — built from RHS field experience across Montgomery County.</p>
-      <form class="lead-form" onsubmit="event.preventDefault(); alert('Thanks! Check your email for the PDF.');">
-        <input type="email" placeholder="your@email.com" required />
+      <form class="lead-form" data-form-type="lead-magnet">
+        <input type="email" name="email" placeholder="your@email.com" required />
         <button type="submit">Send Me the Calendar</button>
       </form>
     </div>
@@ -93,5 +93,6 @@
     </div>
   </footer>
 
+  <script src="/form-handler.js"></script>
 </body>
 </html>

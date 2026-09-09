@@ -35,7 +35,7 @@
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
       </div>
-      <a href="tel:+13173953309" class="nav-cta">317-395-3309</a>
+      <a href="tel:+131****3309" class="nav-cta">317-395-3309</a>
     </div>
   </nav>
 
@@ -71,8 +71,8 @@
     <div class="lead-capture">
       <h3>Order a Report for Your Property</h3>
       <p>RHS delivers detailed due diligence reports for properties across the NC Piedmont and Sandhills.</p>
-      <form class="lead-form" onsubmit="event.preventDefault(); alert('Thanks! RHS will reach out to confirm your order.');">
-        <input type="email" placeholder="your@email.com" required />
+      <form class="lead-form" data-form-type="cta">
+        <input type="email" name="email" placeholder="your@email.com" required />
         <button type="submit">Order a Report</button>
       </form>
     </div>
@@ -93,5 +93,6 @@
     </div>
   </footer>
 
+  <script src="/form-handler.js"></script>
 </body>
 </html>
