@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biological Pest Control Release Rate Estimator | RHS Carousel</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #111827;
+      --accent: #D97706;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --slide-size: 1080px;
+    }
+    body {
+      font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .slide {
+      width: 100%;
+      max-width: var(--slide-size);
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .slide-number {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: var(--text-muted);
+      background: rgba(0,0,0,0.4);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+    .hook {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .body {
+      font-size: clamp(0.9rem, 2vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 80%;
+      margin-bottom: 2rem;
+    }
+    .visual-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 200px;
+    }
+    .visual-icon {
+      font-size: clamp(3rem, 8vw, 5rem);
+      opacity: 0.3;
+    }
+    .brand-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .footer {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .brand-bar {
+      width: 100%;
+      max-width: var(--slide-size);
+      text-align: center;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    .brand-bar h1 {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .brand-bar p {
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    @media print {
+      body { padding: 0; background: white; }
+      .slide { 
+        box-shadow: none; 
+        border: 1px solid #ddd; 
+        border-radius: 0;
+        page-break-after: always;
+        background: white;
+      }
+      .slide-number { color: #666; background: #f3f4f6; }
+      .hook { color: #111; }
+      .body { color: #555; }
+      .brand-accent { background: var(--accent); }
+      .footer { color: #888; }
+      .brand-bar h1 { color: var(--accent); }
+      .brand-bar p { color: #666; }
+    }
+    @media (max-width: 640px) {
+      .slide { padding: 2rem 1.5rem; }
+      .body { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-bar">
+    <h1>Right Hand Services by JP</h1>
+    <p>Biological Pest Control Release Rate Estimator — Carousel Deck</p>
+  </div>
+  
+    <section class="slide" id="slide-1">
+      <div class="slide-number">1 / 7</div>
+      <div class="hook">You released 1,500 ladybugs. By morning, 1,400 were gone.</div>
+      <div class="body">Most beneficial insects disperse within 48 hours of release — not because they failed, but because release timing and environmental conditions were never calculated.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📊</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-2">
+      <div class="slide-number">2 / 7</div>
+      <div class="hook">Release at the wrong hour and you just fed birds, not plants.</div>
+      <div class="body">Beneficials released at midday experience 60% higher predation rates. Dusk releases near existing pest colonies increase establishment rates by 3x.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📈</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-3">
+      <div class="slide-number">3 / 7</div>
+      <div class="hook">Nematodes don't work from the bag — they work from the math.</div>
+      <div class="body">Steinernema carpocapsae requires soil temps between 55-85°F, moisture above 6%, and UV-free application. Get any one wrong and mortality hits 90% before they reach grubs.</div>
+      <div class="visual-area">
+        <div class="visual-icon">🎯</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-4">
+      <div class="slide-number">4 / 7</div>
+      <div class="hook">The estimator calculates your release window from 4 variables.</div>
+      <div class="body">Pest pressure level, beneficial species, microclimate data, and soil conditions combine to produce a specific release rate and timing — not a calendar guess.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📊</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-5">
+      <div class="slide-number">5 / 7</div>
+      <div class="hook">Retention rate matters more than purchase price.</div>
+      <div class="body">A $12 packet of nematodes applied at the correct rate and timing outperforms a $40 packet applied on a Saturday morning. Biology rewards precision, not spending.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📈</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-6">
+      <div class="slide-number">6 / 7</div>
+      <div class="hook">Your property has a pest pressure signature. Most pros ignore it.</div>
+      <div class="body">Chinch bugs, aphids, and white grub populations follow predictable phenology curves. The estimator maps your release to the pest's most vulnerable lifecycle stage.</div>
+      <div class="visual-area">
+        <div class="visual-icon">🎯</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-7">
+      <div class="slide-number">7 / 7</div>
+      <div class="hook">Stop buying beneficials. Start deploying them.</div>
+      <div class="body">Biological pest control fails from estimation error, not product quality. The release rate estimator turns a guess into a protocol — and protocols produce results.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📊</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+  <div class="slide" id="slide-end">
+    <div class="slide-number">END</div>
+    <div class="hook">Stop buying beneficials. Start deploying them.</div>
+    <div class="body">Right Hand Services by JP | rhsjp1.github.io</div>
+    <div class="visual-area">
+      <div class="visual-icon">✋</div>
+    </div>
+    <div class="brand-accent"></div>
+    <div class="footer">Right Hand Services by JP | rhsjp1.github.io</div>
+  </div>
+</body>
+</html>

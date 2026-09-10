@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Native Pollinator & Flora Selection Matrix</title>
+<style>
+*,*::before,*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111827;--accent:#D97706;--text:#f3f4f6;--muted:#9ca3af;--card:#1f2937}
+body{font-family:-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.slide{width:1080px;height:1080px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;position:relative;background:var(--bg);border-bottom:3px solid var(--accent)}
+.slide-content{max-width:900px;width:100%;text-align:center}
+.num{position:absolute;top:40px;right:60px;font-size:14px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.lbl{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hook{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;margin-bottom:32px}
+.bd{font-size:clamp(18px,2.2vw,28px);color:var(--muted);max-width:750px;margin:0 auto 48px;line-height:1.6}
+.viz{width:100%;max-width:700px;margin:0 auto}
+.ft{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:1px}
+.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.cal-header{display:contents}
+.cal-month{padding:8px 0;font-size:12px;color:var(--muted);text-align:center}
+.cal-cell{height:50px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600}
+.bloom{background:#059669}
+.gap{background:#dc2626}
+.trans{background:#D97706}
+.cal-legend{display:flex;gap:24px;justify-content:center;margin-top:20px;font-size:13px}
+.legend-dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:6px}
+.timeline{position:relative;height:60px;background:var(--card);border-radius:12px;overflow:hidden}
+.tl-bar{position:absolute;height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
+.tl-bloom{background:#059669}
+.tl-gap{background:#dc2626;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.map-card{background:var(--card);border-radius:12px;padding:20px;text-align:center}
+.map-icon{font-size:36px;margin-bottom:8px}
+.map-name{font-size:13px;font-weight:600;color:var(--accent)}
+.map-desc{font-size:11px;color:var(--muted);margin-top:4px}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pcard{background:var(--card);border-radius:12px;padding:20px;text-align:center}
+.pcard-icon{font-size:40px;margin-bottom:8px}
+.pcard-name{font-size:13px;font-weight:600}
+.pcard-time{font-size:11px;color:var(--accent);margin-top:4px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.compare-card{background:var(--card);border-radius:16px;padding:32px;text-align:center}
+.compare-icon{font-size:64px;margin-bottom:12px}
+.compare-num{font-size:48px;font-weight:800}
+.pphone{width:260px;height:480px;background:var(--card);border-radius:32px;border:4px solid #374151;margin:0 auto;padding:20px}
+.pnotch{width:80px;height:6px;background:#374151;border-radius:3px;margin:0 auto 12px}
+.pscreen{flex:1;background:#0f172a;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pin{background:#374151;border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted)}
+.pout{background:#064e3b;border-radius:8px;padding:10px 12px;font-size:12px;color:#34d399}
+@media print{.slide{page-break-after:always;border-bottom:none}}
+@media(max-width:1100px){.slide{width:100vw;height:100vw;max-width:1080px;max-height:1080px;padding:40px}}
+</style>
+</head>
+<body>
+<section class="slide"><div class="num">01 / 06</div><div class="slide-content"><div class="lbl">Pollinator Crisis</div><h2 class="hook">3 months your pollinators are starving in NC</h2><p class="bd">Most Piedmont landscapes have bloom gaps in late June and October. Specialist bees can't find food when they need it most.</p><div class="viz"><div class="cal"><div class="cal-month">Jan</div><div class="cal-month">Feb</div><div class="cal-month">Mar</div><div class="cal-month">Apr</div><div class="cal-month">May</div><div class="cal-month">Jun</div><div class="cal-month">Jul</div><div class="cal-month">Aug</div><div class="cal-month">Sep</div><div class="cal-month">Oct</div><div class="cal-month">Nov</div><div class="cal-month">Dec</div><div class="cal-cell bloom">●</div><div class="cal-cell trans">●</div><div class="cal-cell bloom">●</div><div class="cal-cell bloom">●</div><div class="cal-cell bloom">●</div><div class="cal-cell gap">!</div><div class="cal-cell trans">●</div><div class="cal-cell trans">●</div><div class="cal-cell trans">●</div><div class="cal-cell gap">!</div><div class="cal-cell trans">●</div><div class="cal-cell bloom">●</div></div><div class="cal-legend"><span><span class="legend-dot" style="background:#059669"></span>Bloom Active</span><span><span class="legend-dot" style="background:#D97706"></span>Transition</span><span><span class="legend-dot" style="background:#dc2626"></span>Starvation Gap</span></div></div></div></section>
+<section class="slide"><div class="num">02 / 06</div><div class="slide-content"><div class="lbl">Colony Collapse</div><h2 class="hook">The gap that kills colonies</h2><p class="bd">Native bees need continuous bloom from March through November. Two 3-week gaps can collapse an entire local pollinator population cycle.</p><div class="viz"><div style="position:relative;padding:20px 0"><div style="font-size:14px;color:var(--muted);margin-bottom:12px">Bloom Coverage Timeline</div><div class="timeline"><div class="tl-bar tl-bloom" style="left:0;width:25%">Mar-May</div><div class="tl-bar tl-gap" style="left:25%;width:12%">Jun Gap</div><div class="tl-bar tl-bloom" style="left:37%;width:25%">Jul-Sep</div><div class="tl-bar tl-gap" style="left:62%;width:12%">Oct Gap</div><div class="tl-bar tl-bloom" style="left:74%;width:26%">Nov-Feb</div></div><div style="margin-top:30px;display:flex;gap:40px;justify-content:center;align-items:center"><div style="text-align:center"><div style="font-size:36px">🐝</div><div style="color:#f87171;font-size:14px;font-weight:600">Population -87%</div></div><div style="font-size:24px;color:var(--muted)">←</div><div style="text-align:center"><div style="font-size:36px">🪻</div><div style="color:#34d399;font-size:14px;font-weight:600">Continuous Bloom</div></div></div></div></div></div></section>
+<section class="slide"><div class="num">03 / 06</div><div class="slide-content"><div class="lbl">Local Genotype</div><h2 class="hook">Big-box 'natives' aren't local</h2><p class="bd">Cultivars from other regions don't support local pollinator life cycles. The matrix filters by county ecoregion to confirm true local genotype.</p><div class="viz"><div class="map-grid"><div class="map-card"><div class="map-icon">🏔️</div><div class="map-name">Mountain</div><div class="map-desc">Appalachian genotype</div></div><div class="map-card"><div class="map-icon">🏞️</div><div class="map-name">Piedmont</div><div class="map-desc">Local genotype zone</div></div><div class="map-card"><div class="map-icon">🏖️</div><div class="map-name">Coastal</div><div class="map-desc">Atlantic genotype</div></div></div><div style="margin-top:30px;padding:20px;background:var(--card);border-radius:12px"><div style="color:#f87171;font-size:14px;font-weight:600;margin-bottom:8px">⚠️ Common Problem</div><div style="font-size:13px;color:var(--muted)">A cultivar bred for California doesn't sync with NC bee emergence cycles. Even "native" species from wrong regions miss the window.</div></div></div></div></section>
+<section class="slide"><div class="num">04 / 06</div><div class="slide-content"><div class="lbl">Gap Closure</div><h2 class="hook">2-3 species close the gap</h2><p class="bd">The matrix identifies exactly which late-summer and fall-blooming species fill the starvation windows for your specific county.</p><div class="viz"><div class="pcards"><div class="pcard"><div class="pcard-icon">🌻</div><div class="pcard-name">Joe-Pye Weed</div><div class="pcard-time">Jul – Sep bloom</div></div><div class="pcard"><div class="pcard-icon">🪻</div><div class="pcard-name">Blue Mistflower</div><div class="pcard-time">Aug – Oct bloom</div></div><div class="pcard"><div class="pcard-icon">🌼</div><div class="pcard-name">Goldenrod</div><div class="pcard-time">Sep – Nov bloom</div></div></div><div style="margin-top:24px;color:#34d399;font-size:14px;font-weight:600">✓ These 3 close both starvation gaps in Piedmont NC</div></div></div></section>
+<section class="slide"><div class="num">05 / 06</div><div class="slide-content"><div class="lbl">Species Impact</div><h2 class="hook">From 12 species to 200+</h2><p class="bd">Conventional turf-and-shrub landscapes support fewer than 12 native insect species. A 15-20 species matrix supports over 200.</p><div class="viz"><div class="compare"><div class="compare-card"><div class="compare-icon">🏡</div><div style="font-size:14px;color:var(--muted);margin-bottom:8px">Conventional Lawn</div><div class="compare-num" style="color:#f87171">12</div><div style="font-size:12px;color:var(--muted)">insect species</div></div><div class="compare-card"><div class="compare-icon">🌿</div><div style="font-size:14px;color:var(--muted);margin-bottom:8px">Native Matrix</div><div class="compare-num" style="color:#34d399">200+</div><div style="font-size:12px;color:var(--muted)">insect species</div></div></div></div></div></section>
+<section class="slide"><div class="num">06 / 06</div><div class="slide-content"><div class="lbl">Build Your Matrix</div><h2 class="hook">Build your pollinator matrix</h2><p class="bd">Input your county and property conditions. The matrix outputs a curated species list that closes bloom gaps and maximizes pollinator support.</p><div class="viz"><div class="pphone"><div class="pnotch"></div><div class="pscreen"><div class="pin">County: Durham, NC</div><div class="pin">Conditions: Partial shade, clay</div><div class="pin">Area: 0.5 acre</div><div class="pout">✓ Joe-Pye Weed<br>✓ Blue Mistflower<br>✓ Goldenrod<br>✓ Asters (3 spp)<br>→ Closes Jun & Oct gaps</div></div></div></div></div><div class="ft">Right Hand Services by JP | rhsjp1.github.io</div></section>
+</body>
+</html>

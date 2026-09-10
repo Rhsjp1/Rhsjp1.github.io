@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual vs. Powered Ergonomic Labor Index</title>
+<style>
+*,*::before,*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111827;--accent:#D97706;--text:#f3f4f6;--muted:#9ca3af;--card:#1f2937}
+body{font-family:-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.slide{width:1080px;height:1080px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;position:relative;background:var(--bg);border-bottom:3px solid var(--accent)}
+.slide-content{max-width:900px;width:100%;text-align:center}
+.num{position:absolute;top:40px;right:60px;font-size:14px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.lbl{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hook{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;margin-bottom:32px}
+.bd{font-size:clamp(18px,2.2vw,28px);color:var(--muted);max-width:750px;margin:0 auto 48px;line-height:1.6}
+.viz{width:100%;max-width:700px;margin:0 auto}
+.ft{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:1px}
+.hand-anatomy{display:flex;justify-content:center;gap:40px;margin:20px 0}
+.hand{width:120px;height:160px;background:var(--card);border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center}
+.hand-nerve{position:absolute;width:8px;height:8px;border-radius:50%;background:#dc2626;box-shadow:0 0 12px #dc2626}
+.hand-label{font-size:12px;color:var(--muted);margin-top:8px;text-align:center}
+.countdown{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.cd-num{width:60px;height:60px;border-radius:12px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.cd-num.danger{background:#dc2626;color:#fff}
+.cd-num.warn{background:#D97706;color:#fff}
+.cd-num.safe{background:#059669;color:#fff}
+.cd-label{font-size:10px;color:var(--muted);text-align:center;margin-top:4px}
+.risk-compare{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.rc-card{background:var(--card);border-radius:16px;padding:28px;text-align:center}
+.rc-icon{font-size:48px;margin-bottom:10px}
+.rc-pct{font-size:42px;font-weight:800}
+.rc-label{font-size:13px;color:var(--muted)}
+.price-compare{display:flex;gap:30px;justify-content:center;align-items:center}
+.price-card{background:var(--card);border-radius:16px;padding:28px;text-align:center;flex:1}
+.price-amt{font-size:36px;font-weight:800}
+.price-label{font-size:13px;color:var(--muted);margin-top:4px}
+.price-hidden{font-size:11px;color:#f87171;margin-top:8px}
+.pphone{width:260px;height:480px;background:var(--card);border-radius:32px;border:4px solid #374151;margin:0 auto;padding:20px}
+.pnotch{width:80px;height:6px;background:#374151;border-radius:3px;margin:0 auto 12px}
+.pscreen{flex:1;background:#0f172a;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pin{background:#374151;border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted)}
+.pout{background:#064e3b;border-radius:8px;padding:10px 12px;font-size:12px;color:#34d399}
+.cost-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.cost-card{background:var(--card);border-radius:16px;padding:28px;text-align:center}
+.cost-num{font-size:36px;font-weight:800}
+.cost-label{font-size:13px;color:var(--muted);margin-top:4px}
+@media print{.slide{page-break-after:always;border-bottom:none}}
+@media(max-width:1100px){.slide{width:100vw;height:100vw;max-width:1080px;max-height:1080px;padding:40px}}
+</style>
+</head>
+<body>
+<section class="slide"><div class="num">01 / 06</div><div class="slide-content"><div class="lbl">Vibration Damage</div><h2 class="hook">The vibration damage your mower does to your body</h2><p class="bd">Operating a walk-behind mower for 4 hours exposes hands and arms to vibration levels causing permanent nerve damage after 200 cumulative hours.</p><div class="viz"><div class="hand-anatomy"><div><div class="hand"><div class="hand-nerve" style="top:30%;left:30%"></div><div class="hand-nerve" style="top:45%;left:50%"></div><div class="hand-nerve" style="top:60%;left:35%"></div><div style="font-size:40px">🤚</div></div><div class="hand-label">Nerve Damage Zones</div></div><div><div class="hand" style="background:#7f1d1d"><div class="hand-nerve" style="top:20%;left:25%;background:#fca5a5;box-shadow:0 0 12px #fca5a5"></div><div class="hand-nerve" style="top:35%;left:55%;background:#fca5a5;box-shadow:0 0 12px #fca5a5"></div><div class="hand-nerve" style="top:50%;left:30%;background:#fca5a5;box-shadow:0 0 12px #fca5a5"></div><div class="hand-nerve" style="top:65%;left:60%;background:#fca5a5;box-shadow:0 0 12px #fca5a5"></div><div style="font-size:40px">✋</div></div><div class="hand-label" style="color:#fca5a5">After 200 Hours</div></div></div></div></div></section>
+<section class="slide"><div class="num">02 / 06</div><div class="slide-content"><div class="lbl">Threshold</div><h2 class="hook">200 hours to permanent injury</h2><p class="bd">That's one full mowing season for most properties. After that threshold, numbness and grip loss become irreversible.</p><div class="viz"><div style="font-size:14px;color:var(--muted);margin-bottom:16px">Cumulative Vibration Exposure</div><div class="countdown"><div><div class="cd-num safe">50</div><div class="cd-label">Hours</div></div><div><div class="cd-num safe">100</div><div class="cd-label">Hours</div></div><div><div class="cd-num warn">150</div><div class="cd-label">Hours</div></div><div><div class="cd-num danger">200</div><div class="cd-label">DANGER</div></div></div><div style="margin-top:30px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#f87171;font-size:14px;font-weight:600">⚠️ One season = 200+ hours for most crews</div><div style="font-size:13px;color:var(--muted);margin-top:4px">After threshold: numbness, grip loss, irreversible nerve damage</div></div></div></div></section>
+<section class="slide"><div class="num">03 / 06</div><div class="slide-content"><div class="lbl">Risk Comparison</div><h2 class="hook">Manual tools: 73% less injury risk</h2><p class="bd">For properties under 2 acres, manual broadforks and reel mowers produce equivalent results with dramatically lower repetitive strain.</p><div class="viz"><div class="risk-compare"><div class="rc-card"><div class="rc-icon">🔧</div><div style="font-size:14px;font-weight:600;margin-bottom:8px">Powered Tools</div><div class="rc-pct" style="color:#f87171">100%</div><div class="rc-label">Baseline injury risk</div></div><div class="rc-card"><div class="rc-icon">🪓</div><div style="font-size:14px;font-weight:600;margin-bottom:8px">Manual Tools</div><div class="rc-pct" style="color:#34d399">27%</div><div class="rc-label">73% less risk</div></div></div><div style="margin-top:20px;font-size:13px;color:var(--muted)">For properties under 2 acres • Equivalent results</div></div></div></section>
+<section class="slide"><div class="num">04 / 06</div><div class="slide-content"><div class="lbl">Cost Reality</div><h2 class="hook">The $300 tool vs. the $2,400 tool</h2><p class="bd">A manual wheel hoe replaces a power tiller for beds under 1,000 sq ft — zero fuel, zero maintenance, zero vibration exposure.</p><div class="viz"><div class="price-compare"><div class="price-card"><div style="font-size:13px;color:var(--muted)">Manual Wheel Hoe</div><div class="price-amt" style="color:#34d399">$300</div><div class="price-label">One-time purchase</div><div style="font-size:11px;color:#34d399;margin-top:8px">✓ No fuel ✓ No maintenance</div></div><div style="font-size:24px;color:var(--muted)">VS</div><div class="price-card"><div style="font-size:13px;color:var(--muted)">Power Tiller</div><div class="price-amt" style="color:#f87171">$2,400</div><div class="price-label">Plus hidden costs</div><div class="price-hidden">⛽ Fuel: $200/yr<br>🔧 Maintenance: $300/yr<br>🏥 Injury risk: HIGH</div></div></div></div></div></section>
+<section class="slide"><div class="num">05 / 06</div><div class="slide-content"><div class="lbl">The Index</div><h2 class="hook">Your body is equipment too</h2><p class="bd">The Ergonomic Labor Index calculates which tools minimize cumulative strain for your crew size, property acreage, and task frequency.</p><div class="viz"><div class="pphone"><div class="pnotch"></div><div class="pscreen"><div class="pin">Crew: 2 people</div><div class="pin">Property: 1.5 acres</div><div class="pin">Tasks: Mow, edge, till beds</div><div class="pout">✓ Reel mower (front)<br>✓ Manual edger<br>✓ Broadfork (beds)<br>✓ Wheel hoe<br>→ Risk reduced 73%</div></div></div></div></div></section>
+<section class="slide"><div class="num">06 / 06</div><div class="slide-content"><div class="lbl">Protect Your Crew</div><h2 class="hook">Protect your most valuable asset</h2><p class="bd">Replacing a crew member costs 2-3x their annual salary. Preventing injury costs a fraction of that.</p><div class="viz"><div class="cost-breakdown"><div class="cost-card"><div style="font-size:13px;color:var(--muted)">Injury Replacement Cost</div><div class="cost-num" style="color:#f87171">$45K+</div><div class="cost-label">2-3x annual salary<br>Training + lost productivity</div></div><div class="cost-card"><div style="font-size:13px;color:var(--muted)">Ergonomic Tool Investment</div><div class="cost-num" style="color:#34d399">$800</div><div class="cost-label">One-time purchase<br>Zero injury risk</div></div></div><div style="margin-top:24px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#34d399;font-size:14px;font-weight:600">Prevention costs 2% of replacement</div></div></div></div><div class="ft">Right Hand Services by JP | rhsjp1.github.io</div></section>
+</body>
+</html>

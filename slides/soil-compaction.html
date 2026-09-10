@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soil Compaction & Aeration Timing Calculator</title>
+<style>
+*,*::before,*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111827;--accent:#D97706;--text:#f3f4f6;--muted:#9ca3af;--card:#1f2937}
+body{font-family:-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.slide{width:1080px;height:1080px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;position:relative;background:var(--bg);border-bottom:3px solid var(--accent)}
+.slide-content{max-width:900px;width:100%;text-align:center}
+.num{position:absolute;top:40px;right:60px;font-size:14px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.lbl{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hook{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;margin-bottom:32px}
+.bd{font-size:clamp(18px,2.2vw,28px);color:var(--muted);max-width:750px;margin:0 auto 48px;line-height:1.6}
+.viz{width:100%;max-width:700px;margin:0 auto}
+.ft{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:1px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.sh{height:320px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sh-h{background:linear-gradient(135deg,#064e3b,#065f46)}
+.sh-c{background:linear-gradient(135deg,#78350f,#92400e)}
+.sh .ico{font-size:64px;margin-bottom:12px}
+.sh .lb{font-size:14px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.bars{display:flex;flex-direction:column;gap:16px}
+.br{display:flex;align-items:center;gap:16px}
+.bl{width:80px;font-size:14px;color:var(--muted);text-align:right}
+.bt{flex:1;height:36px;background:var(--card);border-radius:8px;overflow:hidden}
+.bf{height:100%;border-radius:8px;display:flex;align-items:center;padding-left:12px;font-size:13px;font-weight:600;color:#fff}
+.b1{width:25%;background:#059669}
+.b2{width:50%;background:#D97706}
+.b3{width:75%;background:#dc2626}
+.tc{display:flex;gap:40px;align-items:center;justify-content:center}
+.therm{width:60px;height:280px;background:linear-gradient(to top,#dc2626 0%,#D97706 40%,#059669 70%,#3b82f6 100%);border-radius:30px;border:3px solid #374151;position:relative}
+.therm::after{content:'';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:40px;height:40px;background:#dc2626;border-radius:50%}
+.tl{position:absolute;right:-55px;font-size:11px;color:var(--muted)}
+.dz{display:flex;flex-direction:column;gap:12px;text-align:left}
+.dzr{display:flex;align-items:center;gap:12px}
+.dd{width:12px;height:12px;border-radius:50%}
+.mm{width:100%;height:48px;background:linear-gradient(to right,#dc2626 0%,#dc2626 30%,#D97706 30%,#D97706 40%,#059669 40%,#059669 60%,#D97706 60%,#D97706 70%,#dc2626 70%);border-radius:24px;position:relative;margin:40px 0}
+.mmarks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.pphone{width:260px;height:480px;background:var(--card);border-radius:32px;border:4px solid #374151;margin:0 auto;padding:20px}
+.pnotch{width:80px;height:6px;background:#374151;border-radius:3px;margin:0 auto 12px}
+.pscreen{flex:1;background:#0f172a;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pin{background:#374151;border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted)}
+.pout{background:#064e3b;border-radius:8px;padding:10px 12px;font-size:12px;color:#34d399}
+.rd{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.rdc{background:var(--card);border-radius:16px;padding:32px;text-align:center}
+.rdv{width:80px;height:200px;margin:0 auto 16px;border-radius:40px;overflow:hidden}
+.rdp{background:linear-gradient(to bottom,#064e3b,#065f46 60%,#92400e 60%,#78350f)}
+.rdi{background:linear-gradient(to bottom,#92400e,#78350f 40%,#dc2626 40%,#991b1b)}
+@media print{.slide{page-break-after:always;border-bottom:none}}
+@media(max-width:1100px){.slide{width:100vw;height:100vw;max-width:1080px;max-height:1080px;padding:40px}}
+</style>
+</head>
+<body>
+<section class="slide"><div class="num">01 / 06</div><div class="slide-content"><div class="lbl">Soil Compaction</div><h2 class="hook">The $400 aeration mistake 87% of properties make</h2><p class="bd">Double-aerating crushes already-loose soil structure, creating compaction instead of curing it.</p><div class="viz"><div class="split"><div class="sh sh-h"><div class="ico">🌱</div><div class="lb" style="color:#34d399">Healthy Roots</div></div><div class="sh sh-c"><div class="ico">🪨</div><div class="lb" style="color:#f59e0b">Compacted Core</div></div></div></div></div></section>
+<section class="slide"><div class="num">02 / 06</div><div class="slide-content"><div class="lbl">The Math</div><h2 class="hook">More passes = more damage</h2><p class="bd">Each additional pass increases density by 12% in moist clay. The calculator factors soil moisture and equipment weight to set optimal pass count.</p><div class="viz"><div class="bars"><div class="br"><span class="bl">1 Pass</span><div class="bt"><div class="bf b1">Optimal</div></div></div><div class="br"><span class="bl">2 Passes</span><div class="bt"><div class="bf b2">+12% density</div></div></div><div class="br"><span class="bl">3 Passes</span><div class="bt"><div class="bf b3">+24% compaction</div></div></div></div></div></div></section>
+<section class="slide"><div class="num">03 / 06</div><div class="slide-content"><div class="lbl">Timing</div><h2 class="hook">Timing isn't seasonal — it's thermal</h2><p class="bd">Soil temperature at 4-inch depth is the only signal that matters. In NC's Piedmont, the ideal window shifts 3-4 weeks year to year.</p><div class="viz"><div class="tc"><div class="therm"><span class="tl" style="top:10%">85°F</span><span class="tl" style="top:40%">65°F</span><span class="tl" style="top:70%">45°F</span></div><div class="dz"><div class="dzr"><div class="dd" style="background:#dc2626"></div><span>Surface</span></div><div class="dzr"><div class="dd" style="background:#D97706"></div><span>2" depth</span></div><div class="dzr"><div class="dd" style="background:#059669"></div><span>4" sweet spot</span></div><div class="dzr"><div class="dd" style="background:#3b82f6"></div><span>6" cool zone</span></div></div></div></div></div></section>
+<section class="slide"><div class="num">04 / 06</div><div class="slide-content"><div class="lbl">Moisture</div><h2 class="hook">The moisture sweet spot</h2><p class="bd">Aerating above 18% moisture creates clods. Below 10% creates dust. The calculator pinpoints the exact moisture band for your soil type.</p><div class="viz"><div class="mm"></div><div class="mmarks"><span>0% Dust</span><span style="color:#dc2626">10%</span><span style="color:#059669">14% Sweet Spot</span><span style="color:#dc2626">18%</span><span>25% Clods</span></div></div></div></section>
+<section class="slide"><div class="num">05 / 06</div><div class="slide-content"><div class="lbl">Calculator</div><h2 class="hook">Stop guessing. Start measuring.</h2><p class="bd">The calculator combines soil type, temp at depth, and equipment specs to output your exact aeration date window and pass count.</p><div class="viz"><div class="pphone"><div class="pnotch"></div><div class="pscreen"><div class="pin">Soil: Piedmont Clay Loam</div><div class="pin">Depth Temp: 62°F</div><div class="pin">Equipment: 200lb core aerator</div><div class="pout">✅ Window: Mar 15 – Apr 10<br>✅ Passes: 1 only<br>✅ Moisture: 12-16%</div></div></div></div></div></section>
+<section class="slide"><div class="num">06 / 06</div><div class="slide-content"><div class="lbl">Cost of Error</div><h2 class="hook">The cost of getting it wrong</h2><p class="bd">Improper aeration reduces water infiltration by 40%, increases runoff, and compacts root zones deeper than the tines reach.</p><div class="viz"><div class="rd"><div class="rdc"><div class="rdv rdp"></div><strong>Proper</strong><p style="color:#34d399;font-size:14px;margin-top:8px">Roots reach 6"+</p></div><div class="rdc"><div class="rdv rdi"></div><strong>Improper</strong><p style="color:#f87171;font-size:14px;margin-top:8px">Roots crammed at 2"</p></div></div></div></div><div class="ft">Right Hand Services by JP | rhsjp1.github.io</div></section>
+</body>
+</html>

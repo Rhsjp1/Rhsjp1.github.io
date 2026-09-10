@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passive Micro-Drainage Swale Depth Calculator | RHS Carousel</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #111827;
+      --accent: #D97706;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --slide-size: 1080px;
+    }
+    body {
+      font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .slide {
+      width: 100%;
+      max-width: var(--slide-size);
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .slide-number {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: var(--text-muted);
+      background: rgba(0,0,0,0.4);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+    .hook {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .body {
+      font-size: clamp(0.9rem, 2vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 80%;
+      margin-bottom: 2rem;
+    }
+    .visual-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 200px;
+    }
+    .visual-icon {
+      font-size: clamp(3rem, 8vw, 5rem);
+      opacity: 0.3;
+    }
+    .brand-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .footer {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .brand-bar {
+      width: 100%;
+      max-width: var(--slide-size);
+      text-align: center;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    .brand-bar h1 {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .brand-bar p {
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    @media print {
+      body { padding: 0; background: white; }
+      .slide { 
+        box-shadow: none; 
+        border: 1px solid #ddd; 
+        border-radius: 0;
+        page-break-after: always;
+        background: white;
+      }
+      .slide-number { color: #666; background: #f3f4f6; }
+      .hook { color: #111; }
+      .body { color: #555; }
+      .brand-accent { background: var(--accent); }
+      .footer { color: #888; }
+      .brand-bar h1 { color: var(--accent); }
+      .brand-bar p { color: #666; }
+    }
+    @media (max-width: 640px) {
+      .slide { padding: 2rem 1.5rem; }
+      .body { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-bar">
+    <h1>Right Hand Services by JP</h1>
+    <p>Passive Micro-Drainage Swale Depth Calculator — Carousel Deck</p>
+  </div>
+  
+    <section class="slide" id="slide-1">
+      <div class="slide-number">1 / 6</div>
+      <div class="hook">Your drainage problem isn't water — it's grade</div>
+      <div class="body">Most 'drainage issues' are actually grade failures where water has nowhere to go. A swale with just 1% slope captures and infiltrates 90% of runoff from a 10-year storm event.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📊</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-2">
+      <div class="slide-number">2 / 6</div>
+      <div class="hook">The swale that pays for itself in one storm</div>
+      <div class="body">A properly sized swale prevents an average of $2,800 in annual erosion damage, foundation seepage, and landscape replacement.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📈</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-3">
+      <div class="slide-number">3 / 6</div>
+      <div class="hook">Why French drains fail in NC clay</div>
+      <div class="body">French drains in Piedmont clay soils clog within 18-24 months because clay particles migrate into gravel voids. Swales with deep-rooted plants maintain infiltration rates 10x longer.</div>
+      <div class="visual-area">
+        <div class="visual-icon">🎯</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-4">
+      <div class="slide-number">4 / 6</div>
+      <div class="hook">One percent slope is all you need</div>
+      <div class="body">You don't need pumps or pipes. A 1% grade swale moves water passively and lets soil biology do the infiltration work.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📊</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-5">
+      <div class="slide-number">5 / 6</div>
+      <div class="hook">Size your swale to your soil</div>
+      <div class="body">The calculator factors soil type, contributing area, and design storm to output swale depth, width, and slope for your site.</div>
+      <div class="visual-area">
+        <div class="visual-icon">📈</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+
+    <section class="slide" id="slide-6">
+      <div class="slide-number">6 / 6</div>
+      <div class="hook">No pumps. No pipes. No problems.</div>
+      <div class="body">Passive swales require zero energy, zero maintenance, and zero replacement. Input your site data and get your swale specifications in seconds.</div>
+      <div class="visual-area">
+        <div class="visual-icon">🎯</div>
+      </div>
+      <div class="brand-accent"></div>
+    </section>
+  <div class="slide" id="slide-end">
+    <div class="slide-number">END</div>
+    <div class="hook">No pumps. No pipes. No problems.</div>
+    <div class="body">Right Hand Services by JP | rhsjp1.github.io</div>
+    <div class="visual-area">
+      <div class="visual-icon">✋</div>
+    </div>
+    <div class="brand-accent"></div>
+    <div class="footer">Right Hand Services by JP | rhsjp1.github.io</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No-Till Sheet Mulching Calculator</title>
+<style>
+*,*::before,*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111827;--accent:#D97706;--text:#f3f4f6;--muted:#9ca3af;--card:#1f2937}
+body{font-family:-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.slide{width:1080px;height:1080px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;position:relative;background:var(--bg);border-bottom:3px solid var(--accent)}
+.slide-content{max-width:900px;width:100%;text-align:center}
+.num{position:absolute;top:40px;right:60px;font-size:14px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.lbl{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hook{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;margin-bottom:32px}
+.bd{font-size:clamp(18px,2.2vw,28px);color:var(--muted);max-width:750px;margin:0 auto 48px;line-height:1.6}
+.viz{width:100%;max-width:700px;margin:0 auto}
+.ft{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:1px}
+.cross-section{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.cs-card{background:var(--card);border-radius:16px;padding:24px;text-align:center}
+.cs-layers{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.cs-layer{padding:10px;border-radius:8px;font-size:13px;font-weight:600}
+.l-mulch{background:#78350f}
+.l-compost{background:#92400e}
+.l-cardboard{background:#a16207}
+.l-soil{background:#451a03}
+.l-weeds{background:#dc2626;text-decoration:line-through}
+.l-weeds-gone{background:#059669}
+.water-compare{display:flex;gap:30px;justify-content:center;margin-top:20px}
+.wc{text-align:center}
+.wc-bar{width:60px;height:200px;background:var(--card);border-radius:30px;position:relative;margin:0 auto 12px;overflow:hidden}
+.wc-fill{position:absolute;bottom:0;left:0;right:0;border-radius:0 0 30px 30px}
+.wc-fill.bare{background:linear-gradient(to top,#dc2626,#f87171);height:85%}
+.wc-fill.mulch{background:linear-gradient(to top,#059669,#34d399);height:25%}
+.wc-label{font-size:13px;font-weight:600}
+.wc-pct{font-size:11px;color:var(--muted)}
+.overlap-demo{display:flex;flex-direction:column;gap:8px}
+.ov-row{display:flex;gap:4px;justify-content:center}
+.ov-piece{width:80px;height:40px;background:#a16207;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
+.ov-piece.overlap{background:#059669}
+.ov-piece.gap{background:#dc2626;position:relative}
+.ov-piece.gap::after{content:'!';position:absolute;top:-5px;right:-5px;width:18px;height:18px;background:#dc2626;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center}
+.soak-compare{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.soak-card{background:var(--card);border-radius:16px;padding:24px;text-align:center}
+.soak-tl{position:relative;height:120px;margin-bottom:12px}
+.soak-phase{position:absolute;width:100%;text-align:center;font-size:11px;color:var(--muted)}
+.pphone{width:260px;height:480px;background:var(--card);border-radius:32px;border:4px solid #374151;margin:0 auto;padding:20px}
+.pnotch{width:80px;height:6px;background:#374151;border-radius:3px;margin:0 auto 12px}
+.pscreen{flex:1;background:#0f172a;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pin{background:#374151;border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted)}
+.pout{background:#064e3b;border-radius:8px;padding:10px 12px;font-size:12px;color:#34d399}
+.transform{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.tf-card{background:var(--card);border-radius:16px;padding:32px;text-align:center}
+.tf-icon{font-size:64px;margin-bottom:12px}
+@media print{.slide{page-break-after:always;border-bottom:none}}
+@media(max-width:1100px){.slide{width:100vw;height:100vw;max-width:1080px;max-height:1080px;padding:40px}}
+</style>
+</head>
+<body>
+<section class="slide"><div class="num">01 / 06</div><div class="slide-content"><div class="lbl">Sheet Mulching</div><h2 class="hook">The cardboard layer nobody calculates right</h2><p class="bd">Too thin = weeds punch through in weeks. Too thick = anaerobic decomposition kills soil life. There's an exact sweet spot.</p><div class="viz"><div class="cross-section"><div class="cs-card"><div style="color:#f87171;font-size:12px;font-weight:600;margin-bottom:10px">❌ Too Thin</div><div class="cs-layers"><div class="cs-layer l-mulch">Mulch"</div><div class="cs-layer l-cardboard">Cardboard (1 layer)</div><div class="cs-layer l-weeds">Weeds → THROUGH</div><div class="cs-layer l-soil">Soil</div></div><div style="font-size:11px;color:#f87171">Weeds penetrate in 2-3 weeks</div></div><div class="cs-card"><div style="color:#34d399;font-size:12px;font-weight:600;margin-bottom:10px">✅ Just Right</div><div class="cs-layers"><div class="cs-layer l-mulch">Mulch 3"</div><div class="cs-layer l-compost">Compost 2"</div><div class="cs-layer l-cardboard">Cardboard (2-3 layers)</div><div class="cs-layer l-weeds-gone">Weeds → BLOCKED</div><div class="cs-layer l-soil">Soil biology thrives</div></div><div style="font-size:11px;color:#34d399">Weeds decompose, soil breathes</div></div></div></div></div></section>
+<section class="slide"><div class="num">02 / 06</div><div class="slide-content"><div class="lbl">Water Retention</div><h2 class="hook">The 3x moisture advantage</h2><p class="bd">Properly built sheet mulch beds retain 3x more moisture than bare soil, cutting irrigation needs by 55-65% in NC summers.</p><div class="viz"><div class="water-compare"><div class="wc"><div class="wc-bar"><div class="wc-fill bare"></div></div><div class="wc-label">Bare Soil</div><div class="wc-pct">85% evaporates</div></div><div style="font-size:32px;color:var(--muted);align-self:center">VS</div><div class="wc"><div class="wc-bar"><div class="wc-fill mulch"></div></div><div class="wc-label">Sheet Mulch</div><div class="wc-pct">25% evaporates</div></div></div><div style="margin-top:24px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#34d399;font-size:16px;font-weight:700">💧 3x more water stays in root zone</div><div style="font-size:13px;color:var(--muted);margin-top:4px">55-65% irrigation reduction during NC summer heat</div></div></div></div></section>
+<section class="slide"><div class="num">03 / 06</div><div class="slide-content"><div class="lbl">Technique</div><h2 class="hook">Overlap matters more than thickness</h2><p class="bd">A 2-inch overlap blocks light completely. Gaps as small as half an inch let weeds colonize the entire bed within a month.</p><div class="viz"><div style="display:flex;flex-direction:column;gap:30px"><div><div style="color:#34d399;font-size:13px;font-weight:600;margin-bottom:12px">✅ Correct: 2" Overlap</div><div class="overlap-demo"><div class="ov-row"><div class="ov-piece">Piece 1</div><div class="ov-piece overlap">← overlap →</div><div class="ov-piece">Piece 2</div></div></div></div><div><div style="color:#f87171;font-size:13px;font-weight:600;margin-bottom:12px">❌ Wrong: Gap</div><div class="overlap-demo"><div class="ov-row"><div class="ov-piece">Piece 1</div><div class="ov-piece gap" style="width:30px">gap</div><div class="ov-piece">Piece 2</div></div></div></div></div></div></div></section>
+<section class="slide"><div class="num">04 / 06</div><div class="slide-content"><div class="lbl">Pre-Soak</div><h2 class="hook">Pre-soak or fail</h2><p class="bd">Dry cardboard repels water and resists decomposition. Pre-soaking for 24 hours activates microbial colonization and ensures even breakdown.</p><div class="viz"><div class="soak-compare"><div class="soak-card"><div style="color:#f87171;font-size:12px;font-weight:600;margin-bottom:10px">❌ Dry Cardboard</div><div style="font-size:64px;margin:20px 0">📦</div><div style="font-size:13px;color:var(--muted)">Repels water<br>Resists breakdown<br>6+ months to decompose</div></div><div class="soak-card"><div style="color:#34d399;font-size:12px;font-weight:600;margin-bottom:10px">✅ Pre-Soaked 24hr</div><div style="font-size:64px;margin:20px 0">💧📦</div><div style="font-size:13px;color:var(--muted)">Absorbs water instantly<br>Microbes activate<br>2-3 months to decompose</div></div></div></div></div></section>
+<section class="slide"><div class="num">05 / 06</div><div class="slide-content"><div class="lbl">Calculator</div><h2 class="hook">The math behind the mulch</h2><p class="bd">The calculator outputs exact cardboard sq ft, overlap specs, compost depth, and mulch volume based on your bed dimensions.</p><div class="viz"><div class="pphone"><div class="pnotch"></div><div class="pscreen"><div class="pin">Bed: 12ft × 8ft</div><div class="pin">Lawn: Fescue (thick)</div><div class="pin">Goal: Veggie bed</div><div class="pout">📦 Cardboard: 115 sq ft<br>📐 Overlap: 2.5 inches<br>🍂 Compost: 2.1 cu yd<br>🪵 Mulch: 3.2 cu yd<br>⏱️ Soak: 24 hours</div></div></div></div></div></section>
+<section class="slide"><div class="num">06 / 06</div><div class="slide-content"><div class="lbl">Transformation</div><h2 class="hook">Save 60% on water bills</h2><p class="bd">Sheet mulching inverts the weed-feeding cycle. No tilling. No dormant seed germination. No fungal network destruction.</p><div class="viz"><div class="transform"><div class="tf-card"><div class="tf-icon">🌾</div><div style="font-size:14px;font-weight:600;margin-bottom:8px">Before</div><div style="font-size:12px;color:var(--muted)">Weedy lawn<br>Compacted soil<br>High water bills</div></div><div class="tf-card"><div class="tf-icon">🌻</div><div style="font-size:14px;font-weight:600;margin-bottom:8px">After 6 Months</div><div style="font-size:12px;color:#34d399">Productive bed<br>Living soil<br>40% less water</div></div></div><div style="margin-top:24px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#34d399;font-size:14px;font-weight:600">✓ No-till • No herbicides • No ongoing weeding</div></div></div></div><div class="ft">Right Hand Services by JP | rhsjp1.github.io</div></section>
+</body>
+</html>

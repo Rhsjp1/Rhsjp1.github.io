@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainwater Catchment & Cistern Sizing Calculator</title>
+<style>
+*,*::before,*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111827;--accent:#D97706;--text:#f3f4f6;--muted:#9ca3af;--card:#1f2937}
+body{font-family:-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.slide{width:1080px;height:1080px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px;position:relative;background:var(--bg);border-bottom:3px solid var(--accent)}
+.slide-content{max-width:900px;width:100%;text-align:center}
+.num{position:absolute;top:40px;right:60px;font-size:14px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.lbl{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hook{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.15;margin-bottom:32px}
+.bd{font-size:clamp(18px,2.2vw,28px);color:var(--muted);max-width:750px;margin:0 auto 48px;line-height:1.6}
+.viz{width:100%;max-width:700px;margin:0 auto}
+.ft{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);letter-spacing:1px}
+.roof-visual{position:relative;display:inline-block;margin:20px 0}
+.roof{width:280px;height:140px;background:linear-gradient(135deg,#451a03,#78350f);clip-path:polygon(0 100%,50% 0,100% 100%);position:relative;margin:0 auto}
+.rain-drop{position:absolute;width:4px;height:16px;background:linear-gradient(to bottom,#60a5fa,#3b82f6);border-radius:2px;animation:fall 1.5s linear infinite}
+@keyframes fall{0%{transform:translateY(-20px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(80px);opacity:0}}
+.gallon-counter{font-size:56px;font-weight:800;color:#3b82f6;text-align:center}
+.gallon-label{font-size:14px;color:var(--muted);text-align:center;margin-top:8px}
+.cistern-compare{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.cis-card{background:var(--card);border-radius:16px;padding:24px;text-align:center}
+.cis-visual{width:100px;height:140px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:48px}
+.cis-over{background:#7f1d1d;border:3px solid #dc2626}
+.cis-right{background:#064e3b;border:3px solid #059669}
+.cis-list{text-align:left;font-size:13px;color:var(--muted);margin-top:12px}
+.cis-list li{list-style:none;padding:4px 0}
+.pphone{width:260px;height:480px;background:var(--card);border-radius:32px;border:4px solid #374151;margin:0 auto;padding:20px}
+.pnotch{width:80px;height:6px;background:#374151;border-radius:3px;margin:0 auto 12px}
+.pscreen{flex:1;background:#0f172a;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pin{background:#374151;border-radius:8px;padding:10px 12px;font-size:12px;color:var(--muted)}
+.pout{background:#064e3b;border-radius:8px;padding:10px 12px;font-size:12px;color:#34d399}
+.reg-update{display:flex;gap:20px;align-items:center;justify-content:center}
+.reg-badge{background:var(--card);border-radius:12px;padding:20px;text-align:center}
+.reg-icon{font-size:40px;margin-bottom:8px}
+.reg-year{font-size:28px;font-weight:800;color:#D97706}
+.reg-text{font-size:13px;color:var(--muted)}
+.system-diagram{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
+.sd-step{background:var(--card);border-radius:12px;padding:16px 20px;text-align:center;min-width:100px}
+.sd-icon{font-size:28px;margin-bottom:4px}
+.sd-label{font-size:11px;color:var(--muted)}
+.sd-arrow{font-size:20px;color:var(--accent)}
+@media print{.slide{page-break-after:always;border-bottom:none}}
+@media(max-width:1100px){.slide{width:100vw;height:100vw;max-width:1080px;max-height:1080px;padding:40px}}
+</style>
+</head>
+<body>
+<section class="slide"><div class="num">01 / 06</div><div class="slide-content"><div class="lbl">Catchment</div><h2 class="hook">Your roof is a reservoir you're ignoring</h2><p class="bd">A 2,000 sq ft roof in the Piedmont generates 1,200 gallons per inch of rainfall. NC averages 45 inches annually — that's 54,000 gallons flowing into storm drains.</p><div class="viz"><div class="roof-visual"><div class="roof"></div><div class="rain-drop" style="left:30%;animation-delay:0s"></div><div class="rain-drop" style="left:50%;animation-delay:0.3s"></div><div class="rain-drop" style="left:70%;animation-delay:0.6s"></div></div><div style="margin-top:30px"><div class="gallon-counter">1,200 gal</div><div class="gallon-label">per inch of rainfall per 2,000 sq ft</div></div></div></div></section>
+<section class="slide"><div class="num">02 / 06</div><div class="slide-content"><div class="lbl">Volume</div><h2 class="hook">54,000 gallons. Free. Every year.</h2><p class="bd">That's enough to irrigate a half-acre of landscape for an entire summer without touching municipal water.</p><div class="viz"><div style="text-align:center"><div class="gallon-counter" style="color:#D97706">54,000</div><div class="gallon-label">gallons per year</div></div><div style="margin-top:30px;display:flex;gap:30px;justify-content:center"><div style="background:var(--card);border-radius:12px;padding:20px;text-align:center"><div style="font-size:40px">🏠</div><div style="font-size:13px;color:var(--muted)">2,000 sq ft roof</div></div><div style="font-size:24px;color:var(--accent);align-self:center">×</div><div style="background:var(--card);border-radius:12px;padding:20px;text-align:center"><div style="font-size:40px">🌧️</div><div style="font-size:13px;color:var(--muted)">45 inches/year</div></div><div style="font-size:24px;color:var(--accent);align-self:center">=</div><div style="background:var(--card);border-radius:12px;padding:20px;text-align:center"><div style="font-size:40px">💧</div><div style="font-size:13px;color:var(--muted)">54,000 gal</div></div></div></div></div></section>
+<section class="slide"><div class="num">03 / 06</div><div class="slide-content"><div class="lbl">Sizing</div><h2 class="hook">Bigger isn't better</h2><p class="bd">Oversized cisterns create stagnant water that breeds mosquitoes and requires chemical treatment. Right-sizing prevents these problems.</p><div class="viz"><div class="cistern-compare"><div class="cis-card"><div style="color:#f87171;font-size:12px;font-weight:600;margin-bottom:10px">❌ Oversized</div><div class="cis-visual cis-over">🪣</div><div style="font-size:13px;font-weight:600">5,000 gal cistern</div><div class="cis-list"><li>🦟 Mosquito breeding</li><li>🧪 Chemical treatment</li><li>💸 Wasted investment</li></div></div><div class="cis-card"><div style="color:#34d399;font-size:12px;font-weight:600;margin-bottom:10px">✅ Right-Sized</div><div class="cis-visual cis-right">🛢️</div><div style="font-size:13px;font-weight:600">1,500 gal cistern</div><div class="cis-list"><li>✓ Fresh turnover</li><li>✓ No treatment needed</li><li>✓ Cost-effective</li></div></div></div></div></div></section>
+<section class="slide"><div class="num">04 / 06</div><div class="slide-content"><div class="lbl">Match Demand</div><h2 class="hook">Match storage to demand</h2><p class="bd">The calculator matches cistern capacity to your actual irrigation demand, rainfall patterns, and roof catchment area.</p><div class="viz"><div class="pphone"><div class="pnotch"></div><div class="pscreen"><div class="pin">Roof: 2,000 sq ft</div><div class="pin">Irrigation: 0.5 acre</div><div class="pin">Pattern: NC Piedmont</div><div class="pout">🛢️ Cistern: 1,500 gal<br>📐 First-flush: 10 gal<br>↗️ Overflow: bio-swale<br>✓ NC 2024 compliant</div></div></div></div></div></section>
+<section class="slide"><div class="num">05 / 06</div><div class="slide-content"><div class="lbl">Regulations</div><h2 class="hook">NC changed the rules in 2024</h2><p class="bd">North Carolina updated rainwater harvesting regulations, removing previous volume restrictions for non-potable use.</p><div class="viz"><div class="reg-update"><div class="reg-badge"><div class="reg-icon">📜</div><div style="font-size:14px;color:var(--muted)">Before 2024</div><div style="font-size:13px;color:#f87171">Volume restrictions<br>Complex permits</div></div><div style="font-size:24px;color:var(--accent)">→</div><div class="reg-badge"><div class="reg-icon">✅</div><div class="reg-year">2024</div><div style="font-size:13px;color:#34d399">No volume limits<br>Non-potable use</div></div></div><div style="margin-top:30px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#34d399;font-size:14px;font-weight:600">✓ Harvest freely for irrigation</div><div style="font-size:13px;color:var(--muted);margin-top:4px">No permits required for non-potable rainwater systems</div></div></div></div></section>
+<section class="slide"><div class="num">06 / 06</div><div class="slide-content"><div class="lbl">Full System</div><h2 class="hook">Size your system right</h2><p class="bd">Stop losing free water. The calculator outputs optimal cistern size, first-flush diverter specs, and overflow routing for your property.</p><div class="viz"><div class="system-diagram"><div class="sd-step"><div class="sd-icon">🏠</div><div class="sd-label">Roof</div></div><div class="sd-arrow">→</div><div class="sd-step"><div class="sd-icon">🌧️</div><div class="sd-label">Gutter</div></div><div class="sd-arrow">→</div><div class="sd-step"><div class="sd-icon">🔽</div><div class="sd-label">First Flush</div></div><div class="sd-arrow">→</div><div class="sd-step"><div class="sd-icon">🛢️</div><div class="sd-label">Cistern</div></div><div class="sd-arrow">→</div><div class="sd-step"><div class="sd-icon">🌻</div><div class="sd-label">Irrigation</div></div></div><div style="margin-top:24px;background:var(--card);border-radius:12px;padding:20px"><div style="color:#34d399;font-size:14px;font-weight:600">Complete system design in seconds</div><div style="font-size:13px;color:var(--muted);margin-top:4px">From roof to root zone — every component specified</div></div></div></div><div class="ft">Right Hand Services by JP | rhsjp1.github.io</div></section>
+</body>
+</html>

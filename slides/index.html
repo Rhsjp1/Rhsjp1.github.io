@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RHS Carousel Slide Decks | Right Hand Services by JP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #111827;
+      --accent: #D97706;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+    body {
+      font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      color: var(--text-muted);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+    }
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .deck-card {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #374151;
+    }
+    .deck-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+      border-color: var(--accent);
+    }
+    .deck-card .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .deck-card h2 {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .deck-card p {
+      color: var(--text-muted);
+      font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RHS Carousel Slide Decks</h1>
+    <p>10 tools — self-contained HTML slide decks for social media carousels</p>
+  </header>
+  <main class="deck-grid">
+    <a href="soil-compaction.html" class="deck-card">
+      <div class="card-icon">🌱</div>
+      <h2>Soil Compaction & Aeration Timing Calculator</h2>
+      <p>The $400 aeration mistake 87% of properties make</p>
+    </a>
+    <a href="pollinator-matrix.html" class="deck-card">
+      <div class="card-icon">🐝</div>
+      <h2>Native Pollinator & Flora Selection Matrix</h2>
+      <p>3 months your pollinators are starving in NC</p>
+    </a>
+    <a href="sheet-mulching.html" class="deck-card">
+      <div class="card-icon">📦</div>
+      <h2>No-Till Sheet Mulching Calculator</h2>
+      <p>The cardboard layer nobody calculates right</p>
+    </a>
+    <a href="ergonomic-index.html" class="deck-card">
+      <div class="card-icon">🤲</div>
+      <h2>Manual vs. Powered Ergonomic Labor Index</h2>
+      <p>The vibration damage your mower does to your body</p>
+    </a>
+    <a href="rainwater.html" class="deck-card">
+      <div class="card-icon">💧</div>
+      <h2>Rainwater Catchment & Cistern Sizing Calculator</h2>
+      <p>Your roof is a reservoir you're ignoring</p>
+    </a>
+    <a href="soil-amendment.html" class="deck-card">
+      <div class="card-icon">🧪</div>
+      <h2>Organic Soil Amendment & Nutrient Balancing Tool</h2>
+      <p>You're fertilizing blind — and burning your soil</p>
+    </a>
+    <a href="swale-depth.html" class="deck-card">
+      <div class="card-icon">🏞️</div>
+      <h2>Passive Micro-Drainage Swale Depth Calculator</h2>
+      <p>Your drainage problem isn't water — it's grade</p>
+    </a>
+    <a href="pest-control.html" class="deck-card">
+      <div class="card-icon">🐞</div>
+      <h2>Biological Pest Control Release Rate Estimator</h2>
+      <p>Why your ladybugs left — and the math that keeps them</p>
+    </a>
+    <a href="mulch-thermal.html" class="deck-card">
+      <div class="card-icon">🌡️</div>
+      <h2>Solar Heat-Island & Mulch Thermal Retention Planner</h2>
+      <p>Your mulch is cooking your plants — the 15-degree difference</p>
+    </a>
+    <a href="turf-transition.html" class="deck-card">
+      <div class="card-icon">🌿</div>
+      <h2>Sustainable Turf Transition Roadmap Generator</h2>
+      <p>The 90-day no-kill lawn conversion — without herbicides</p>
+    </a>
+  </main>
+  <footer>
+    <p>Right Hand Services by JP | rhsjp1.github.io</p>
+  </footer>
+</body>
+</html>
