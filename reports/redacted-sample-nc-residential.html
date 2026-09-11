@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RHS Property Research Packet — Redacted Sample</title>
+<style>
+:root {
+  --rhs-dark: #1a1a1a;
+  --rhs-darker: #0f0f0f;
+  --rhs-amber: #D97706;
+  --rhs-amber-light: #f59e0b;
+  --rhs-amber-dark: #b45309;
+  --rhs-text: #e5e5e5;
+  --rhs-text-muted: #a3a3a3;
+  --rhs-border: #333;
+  --rhs-card: #222;
+  --rhs-card-hover: #2a2a2a;
+  --rhs-green: #22c55e;
+  --rhs-red: #ef4444;
+  --rhs-blue: #3b82f6;
+  --rhs-yellow: #eab308;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--rhs-darker);
+  color: var(--rhs-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+.report-header {
+  background: linear-gradient(135deg, var(--rhs-dark) 0%, #1a1a2e 100%);
+  border: 1px solid var(--rhs-border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rhs-amber), var(--rhs-amber-light), var(--rhs-amber));
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.header-title h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.header-title .subtitle {
+  color: var(--rhs-text-muted);
+  font-size: 14px;
+}
+.header-badge {
+  background: var(--rhs-amber);
+  color: #000;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.header-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rhs-border);
+}
+.meta-item .label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rhs-text-muted);
+  margin-bottom: 2px;
+}
+.meta-item .value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Grid */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+  background: var(--rhs-card);
+  border: 1px solid var(--rhs-border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--rhs-amber-dark); }
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rhs-amber);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title .icon {
+  width: 24px;
+  height: 24px;
+  background: var(--rhs-amber);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Stat boxes */
+.stat-box {
+  background: var(--rhs-card);
+  border: 1px solid var(--rhs-border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.stat-box:hover {
+  border-color: var(--rhs-amber);
+  transform: translateY(-2px);
+}
+.stat-box .stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.stat-box .stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rhs-text-muted);
+}
+.stat-box.highlight .stat-value { color: var(--rhs-amber); }
+.stat-box.green .stat-value { color: var(--rhs-green); }
+.stat-box.blue .stat-value { color: var(--rhs-blue); }
+
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--rhs-darker);
+  color: var(--rhs-amber);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--rhs-amber);
+}
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rhs-border);
+  color: var(--rhs-text);
+}
+.data-table tr:hover td { background: var(--rhs-card-hover); }
+.data-table .source { color: var(--rhs-text-muted); font-size: 12px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.tag-green { background: rgba(34,197,94,0.15); color: var(--rhs-green); }
+.tag-amber { background: rgba(217,119,6,0.15); color: var(--rhs-amber); }
+.tag-blue { background: rgba(59,130,246,0.15); color: var(--rhs-blue); }
+.tag-red { background: rgba(239,68,68,0.15); color: var(--rhs-red); }
+
+/* Section */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rhs-amber);
+  display: inline-block;
+}
+
+/* Provenance */
+.provenance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rhs-border);
+  font-size: 13px;
+}
+.provenance-item:last-child { border-bottom: none; }
+.provenance-source { color: var(--rhs-text); }
+.provenance-date { color: var(--rhs-text-muted); font-size: 12px; }
+
+/* Disclaimer */
+.disclaimer {
+  background: rgba(217,119,6,0.05);
+  border: 1px solid var(--rhs-amber-dark);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--rhs-text-muted);
+  line-height: 1.7;
+}
+.disclaimer strong { color: var(--rhs-amber); }
+
+/* Action bar */
+.action-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--rhs-dark);
+  border-top: 1px solid var(--rhs-border);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  margin-top: 32px;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-amber {
+  background: var(--rhs-amber);
+  color: #000;
+}
+.btn-amber:hover { background: var(--rhs-amber-light); }
+.btn-outline {
+  background: transparent;
+  color: var(--rhs-text);
+  border: 1px solid var(--rhs-border);
+}
+.btn-outline:hover { border-color: var(--rhs-amber); color: var(--rhs-amber); }
+
+/* Waterfall chart */
+.waterfall {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 200px;
+  padding: 20px 0;
+}
+.waterfall-bar {
+  flex: 1;
+  background: var(--rhs-amber);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+}
+.waterfall-bar .wf-label {
+  position: absolute;
+  bottom: -28px;
+  font-size: 11px;
+  color: var(--rhs-text-muted);
+  white-space: nowrap;
+}
+.waterfall-bar.land { background: #22c55e; }
+.waterfall-bar.building { background: var(--rhs-blue); }
+.waterfall-bar.total { background: var(--rhs-amber); }
+
+/* Status block */
+.status-block {
+  background: rgba(217,119,6,0.08);
+  border: 1px solid var(--rhs-amber-dark);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.status-block .status-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rhs-amber);
+  margin-bottom: 8px;
+}
+.status-block .status-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(217,119,6,0.1);
+}
+.status-block .status-row:last-child { border-bottom: none; }
+.status-block .status-label { color: var(--rhs-text-muted); }
+.status-block .status-value { color: #fff; font-weight: 600; }
+
+/* Action board */
+.action-board {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.action-board th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--rhs-darker);
+  color: var(--rhs-amber);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--rhs-amber);
+}
+.action-board td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rhs-border);
+  color: var(--rhs-text);
+  vertical-align: top;
+}
+.action-board tr:hover td { background: var(--rhs-card-hover); }
+.action-board .priority {
+  font-weight: 700;
+  color: var(--rhs-amber);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header-title h1 { font-size: 22px; }
+  .stat-box .stat-value { font-size: 22px; }
+}
+
+/* Print styles */
+@media print {
+  body { background: #fff; color: #000; }
+  .action-bar { display: none; }
+  .card { break-inside: avoid; border-color: #ddd; }
+  .report-header { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="header-top">
+    <div class="header-title">
+      <h1>RHS Property Research Packet</h1>
+      <div class="subtitle">Redacted Sample — North Carolina Residential Property</div>
+    </div>
+    <div class="header-badge">DEMO ONLY</div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="label">Report Date</div>
+      <div class="value">September 11, 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Deliverable Format</div>
+      <div class="value">Visual PDF + Interactive HTML</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Target Audience</div>
+      <div class="value">Property Owner / Prospective Buyer</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Intended Use</div>
+      <div class="value">Due Diligence / Pre-Purchase</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Deliverable Status</div>
+      <div class="value">Public Redacted Sample</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS BLOCK -->
+<div class="status-block">
+  <div class="status-title">RHS PROPERTY RESEARCH PACKET</div>
+  <div class="status-row">
+    <span class="status-label">Status:</span>
+    <span class="status-value">Public Redacted Sample</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Report Version:</span>
+    <span class="status-value">v0.1</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Case ID:</span>
+    <span class="status-value">REDACTED</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Generated:</span>
+    <span class="status-value">2026-09-11</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Distribution:</span>
+    <span class="status-value">Public — Redacted Demonstration</span>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section-title">Executive Summary</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📋</div> Property Overview</div>
+  <div class="grid-4">
+    <div class="stat-box highlight">
+      <div class="stat-value">$226,360</div>
+      <div class="stat-label">Total Assessed Value</div>
+    </div>
+    <div class="stat-box green">
+      <div class="stat-value">$290,000</div>
+      <div class="stat-label">Recent Sale Price</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-value">1988</div>
+      <div class="stat-label">Year Built</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">0.69</div>
+      <div class="stat-label">Acres (Est.)</div>
+    </div>
+  </div>
+  <p style="margin-top: 16px; color: var(--rhs-text-muted); font-size: 14px;">
+    Residential improved parcel located in the Town of Pinebluff, Moore County, NC. 
+    The property features a 1988-built structure on a 0.69-acre lot zoned for residential use. 
+    Flood Zone X (minimal hazard). Soil classification: Candor sand (CaB), 0-4% slopes, 
+    moderately good suitability. Recent recorded sale at $290,000.
+  </p>
+</div>
+
+<!-- PROPERTY IDENTITY -->
+<div class="section-title">Property Identity & Legal</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title"><div class="icon">🏠</div> Parcel Facts</div>
+    <table class="data-table">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Parcel ID</td><td>REDACTED</td></tr>
+      <tr><td>PIN</td><td>REDACTED</td></tr>
+      <tr><td>Physical Address</td><td>REDACTED</td></tr>
+      <tr><td>City</td><td>Pinebluff, NC</td></tr>
+      <tr><td>County</td><td>Moore</td></tr>
+      <tr><td>Tax Jurisdiction</td><td>PB (Pinebluff)</td></tr>
+      <tr><td>Description</td><td>REDACTED</td></tr>
+      <tr><td>Township</td><td>09 (Sandhills)</td></tr>
+      <tr><td>Neighborhood</td><td>920B</td></tr>
+      <tr><td>Class</td><td><span class="tag tag-amber">RI — Residential Improved</span></td></tr>
+      <tr><td>Land Status</td><td><span class="tag tag-green">Improved</span></td></tr>
+      <tr><td>Year Built</td><td>1988</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title"><div class="icon">📜</div> Ownership & Deed</div>
+    <table class="data-table">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Owner (Tax Records)</td><td>REDACTED</td></tr>
+      <tr><td>Mailing Address</td><td>REDACTED</td></tr>
+      <tr><td>Deed Book</td><td>REDACTED</td></tr>
+      <tr><td>Deed Page</td><td>REDACTED</td></tr>
+      <tr><td>Transaction Date</td><td>June 2026</td></tr>
+      <tr><td>Stamp Value</td><td>REDACTED</td></tr>
+    </table>
+    <div style="margin-top: 12px; padding: 10px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+      <strong>Source:</strong> Moore County GIS Tax Layers (Tax/Tax_Layers/MapServer/0)<br>
+      <strong>Retrieved:</strong> 2026-09-11
+    </div>
+  </div>
+</div>
+
+<!-- TAX & VALUATION -->
+<div class="section-title">Tax Assessment & Valuation</div>
+<div class="card">
+  <div class="card-title"><div class="icon">💰</div> 2026 Tax Assessment Breakdown</div>
+  <div class="grid-3">
+    <div class="stat-box">
+      <div class="stat-value">$45,030</div>
+      <div class="stat-label">Land Value</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-value">$181,330</div>
+      <div class="stat-label">Building Value</div>
+    </div>
+    <div class="stat-box highlight">
+      <div class="stat-value">$226,360</div>
+      <div class="stat-label">Total Assessed</div>
+    </div>
+  </div>
+  <div style="margin-top: 20px;">
+    <div class="waterfall">
+      <div class="waterfall-bar land" style="height: 40%;">
+        $45K
+        <span class="wf-label">Land</span>
+      </div>
+      <div class="waterfall-bar building" style="height: 80%;">
+        $181K
+        <span class="wf-label">Building</span>
+      </div>
+      <div class="waterfall-bar total" style="height: 100%;">
+        $226K
+        <span class="wf-label">Total</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 32px; padding: 12px; background: var(--rhs-darker); border-radius: 6px; font-size: 13px; color: var(--rhs-text-muted);">
+    <strong>Recent Sale Price:</strong> $290,000 (per GIS record) — exceeds assessed value by $63,640 (28%). 
+    <em>Note: Verify actual closing date via deed records.</em>
+  </div>
+</div>
+
+<!-- NEARBY RECORDED TRANSFERS -->
+<div class="section-title">Nearby Recorded Transfers — Preliminary Reference</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📊</div> Recent Valid Sales — Neighborhood 920B & 963</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Parcel ID</th>
+        <th>Sale Date</th>
+        <th>Price</th>
+        <th>Land</th>
+        <th>Building</th>
+        <th>Total</th>
+        <th>Year Built</th>
+        <th>Neighborhood</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>REDACTED</td>
+        <td>2026</td>
+        <td>$327,000</td>
+        <td>$46,710</td>
+        <td>$172,790</td>
+        <td>$219,500</td>
+        <td>1950</td>
+        <td>920B</td>
+      </tr>
+      <tr>
+        <td>REDACTED</td>
+        <td>2026</td>
+        <td>$75,000</td>
+        <td>$44,640</td>
+        <td>$59,250</td>
+        <td>$103,890</td>
+        <td>1971</td>
+        <td>920B</td>
+      </tr>
+      <tr>
+        <td>REDACTED</td>
+        <td>2025</td>
+        <td>$310,000</td>
+        <td>$40,000</td>
+        <td>$214,310</td>
+        <td>$254,310</td>
+        <td>2004</td>
+        <td>963</td>
+      </tr>
+      <tr>
+        <td>REDACTED</td>
+        <td>2026</td>
+        <td>$350,000</td>
+        <td>$40,000</td>
+        <td>$260,610</td>
+        <td>$300,610</td>
+        <td>2016</td>
+        <td>963</td>
+      </tr>
+      <tr>
+        <td>REDACTED</td>
+        <td>2026</td>
+        <td>$335,000</td>
+        <td>$36,110</td>
+        <td>$243,080</td>
+        <td>$279,190</td>
+        <td>2017</td>
+        <td>920B</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 12px; padding: 12px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+    <strong>Disclaimer:</strong> These records are nearby recorded transfers provided for preliminary research. 
+    They have not been independently adjusted, analyzed, or presented as a market-price conclusion. 
+    A licensed broker or appraiser should determine suitability for any pricing or lending purpose.
+  </div>
+</div>
+
+<!-- SITE CONDITIONS -->
+<div class="section-title">Site Conditions & Environmental</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title"><div class="icon">🌱</div> Soil & Terrain</div>
+    <table class="data-table">
+      <tr><th>Attribute</th><th>Value</th></tr>
+      <tr><td>Soil Type</td><td><span class="tag tag-amber">CaB — Candor sand</span></td></tr>
+      <tr><td>Slope</td><td>0 to 4 percent</td></tr>
+      <tr><td>Soil Class</td><td>6 (Moderately Good)</td></tr>
+      <tr><td>Description</td><td>Candor sand, 0-4% slopes</td></tr>
+      <tr><td>Summary</td><td>mod good</td></tr>
+      <tr><td>Land Use Code</td><td>4 (Wooded)</td></tr>
+      <tr><td>Type</td><td>WOODED</td></tr>
+    </table>
+    <div style="margin-top: 12px; padding: 10px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+      Candor sands are deep, well-drained to somewhat excessively drained soils on uplands. 
+      Suitable for most urban uses with minor limitations. Good for septic absorption fields 
+      where slope is under 6%.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title"><div class="icon">🌊</div> Flood & Hydrology</div>
+    <table class="data-table">
+      <tr><th>Attribute</th><th>Value</th></tr>
+      <tr><td>Flood Zone</td><td><span class="tag tag-green">X — Minimal Hazard</span></td></tr>
+      <tr><td>Zone LID</td><td>4002</td></tr>
+      <tr><td>FEMA Community</td><td>37-125</td></tr>
+      <tr><td>Elevation</td><td>129.13m (423.7 ft)</td></tr>
+      <tr><td>Elevation Source</td><td>USGS EPQS</td></tr>
+    </table>
+    <div style="margin-top: 12px; padding: 10px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+      Zone X = Area of minimal flood hazard (outside 500-year floodplain). 
+      No flood insurance required by federal mandate. Confirm with FEMA FIRM panel 
+      and Moore County floodplain administrator for local requirements.
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION & JURISDICTION -->
+<div class="section-title">Location & Jurisdiction</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📍</div> Geographic & Political Boundaries</div>
+  <div class="grid-3">
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">Pinebluff</div>
+      <div class="stat-label">Municipality</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">Moore</div>
+      <div class="stat-label">County</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">NC</div>
+      <div class="stat-label">State</div>
+    </div>
+  </div>
+  <table class="data-table" style="margin-top: 16px;">
+    <tr><th>Boundary</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Census Tract</td><td>9512</td><td>US Census</td></tr>
+    <tr><td>Census Block</td><td>3012</td><td>US Census</td></tr>
+    <tr><td>County Subdivision</td><td>Township 8, Sandhills</td><td>US Census</td></tr>
+    <tr><td>Urban Area</td><td>Pinehurst—Southern Pines, NC</td><td>US Census</td></tr>
+    <tr><td>CSA</td><td>Fayetteville-Lumberton-Pinehurst</td><td>US Census</td></tr>
+    <tr><td>Congressional District</td><td>NC-09</td><td>US Census</td></tr>
+    <tr><td>State Senate</td><td>District 21</td><td>US Census</td></tr>
+    <tr><td>State House</td><td>District 52</td><td>US Census</td></tr>
+    <tr><td>School District</td><td>Moore County Schools</td><td>Local</td></tr>
+  </table>
+</div>
+
+<!-- ACTION BOARD -->
+<div class="section-title">Listing / Buyer Due-Diligence Action Board</div>
+<div class="card">
+  <div class="card-title"><div class="icon">✅</div> Open Items & Required Actions</div>
+  <table class="action-board">
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Open Item</th>
+        <th>Why It Matters</th>
+        <th>Responsible Party</th>
+        <th>Next Step</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="priority">1</td>
+        <td>Zoning Classification</td>
+        <td>Determines governing land-use process</td>
+        <td>Planning Department</td>
+        <td>Confirm district, ETJ, overlays, intended-use path</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">2</td>
+        <td>Boundary Survey</td>
+        <td>Confirms physical boundary/easement context</td>
+        <td>Licensed Surveyor</td>
+        <td>Obtain current survey/plat or order survey</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">3</td>
+        <td>Title Search</td>
+        <td>Identifies record/title matters</td>
+        <td>NC Real Estate Attorney</td>
+        <td>Order professional title work</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">4</td>
+        <td>Septic/Well Records</td>
+        <td>Important for rural/residential condition and use</td>
+        <td>Environmental Health</td>
+        <td>Request records and capacity/permit details</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">5</td>
+        <td>Permit History</td>
+        <td>Confirms permit documentation</td>
+        <td>Building Inspections</td>
+        <td>Request applicable permit history</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">6</td>
+        <td>Building Measurement</td>
+        <td>Supports marketing/property facts</td>
+        <td>Licensed Measurement Provider</td>
+        <td>Obtain verified measurements</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">7</td>
+        <td>HOA Information</td>
+        <td>Affects rules, fees, and transfer documents</td>
+        <td>Seller/HOA</td>
+        <td>Request governing documents and current statements</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+      <tr>
+        <td class="priority">8</td>
+        <td>Insurance History</td>
+        <td>Supports risk assessment</td>
+        <td>Seller/Agent</td>
+        <td>Request CLUE report or seller disclosure</td>
+        <td><span class="tag tag-red">OPEN</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SOURCE PROVENANCE -->
+<div class="section-title">Source Provenance & Limitations</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📚</div> Data Sources</div>
+  <div class="provenance-item">
+    <span class="provenance-source">Moore County GIS — Tax Layers (Tax/Tax_Layers/MapServer/0)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">Moore County GIS — Soil Report Layer (Tax/Soil_Report_Layer/MapServer/0)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">Moore County GIS — Jurisdiction (General/Jurisdiction/MapServer/1)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">Moore County GIS — Flood Zone (General/Hydrology_Terrain/MapServer/5)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">Moore County GIS — Valid Sales 2025 (Tax/Valid_Sales_By_Year/MapServer/0)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">USGS EPQS Elevation Service (nationalmap.gov)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">U.S. Census Bureau Geocoder (geocoding.geo.census.gov)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>IMPORTANT DISCLAIMER — READ BEFORE RELYING ON THIS REPORT</strong><br><br>
+  This is a <strong>redacted demonstration sample</strong> prepared by RHS (Right Hand Services by JP) as an 
+  AI-assisted research and document-organization tool. It is <strong>NOT</strong> legal advice, a title opinion, 
+  title insurance, an appraisal, survey, inspection, or closing authorization. All information is sourced from 
+  publicly available government records and is provided "as-is" without warranty of accuracy, completeness, or 
+  timeliness. Owner names, parcel IDs, addresses, and deed references have been redacted for privacy.<br><br>
+  <strong>No purchase, closing, recording, solar transfer, generator/propane account transfer, 
+  lien release, or funds transfer should occur solely based on this AI-assisted report.</strong> 
+  A qualified real-estate closing attorney or title professional in the applicable jurisdiction, 
+  the buyer's lender, qualified inspector, insurer, and relevant service providers must review 
+  and approve the applicable items.<br><br>
+  <strong>Business Address:</strong> 514 Brutonville Rd, Candor NC 27229<br>
+  <strong>Contact:</strong> righthandservicesbyjp@gmail.com • 317-395-3309<br>
+  <strong>Report ID:</strong> REDACTED<br>
+  <strong>Generated:</strong> September 11, 2026
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <div>
+    <span style="color: var(--rhs-text-muted); font-size: 13px;">
+      📄 RHS Property Research Packet — Redacted Sample
+    </span>
+  </div>
+  <div style="display: flex; gap: 12px;">
+    <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+    <a href="#" class="btn btn-amber" onclick="window.print()">⬇️ Download PDF</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+    e.preventDefault();
+    window.print();
+  }
+});
+</script>
+
+</body>
+</html>
