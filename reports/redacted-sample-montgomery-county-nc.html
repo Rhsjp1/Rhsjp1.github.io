@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RHS Property Research Packet — Montgomery County Sample</title>
+<style>
+:root {
+  --rhs-dark: #1a1a1a;
+  --rhs-darker: #0f0f0f;
+  --rhs-amber: #D97706;
+  --rhs-amber-light: #f59e0b;
+  --rhs-amber-dark: #b45309;
+  --rhs-text: #e5e5e5;
+  --rhs-text-muted: #a3a3a3;
+  --rhs-border: #333;
+  --rhs-card: #222;
+  --rhs-green: #22c55e;
+  --rhs-red: #ef4444;
+  --rhs-blue: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--rhs-darker);
+  color: var(--rhs-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+.report-header {
+  background: linear-gradient(135deg, var(--rhs-dark) 0%, #1a1a2e 100%);
+  border: 1px solid var(--rhs-border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rhs-amber), var(--rhs-amber-light), var(--rhs-amber));
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.header-title h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.header-title .subtitle {
+  color: var(--rhs-text-muted);
+  font-size: 14px;
+}
+.header-badge {
+  background: var(--rhs-amber);
+  color: #000;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.header-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rhs-border);
+}
+.meta-item .label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rhs-text-muted);
+  margin-bottom: 2px;
+}
+.meta-item .value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Grid */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+  background: var(--rhs-card);
+  border: 1px solid var(--rhs-border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--rhs-amber-dark); }
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rhs-amber);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title .icon {
+  width: 24px;
+  height: 24px;
+  background: var(--rhs-amber);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Stat boxes */
+.stat-box {
+  background: var(--rhs-card);
+  border: 1px solid var(--rhs-border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.stat-box:hover {
+  border-color: var(--rhs-amber);
+  transform: translateY(-2px);
+}
+.stat-box .stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.stat-box .stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--rhs-text-muted);
+}
+.stat-box.highlight .stat-value { color: var(--rhs-amber); }
+.stat-box.green .stat-value { color: var(--rhs-green); }
+.stat-box.blue .stat-value { color: var(--rhs-blue); }
+
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--rhs-darker);
+  color: var(--rhs-amber);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--rhs-amber);
+}
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rhs-border);
+  color: var(--rhs-text);
+}
+.data-table tr:hover td { background: var(--rhs-card-hover); }
+.data-table .source { color: var(--rhs-text-muted); font-size: 12px; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.tag-green { background: rgba(34,197,94,0.15); color: var(--rhs-green); }
+.tag-amber { background: rgba(217,119,6,0.15); color: var(--rhs-amber); }
+.tag-blue { background: rgba(59,130,246,0.15); color: var(--rhs-blue); }
+.tag-red { background: rgba(239,68,68,0.15); color: var(--rhs-red); }
+
+/* Section */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rhs-amber);
+  display: inline-block;
+}
+
+/* Provenance */
+.provenance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rhs-border);
+  font-size: 13px;
+}
+.provenance-item:last-child { border-bottom: none; }
+.provenance-source { color: var(--rhs-text); }
+.provenance-date { color: var(--rhs-text-muted); font-size: 12px; }
+
+/* Disclaimer */
+.disclaimer {
+  background: rgba(217,119,6,0.05);
+  border: 1px solid var(--rhs-amber-dark);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--rhs-text-muted);
+  line-height: 1.7;
+}
+.disclaimer strong { color: var(--rhs-amber); }
+
+/* Action bar */
+.action-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--rhs-dark);
+  border-top: 1px solid var(--rhs-border);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  margin-top: 32px;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-amber {
+  background: var(--rhs-amber);
+  color: #000;
+}
+.btn-amber:hover { background: var(--rhs-amber-light); }
+.btn-outline {
+  background: transparent;
+  color: var(--rhs-text);
+  border: 1px solid var(--rhs-border);
+}
+.btn-outline:hover { border-color: var(--rhs-amber); color: var(--rhs-amber); }
+
+/* Status block */
+.status-block {
+  background: rgba(217,119,6,0.08);
+  border: 1px solid var(--rhs-amber-dark);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.status-block .status-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rhs-amber);
+  margin-bottom: 8px;
+}
+.status-block .status-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(217,119,6,0.1);
+}
+.status-block .status-row:last-child { border-bottom: none; }
+.status-block .status-label { color: var(--rhs-text-muted); }
+.status-block .status-value { color: #fff; font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header-title h1 { font-size: 22px; }
+  .stat-box .stat-value { font-size: 22px; }
+}
+
+/* Print styles */
+@media print {
+  body { background: #fff; color: #000; }
+  .action-bar { display: none; }
+  .card { break-inside: avoid; border-color: #ddd; }
+  .report-header { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="report-header">
+  <div class="header-top">
+    <div class="header-title">
+      <h1>RHS Property Research Packet</h1>
+      <div class="subtitle">Montgomery County, NC — Limited Data Sample</div>
+    </div>
+    <div class="header-badge">SAMPLE</div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="label">Report Date</div>
+      <div class="value">September 11, 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Deliverable Format</div>
+      <div class="value">Visual PDF + Interactive HTML</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Target Audience</div>
+      <div class="value">Property Owner / Prospective Buyer</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Intended Use</div>
+      <div class="value">Due Diligence / Pre-Purchase</div>
+    </div>
+    <div class="meta-item">
+      <div class="label">Deliverable Status</div>
+      <div class="value">Public Redacted Sample</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS BLOCK -->
+<div class="status-block">
+  <div class="status-title">RHS PROPERTY RESEARCH PACKET — REDACTED SAMPLE</div>
+  <div class="status-row">
+    <span class="status-label">Status:</span>
+    <span class="status-value">Public Redacted Sample</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Report Version:</span>
+    <span class="status-value">v1.0</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Case ID:</span>
+    <span class="status-value">REDACTED</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Generated:</span>
+    <span class="status-value">2026-09-11</span>
+  </div>
+  <div class="status-row">
+    <span class="status-label">Distribution:</span>
+    <span class="status-value">Public — Redacted Demonstration</span>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section-title">Executive Summary</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📋</div> Property Overview</div>
+  <div class="grid-4">
+    <div class="stat-box highlight">
+      <div class="stat-value">1.89</div>
+      <div class="stat-label">Acres (2006 Plat)</div>
+    </div>
+    <div class="stat-box green">
+      <div class="stat-value">697</div>
+      <div class="stat-label">Elevation (ft)</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-value">REDACTED</div>
+      <div class="stat-label">Parcel ID</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value">REDACTED</div>
+      <div class="stat-label">Tax Assessment</div>
+    </div>
+  </div>
+  <p style="margin-top: 16px; color: var(--rhs-text-muted); font-size: 14px;">
+    Residential tract located in Biscoe Township, Montgomery County, NC. 
+    The property is a 1.89-acre combination tract per a 2006 preliminary survey plat. 
+    Montgomery County does not provide public online access to tax, parcel, or zoning records. 
+    Additional research in person or by phone is required to complete this report.
+  </p>
+</div>
+
+<!-- PROPERTY IDENTITY -->
+<div class="section-title">Property Identity & Legal</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title"><div class="icon">🏠</div> Parcel Facts</div>
+    <table class="data-table">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Parcel ID</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>PIN</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Physical Address</td><td>REDACTED</td></tr>
+      <tr><td>City</td><td>Candor, NC</td></tr>
+      <tr><td>County</td><td>Montgomery</td></tr>
+      <tr><td>Tax Jurisdiction</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Description</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Township</td><td>Biscoe</td></tr>
+      <tr><td>Neighborhood</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Class</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Land Status</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Year Built</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title"><div class="icon">📜</div> Ownership & Deed</div>
+    <table class="data-table">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Owner (Tax Records)</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Mailing Address</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Deed Book</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Deed Page</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Transaction Date</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Stamp Value</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+    </table>
+    <div style="margin-top: 12px; padding: 10px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+      <strong>Source:</strong> Montgomery County records are not publicly accessible online.<br>
+      <strong>Contact:</strong> Montgomery County Tax Assessor (910-576-4241)
+    </div>
+  </div>
+</div>
+
+<!-- TAX & VALUATION -->
+<div class="section-title">Tax Assessment & Valuation</div>
+<div class="card">
+  <div class="card-title"><div class="icon">💰</div> Assessment Data — Unavailable</div>
+  <div class="grid-3">
+    <div class="stat-box">
+      <div class="stat-value">N/A</div>
+      <div class="stat-label">Land Value</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-value">N/A</div>
+      <div class="stat-label">Building Value</div>
+    </div>
+    <div class="stat-box highlight">
+      <div class="stat-value">N/A</div>
+      <div class="stat-label">Total Assessed</div>
+    </div>
+  </div>
+  <div style="margin-top: 20px; padding: 12px; background: var(--rhs-darker); border-radius: 6px; font-size: 13px; color: var(--rhs-text-muted);">
+    <strong>Montgomery County does not provide public online access to tax records.</strong> 
+    To obtain assessment data, contact the Montgomery County Tax Assessor at 910-576-4241 
+    or visit the courthouse in Troy, NC.
+  </div>
+</div>
+
+<!-- SITE CONDITIONS -->
+<div class="section-title">Site Conditions & Environmental</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title"><div class="icon">🌱</div> Soil & Terrain</div>
+    <table class="data-table">
+      <tr><th>Attribute</th><th>Value</th></tr>
+      <tr><td>Soil Type</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Slope</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Soil Class</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Description</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Elevation</td><td>212.45m (697.0 ft)</td></tr>
+      <tr><td>Elevation Source</td><td>USGS EPQS</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-title"><div class="icon">🌊</div> Flood & Hydrology</div>
+    <table class="data-table">
+      <tr><th>Attribute</th><th>Value</th></tr>
+      <tr><td>Flood Zone</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>FEMA Community</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+      <tr><td>Watershed</td><td><span class="tag tag-red">UNAVAILABLE</span></td></tr>
+    </table>
+    <div style="margin-top: 12px; padding: 10px; background: var(--rhs-darker); border-radius: 6px; font-size: 12px; color: var(--rhs-text-muted);">
+      Flood zone data requires contact with Montgomery County Planning Department at 910-576-4221.
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION & JURISDICTION -->
+<div class="section-title">Location & Jurisdiction</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📍</div> Geographic & Political Boundaries</div>
+  <div class="grid-3">
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">Candor</div>
+      <div class="stat-label">Municipality</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">Montgomery</div>
+      <div class="stat-label">County</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" style="font-size: 18px;">NC</div>
+      <div class="stat-label">State</div>
+    </div>
+  </div>
+  <table class="data-table" style="margin-top: 16px;">
+    <tr><th>Boundary</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Census Tract</td><td>9605.01</td><td>US Census</td></tr>
+    <tr><td>Census Block</td><td>1021</td><td>US Census</td></tr>
+    <tr><td>County Subdivision</td><td>Biscoe township</td><td>US Census</td></tr>
+    <tr><td>Congressional District</td><td>NC-08</td><td>US Census</td></tr>
+    <tr><td>State Senate</td><td>District 29</td><td>US Census</td></tr>
+    <tr><td>State House</td><td>District 67</td><td>US Census</td></tr>
+    <tr><td>School District</td><td>Montgomery County Schools</td><td>Local</td></tr>
+  </table>
+</div>
+
+<!-- 2006 PLAT -->
+<div class="section-title">2006 Preliminary Plat (Reference Only)</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📐</div> Survey Data — Not Recorded</div>
+  <table class="data-table">
+    <tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Surveyor</td><td>South Point Surveying, PLLC</td></tr>
+    <tr><td>Certification</td><td>Douglas L. Presley (Book 142, Pages 184-185)</td></tr>
+    <tr><td>Date</td><td>September 2006</td></tr>
+    <tr><td>Scale</td><td>1" = 60'</td></tr>
+    <tr><td>Tract</td><td>COMBINE TRACT (1.89 acres)</td></tr>
+    <tr><td>Purpose</td><td>Combine multiple parcels into one tract</td></tr>
+    <tr><td>Road Frontage</td><td>Brutonville Rd (SR 1511) 50' ROW</td></tr>
+  </table>
+  <div style="margin-top: 12px; padding: 12px; background: rgba(239,68,68,0.1); border: 1px solid var(--rhs-red); border-radius: 6px; font-size: 12px; color: var(--rhs-red);">
+    <strong>⚠️ CRITICAL:</strong> This plat was explicitly NOT to be used for sales, conveyances, or recording. 
+    It reflects the surveyor's findings in 2006, not necessarily the current legal boundaries. 
+    There may have been splits, combinations, corrections, or boundary line agreements since then.
+  </div>
+</div>
+
+<!-- OPEN ITEMS -->
+<div class="section-title">Open Items & Required Actions</div>
+<div class="card">
+  <div class="card-title"><div class="icon">✅</div> Data Gaps & Next Steps</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Status</th>
+        <th>Responsible</th>
+        <th>Next Step</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tax Assessment</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Tax Assessor</td>
+        <td>Call 910-576-4241 or visit courthouse</td>
+      </tr>
+      <tr>
+        <td>Parcel ID / PIN</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Tax Assessor</td>
+        <td>Call 910-576-4241 or visit courthouse</td>
+      </tr>
+      <tr>
+        <td>Current Owner</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Register of Deeds</td>
+        <td>Call 910-576-4221 or visit courthouse</td>
+      </tr>
+      <tr>
+        <td>Zoning Classification</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Planning Dept</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+      <tr>
+        <td>Building Information</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Tax Assessor</td>
+        <td>Call 910-576-4241</td>
+      </tr>
+      <tr>
+        <td>Flood Zone</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Planning Dept</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+      <tr>
+        <td>Soil Classification</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>SWCD</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+      <tr>
+        <td>Deed Book/Page</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Register of Deeds</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+      <tr>
+        <td>Recent Sales</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Register of Deeds</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+      <tr>
+        <td>Permit History</td>
+        <td><span class="tag tag-red">UNAVAILABLE</span></td>
+        <td>Building Inspections</td>
+        <td>Call 910-576-4221</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SOURCE PROVENANCE -->
+<div class="section-title">Source Provenance & Limitations</div>
+<div class="card">
+  <div class="card-title"><div class="icon">📚</div> Data Sources</div>
+  <div class="provenance-item">
+    <span class="provenance-source">U.S. Census Bureau Geocoder (geocoding.geo.census.gov)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">USGS EPQS Elevation Service (nationalmap.gov)</span>
+    <span class="provenance-date">2026-09-11</span>
+  </div>
+  <div class="provenance-item">
+    <span class="provenance-source">2006 Preliminary Survey Plat (South Point Surveying, PLLC)</span>
+    <span class="provenance-date">2006-09</span>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>IMPORTANT DISCLAIMER — READ BEFORE RELYING ON THIS REPORT</strong><br><br>
+  This is a <strong>redacted demonstration sample</strong> prepared by RHS (Right Hand Services by JP) as an 
+  AI-assisted research and document-organization tool. It is <strong>NOT</strong> legal advice, a title opinion, 
+  title insurance, an appraisal, survey, inspection, or closing authorization. All information is sourced from 
+  publicly available government records and is provided "as-is" without warranty of accuracy, completeness, or 
+  timeliness. Property details have been redacted for privacy.<br><br>
+  <strong>No purchase, closing, recording, solar transfer, generator/propane account transfer, 
+  lien release, or funds transfer should occur solely based on this AI-assisted report.</strong> 
+  A qualified real-estate closing attorney or title professional in the applicable jurisdiction, 
+  the buyer's lender, qualified inspector, insurer, and relevant service providers must review 
+  and approve the applicable items.<br><br>
+  <strong>Business Address:</strong> 514 Brutonville Rd, Candor NC 27229<br>
+  <strong>Contact:</strong> righthandservicesbyjp@gmail.com • 317-395-3309<br>
+  <strong>Report ID:</strong> REDACTED<br>
+  <strong>Generated:</strong> September 11, 2026
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <div>
+    <span style="color: var(--rhs-text-muted); font-size: 13px;">
+      📄 RHS Property Research Packet — Montgomery County Sample
+    </span>
+  </div>
+  <div style="display: flex; gap: 12px;">
+    <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+    <a href="#" class="btn btn-amber" onclick="window.print()">⬇️ Download PDF</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+    e.preventDefault();
+    window.print();
+  }
+});
+</script>
+
+</body>
+</html>
