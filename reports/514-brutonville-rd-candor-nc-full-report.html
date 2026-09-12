@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>514 Brutonville Rd, Candor NC — Full Property Report</title>
+<style>
+:root {
+  --rhs-dark: #1a1a1a;
+  --rhs-darker: #0f0f0f;
+  --rhs-amber: #D97706;
+  --rhs-amber-light: #f59e0b;
+  --rhs-amber-dark: #b45309;
+  --rhs-text: #e5e5e5;
+  --rhs-text-muted: #a3a3a3;
+  --rhs-border: #333;
+  --rhs-card: #222;
+  --rhs-green: #22c55e;
+  --rhs-red: #ef4444;
+  --rhs-blue: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--rhs-darker);
+  color: var(--rhs-text);
+  line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+.report-header {
+  background: linear-gradient(135deg, var(--rhs-dark) 0%, #1a1a2e 100%);
+  border: 1px solid var(--rhs-border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.report-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rhs-amber), var(--rhs-amber-light), var(--rhs-amber));
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+.header-title h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.header-title .subtitle { color: var(--rhs-text-muted); font-size: 14px; }
+.header-badge { background: var(--rhs-amber); color: #000; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+.header-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rhs-border); }
+.meta-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--rhs-text-muted); margin-bottom: 2px; }
+.meta-item .value { font-size: 15px; font-weight: 600; color: #fff; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+.card { background: var(--rhs-card); border: 1px solid var(--rhs-border); border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+.card-title { font-size: 16px; font-weight: 700; color: var(--rhs-amber); margin-bottom: 16px; }
+.card-title .icon { display: inline-block; width: 24px; height: 24px; background: var(--rhs-amber); border-radius: 6px; text-align: center; line-height: 24px; font-size: 14px; margin-right: 8px; }
+
+.stat-box { background: var(--rhs-card); border: 1px solid var(--rhs-border); border-radius: 10px; padding: 20px; text-align: center; }
+.stat-box .stat-value { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.stat-box .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--rhs-text-muted); }
+.stat-box.highlight .stat-value { color: var(--rhs-amber); }
+.stat-box.green .stat-value { color: var(--rhs-green); }
+.stat-box.blue .stat-value { color: var(--rhs-blue); }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th { text-align: left; padding: 10px 12px; background: var(--rhs-darker); color: var(--rhs-amber); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--rhs-amber); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--rhs-border); color: var(--rhs-text); }
+.data-table tr:hover td { background: var(--rhs-card); }
+
+.tag { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.tag-green { background: rgba(34,197,94,0.15); color: var(--rhs-green); }
+.tag-amber { background: rgba(217,119,6,0.15); color: var(--rhs-amber); }
+.tag-blue { background: rgba(59,130,246,0.15); color: var(--rhs-blue); }
+.tag-red { background: rgba(239,68,68,0.15); color: var(--rhs-red); }
+
+.section-title { font-size: 20px; font-weight: 700; color: #fff; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--rhs-amber); display: inline-block; }
+
+.provenance-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rhs-border); font-size: 13px; }
+.provenance-item:last-child { border-bottom: none; }
+
+.disclaimer { background: rgba(217,119,6,0.05); border: 1px solid var(--rhs-amber-dark); border-radius: 10px; padding: 20px; margin-top: 32px; font-size: 13px; color: var(--rhs-text-muted); line-height: 1.7; }
+.disclaimer strong { color: var(--rhs-amber); }
+
+.action-bar { position: sticky; bottom: 0; background: var(--rhs-dark); border-top: 1px solid var(--rhs-border); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 100; margin-top: 32px; }
+.btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-amber { background: var(--rhs-amber); color: #000; }
+.btn-outline { background: transparent; color: var(--rhs-text); border: 1px solid var(--rhs-border); }
+
+.status-block { background: rgba(217,119,6,0.08); border: 1px solid var(--rhs-amber-dark); border-radius: 10px; padding: 20px; margin-bottom: 24px; font-size: 13px; }
+.status-block .status-title { font-size: 15px; font-weight: 700; color: var(--rhs-amber); margin-bottom: 8px; }
+.status-block .status-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid rgba(217,119,6,0.1); }
+.status-block .status-label { color: var(--rhs-text-muted); }
+.status-block .status-value { color: #fff; font-weight: 600; }
+
+.checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rhs-border); }
+.checklist-item:last-child { border-bottom: none; }
+.checklist-box { width: 20px; height: 20px; border: 2px solid var(--rhs-border); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.checklist-box.checked { background: var(--rhs-green); border-color: var(--rhs-green); }
+.checklist-text { flex: 1; }
+.checklist-label { color: var(--rhs-text); font-size: 14px; }
+.checklist-meta { color: var(--rhs-text-muted); font-size: 12px; margin-top: 2px; }
+
+@media print { body { background: #fff; color: #000; } .action-bar { display: none; } .card { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="report-header">
+  <div class="header-top">
+    <div class="header-title">
+      <h1>514 Brutonville Rd, Candor, NC 27229</h1>
+      <div class="subtitle">Full Property Research Packet — Montgomery County</div>
+    </div>
+    <div class="header-badge">RHS Report</div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-item"><div class="label">Report Date</div><div class="value">September 11, 2026</div></div>
+    <div class="meta-item"><div class="label">Format</div><div class="value">HTML + PDF</div></div>
+    <div class="meta-item"><div class="label">Audience</div><div class="value">Owner / Buyer / Agent</div></div>
+    <div class="meta-item"><div class="label">Use</div><div class="value">Listing / Due Diligence</div></div>
+    <div class="meta-item"><div class="label">Status</div><div class="value">Internal Review</div></div>
+  </div>
+</div>
+
+<div class="status-block">
+  <div class="status-title">RHS PROPERTY RESEARCH PACKET — 514 BRUTONVILLE RD</div>
+  <div class="status-row"><span class="status-label">Status:</span><span class="status-value">Internal Review Draft</span></div>
+  <div class="status-row"><span class="status-label">Version:</span><span class="status-value">v1.0</span></div>
+  <div class="status-row"><span class="status-label">Case ID:</span><span class="status-value">CASE-NC-123-514-BRUTONVILLE-RD-20260911</span></div>
+  <div class="status-row"><span class="status-label">Generated:</span><span class="status-value">2026-09-11</span></div>
+  <div class="status-row"><span class="status-label">Distribution:</span><span class="status-value">Internal only — not approved for client release</span></div>
+</div>
+
+<!-- RE-001: FULL PROPERTY-DETAIL PACKET -->
+<div class="section-title">RE-001: Full Property-Detail & Listing-Readiness Report</div>
+
+<div class="card">
+  <div class="card-title"><span class="icon">🏠</span> Property Identity & Legal Description</div>
+  <div class="grid-2">
+    <div>
+      <table class="data-table">
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Physical Address</td><td>514 Brutonville Rd, Candor, NC 27229</td></tr>
+        <tr><td>County</td><td>Montgomery (FIPS 123)</td></tr>
+        <tr><td>State</td><td>NC</td></tr>
+        <tr><td>ZIP</td><td>27229</td></tr>
+        <tr><td>Township</td><td>Biscoe</td></tr>
+        <tr><td>Parcel ID</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>PIN</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Owner (Tax)</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Legal Description</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <table class="data-table">
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Latitude</td><td>35.30068</td></tr>
+        <tr><td>Longitude</td><td>-79.73709</td></tr>
+        <tr><td>Elevation</td><td>212.45m (697.0 ft)</td></tr>
+        <tr><td>Census Tract</td><td>9605.01</td></tr>
+        <tr><td>Census Block</td><td>1021</td></tr>
+        <tr><td>Congressional District</td><td>NC-08</td></tr>
+        <tr><td>State Senate</td><td>District 29</td></tr>
+        <tr><td>State House</td><td>District 67</td></tr>
+        <tr><td>School District</td><td>Montgomery County Schools</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="icon">💰</span> Tax Assessment & Valuation</div>
+  <div class="grid-3">
+    <div class="stat-box"><div class="stat-value">N/A</div><div class="stat-label">Land Value</div></div>
+    <div class="stat-box blue"><div class="stat-value">N/A</div><div class="stat-label">Building Value</div></div>
+    <div class="stat-box highlight"><div class="stat-value">N/A</div><div class="stat-label">Total Assessed</div></div>
+  </div>
+  <p style="margin-top: 16px; color: var(--rhs-text-muted); font-size: 14px;">
+    <strong>Montgomery County does not provide public online access to tax records.</strong> 
+    Contact Tax Assessor at <strong>910-576-4241</strong> or visit the courthouse in Troy, NC.
+  </p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="icon">📐</span> Parcel-Context Map & 2006 Preliminary Plat</div>
+  <div class="grid-2">
+    <div>
+      <table class="data-table">
+        <tr><th>Plat Field</th><th>Value</th></tr>
+        <tr><td>Surveyor</td><td>South Point Surveying, PLLC</td></tr>
+        <tr><td>Certification</td><td>Douglas L. Presley (Book 142, Pages 184-185)</td></tr>
+        <tr><td>Date</td><td>September 2006</td></tr>
+        <tr><td>Scale</td><td>1" = 60'</td></tr>
+        <tr><td>Tract</td><td>COMBINE TRACT (1.89 acres)</td></tr>
+        <tr><td>Purpose</td><td>Combine multiple parcels into one tract</td></tr>
+        <tr><td>Road Frontage</td><td>Brutonville Rd (SR 1511) 50' ROW</td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="background: var(--rhs-darker); border-radius: 8px; padding: 20px; text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 12px;">🗺️</div>
+        <p style="color: var(--rhs-text-muted); font-size: 13px;">
+          Montgomery County does not have a public GIS portal.<br>
+          A parcel map requires an in-person visit to the<br>
+          <strong>Montgomery County Tax Assessor</strong><br>
+          108 E Main St, Troy, NC 27371
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 12px; padding: 12px; background: rgba(239,68,68,0.1); border: 1px solid var(--rhs-red); border-radius: 6px; font-size: 12px; color: var(--rhs-red);">
+    <strong>⚠️ CRITICAL:</strong> This plat was explicitly NOT to be used for sales, conveyances, or recording. 
+    It reflects the surveyor's findings in 2006, not necessarily the current legal boundaries.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="icon">🌱</span> Site Conditions & Environmental</div>
+  <div class="grid-2">
+    <div>
+      <table class="data-table">
+        <tr><th>Attribute</th><th>Value</th></tr>
+        <tr><td>Soil Type</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Slope</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Soil Class</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Flood Zone</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Elevation</td><td>212.45m (697.0 ft) — USGS EPQS</td></tr>
+      </table>
+    </div>
+    <div>
+      <table class="data-table">
+        <tr><th>Attribute</th><th>Value</th></tr>
+        <tr><td>Watershed</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Septic/Well</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Utilities</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>Zoning</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+        <tr><td>HOA</td><td><span class="tag tag-red">REQUIRES COUNTY</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- RE-002: LISTING PAPERWORK ORGANIZER -->
+<div class="section-title">RE-002: Listing Paperwork Organizer</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📋</span> Document Completeness Dashboard</div>
+  <div class="grid-3">
+    <div class="stat-box"><div class="stat-value">0</div><div class="stat-label">Received</div></div>
+    <div class="stat-box highlight"><div class="stat-value">10</div><div class="stat-label">Missing</div></div>
+    <div class="stat-box blue"><div class="stat-value">0</div><div class="stat-label">Under Review</div></div>
+  </div>
+  <table class="data-table" style="margin-top: 20px;">
+    <thead><tr><th>Document</th><th>Status</th><th>Owner</th><th>Due</th><th>Next Action</th></tr></thead>
+    <tbody>
+      <tr><td>Seller Disclosures</td><td><span class="tag tag-red">MISSING</span></td><td>Seller</td><td>TBD</td><td>Request from seller</td></tr>
+      <tr><td>Deed Copy</td><td><span class="tag tag-red">MISSING</span></td><td>Seller/Agent</td><td>TBD</td><td>Obtain from Register of Deeds</td></tr>
+      <tr><td>Plat/Survey Copy</td><td><span class="tag tag-amber">PARTIAL (2006)</span></td><td>Agent</td><td>TBD</td><td>Order current survey</td></tr>
+      <tr><td>HOA Documents</td><td><span class="tag tag-red">MISSING</span></td><td>Seller</td><td>TBD</td><td>Confirm HOA existence</td></tr>
+      <tr><td>Permits</td><td><span class="tag tag-red">MISSING</span></td><td>Seller</td><td>TBD</td><td>Request from Building Inspections</td></tr>
+      <tr><td>Warranties</td><td><span class="tag tag-red">MISSING</span></td><td>Seller</td><td>TBD</td><td>Request from seller</td></tr>
+      <tr><td>Utility Information</td><td><span class="tag tag-red">MISSING</span></td><td>Seller</td><td>TBD</td><td>Request from seller</td></tr>
+      <tr><td>Photos</td><td><span class="tag tag-red">MISSING</span></td><td>Agent</td><td>TBD</td><td>Schedule photo shoot</td></tr>
+      <tr><td>Measurements</td><td><span class="tag tag-red">MISSING</span></td><td>Agent</td><td>TBD</td><td>Order measurement</td></tr>
+      <tr><td>Marketing Approvals</td><td><span class="tag tag-red">MISSING</span></td><td>Agent</td><td>TBD</td><td>Obtain from seller</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RE-003: SELLER INTAKE QUESTIONNAIRE -->
+<div class="section-title">RE-003: Seller Intake Questionnaire</div>
+<div class="card">
+  <div class="card-title"><span class="icon">❓</span> Property Facts to Collect from Seller</div>
+  <div class="grid-2">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Property Information</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Year built and any additions/renovations</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Total living area (square footage)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Number of bedrooms and bathrooms</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Lot size (acres or square footage)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Property type (single-family, modular, etc.)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Zoning classification</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Current property tax amount</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Assessed property value</div></div></div>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Systems & Utilities</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Heating type and fuel source</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Cooling type (central, window units, etc.)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Water source (public, well, community)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Sewer/septic system type</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Electrical service (amperage, provider)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Internet/cable providers available</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Propane or natural gas (tank ownership)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Any solar panels or generators</div></div></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top: 20px;">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Condition & History</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Known defects or needed repairs</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Prior insurance claims (wind, hail, water, etc.)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Renovations or improvements made</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Warranties available (roof, HVAC, appliances)</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Age of major systems (roof, HVAC, water heater)</div></div></div>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Legal & Community</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">HOA existence, fees, and covenants</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Easements or shared access</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Flood zone designation</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Boundary survey availability</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Access details (road frontage, driveway)</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RE-004: LISTING APPOINTMENT PREP PACKET -->
+<div class="section-title">RE-004: Listing Appointment Prep Packet</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📝</span> Pre-Appointment Research & Checklist</div>
+  <div class="grid-2">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Publicly Available References</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">✅ US Census Geocoder: Address, coordinates, census geography</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">✅ USGS EPQS: Elevation (212.45m / 697.0 ft)</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">✅ 2006 Preliminary Plat: 1.89 acres, combination tract</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">❌ Tax assessment — NOT PUBLIC</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">❌ Parcel map — NOT PUBLIC</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">❌ Zoning — NOT PUBLIC</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--rhs-border);">❌ Flood zone — NOT PUBLIC</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Seller Interview Checklist</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">How long have you owned the property?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">What improvements have you made?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">What do you love most about the property?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">What are the neighborhood highlights?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Are there any known issues or defects?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">What is your ideal timeline?</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Have you had a prior appraisal or survey?</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RE-005: PROPERTY PHOTO SHOT LIST -->
+<div class="section-title">RE-005: Property Photo Shot List</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📸</span> Photography Plan</div>
+  <table class="data-table">
+    <thead><tr><th>Photo ID</th><th>Area</th><th>Direction/Angle</th><th>Notes</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>EXT-01</td><td>Front Exterior</td><td>Straight-on from street</td><td>Include full frontage, address visible</td><td>MLS / Marketing</td></tr>
+      <tr><td>EXT-02</td><td>Front Exterior</td><td>45° angle from left</td><td>Show depth and landscaping</td><td>MLS / Marketing</td></tr>
+      <tr><td>EXT-03</td><td>Front Exterior</td><td>45° angle from right</td><td>Show depth and side yard</td><td>MLS / Marketing</td></tr>
+      <tr><td>EXT-04</td><td>Rear Exterior</td><td>Straight-on from backyard</td><td>Full rear facade</td><td>MLS / Marketing</td></tr>
+      <tr><td>EXT-05</td><td>Rear Exterior</td><td>45° angle</td><td>Show patio/deck if present</td><td>MLS / Marketing</td></tr>
+      <tr><td>EXT-06</td><td>Side Elevations</td><td>Both sides</td><td>Document setbacks and access</td><td>Internal</td></tr>
+      <tr><td>EXT-07</td><td>Aerial/Context</td><td>Drone or elevated</td><td>Lot boundaries, surroundings</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-01</td><td>Living Room</td><td>Wide angle, corner shot</td><td>Show room size and features</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-02</td><td>Kitchen</td><td>Multiple angles</td><td>Appliances, countertops, cabinets</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-03</td><td>Primary Bedroom</td><td>Wide angle</td><td>Closet, windows, flooring</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-04</td><td>Additional Bedrooms</td><td>Each room</td><td>Size and condition</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-05</td><td>Bathrooms</td><td>Each bathroom</td><td>Fixtures, condition</td><td>MLS / Marketing</td></tr>
+      <tr><td>INT-06</td><td>Utility/Mechanical</td><td>Water heater, HVAC, panel</td><td>Age and condition</td><td>Internal</td></tr>
+      <tr><td>INT-07</td><td>Storage/Attic/Basement</td><td>All accessible areas</td><td>Condition and access</td><td>Internal</td></tr>
+      <tr><td>LOT-01</td><td>Outbuildings</td><td>Each structure</td><td>Shed, garage, barn</td><td>MLS / Marketing</td></tr>
+      <tr><td>LOT-02</td><td>Landscape/Features</td><td>Trees, garden, well/septic</td><td>Notable features</td><td>MLS / Marketing</td></tr>
+      <tr><td>LOT-03</td><td>Access/Road</td><td>Driveway, road frontage</td><td>Access and parking</td><td>Internal</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RE-006: LISTING VISUAL DOSSIER -->
+<div class="section-title">RE-006: Listing Visual Dossier</div>
+<div class="card">
+  <div class="card-title"><span class="icon">🖼️</span> Visual Dossier Components</div>
+  <div class="grid-2">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Cover Page Elements</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 6px 0;">✅ Property address</li>
+        <li style="padding: 6px 0;">✅ RHS branding</li>
+        <li style="padding: 6px 0;">✅ Report date and version</li>
+        <li style="padding: 6px 0;">⬜ Hero photo (pending shoot)</li>
+        <li style="padding: 6px 0;">⬜ Key stats (pending data)</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Photo Gallery Status</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 6px 0;">⬜ Exterior photos — NOT YET TAKEN</li>
+        <li style="padding: 6px 0;">⬜ Interior photos — NOT YET TAKEN</li>
+        <li style="padding: 6px 0;">⬜ Aerial/drone photos — NOT YET TAKEN</li>
+        <li style="padding: 6px 0;">⬜ Neighborhood/context — NOT YET TAKEN</li>
+        <li style="padding: 6px 0;">⬜ Feature details — NOT YET TAKEN</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RE-007: SELLER-PROCEEDS SCENARIO -->
+<div class="section-title">RE-007: Seller-Proceeds Scenario</div>
+<div class="card">
+  <div class="card-title"><span class="icon">💵</span> Illustrative Seller-Proceeds Waterfall</div>
+  <div style="background: var(--rhs-darker); border-radius: 8px; padding: 20px; text-align: center;">
+    <div style="font-size: 48px; margin-bottom: 12px;">📊</div>
+    <p style="color: var(--rhs-text-muted); font-size: 14px;">
+      <strong>Seller-proceeds scenario requires:</strong><br><br>
+      • Sale price (negotiable)<br>
+      • Mortgage payoff (lender-provided)<br>
+      • Commission rate (brokerage agreement)<br>
+      • Closing cost inputs (attorney/title estimate)<br><br>
+      <em>Contact RHS at <strong>317-395-3309</strong> or <strong>righthandservicesbyjp@gmail.com</strong> to build a custom scenario.</em>
+    </p>
+  </div>
+</div>
+
+<!-- RE-008: PRICE-CHANGE REVIEW PACKET -->
+<div class="section-title">RE-008: Price-Change Review Packet</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📈</span> Market Activity & Review Worksheet</div>
+  <p style="color: var(--rhs-text-muted); font-size: 14px;">
+    <strong>Not applicable — property is not currently listed.</strong><br>
+    This section is used for active listings to summarize:
+  </p>
+  <ul style="margin-top: 12px; padding-left: 20px; color: var(--rhs-text-muted);">
+    <li>Seller-provided updates (improvements, repairs)</li>
+    <li>Showing feedback themes</li>
+    <li>Documented marketing activity</li>
+    <li>Property-condition changes</li>
+    <li>Available market indicators with sources and dates</li>
+  </ul>
+</div>
+
+<!-- RE-009: BUYER QUESTION TRACKER -->
+<div class="section-title">RE-009: Buyer Question Tracker</div>
+<div class="card">
+  <div class="card-title"><span class="icon">❓</span> Question Categories & Status</div>
+  <table class="data-table">
+    <thead><tr><th>Category</th><th>Questions</th><th>Status</th><th>Responsible</th></tr></thead>
+    <tbody>
+      <tr><td>Property Facts</td><td>Year built, sq ft, lot size, systems</td><td><span class="tag tag-red">OPEN</span></td><td>Seller/Agent</td></tr>
+      <tr><td>Disclosures</td><td>Known defects, insurance claims, repairs</td><td><span class="tag tag-red">OPEN</span></td><td>Seller</td></tr>
+      <tr><td>Utilities</td><td>Water, sewer, electric, gas, internet</td><td><span class="tag tag-red">OPEN</span></td><td>Seller</td></tr>
+      <tr><td>HOA</td><td>Fees, covenants, rules</td><td><span class="tag tag-red">OPEN</span></td><td>Seller/HOA</td></tr>
+      <tr><td>Access</td><td>Road frontage, driveway, easements</td><td><span class="tag tag-red">OPEN</span></td><td>Seller/Surveyor</td></tr>
+      <tr><td>Permits</td><td>Addition/renovation permits</td><td><span class="tag tag-red">OPEN</span></td><td>Building Inspections</td></tr>
+      <tr><td>Survey/Title</td><td>Boundary survey, title matters</td><td><span class="tag tag-red">OPEN</span></td><td>Attorney/Surveyor</td></tr>
+      <tr><td>Repairs</td><td>Needed repairs, age of systems</td><td><span class="tag tag-red">OPEN</span></td><td>Seller/Inspector</td></tr>
+      <tr><td>Financing</td><td>Assumable mortgage, property eligibility</td><td><span class="tag tag-red">OPEN</span></td><td>Lender</td></tr>
+      <tr><td>Scheduling</td><td>Showings, closing timeline</td><td><span class="tag tag-red">OPEN</span></td><td>Agent</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RE-010: PRE-CLOSING DOCUMENT HANDOFF -->
+<div class="section-title">RE-010: Pre-Closing Document Handoff</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📁</span> Document Index & Status</div>
+  <div class="grid-2">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Documents to Index</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Executed purchase agreement</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Seller disclosures</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Title commitment</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Survey</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Inspection reports</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Appraisal</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">HOA documents (if applicable)</div></div></div>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">Transaction Milestones</h4>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Contract execution</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Due diligence period</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Financing contingency</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Inspection contingency</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Title search completion</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Final walkthrough</div></div></div>
+      <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-text"><div class="checklist-label">Closing</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RE-011: LISTING LAUNCH TASK BOARD -->
+<div class="section-title">RE-011: Listing Launch Task Board</div>
+<div class="card">
+  <div class="card-title"><span class="icon">🚀</span> Task Board</div>
+  <table class="data-table">
+    <thead><tr><th>Task</th><th>Owner</th><th>Due</th><th>Status</th><th>Dependencies</th></tr></thead>
+    <tbody>
+      <tr><td>Seller intake questionnaire</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Seller availability</td></tr>
+      <tr><td>Document collection</td><td>Agent/Seller</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Seller cooperation</td></tr>
+      <tr><td>Property photos</td><td>Agent/Photographer</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Access to property</td></tr>
+      <tr><td>Building measurement</td><td>Agent/Measurer</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Access to property</td></tr>
+      <tr><td>Tax/assessment verification</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>County records</td></tr>
+      <tr><td>Zoning verification</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>County records</td></tr>
+      <tr><td>MLS preparation</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>All above complete</td></tr>
+      <tr><td>Broker review</td><td>Broker</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>MLS draft</td></tr>
+      <tr><td>Signage installation</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Broker approval</td></tr>
+      <tr><td>Marketing assets</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Photos, measurements</td></tr>
+      <tr><td>Showing schedule</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>MLS live</td></tr>
+      <tr><td>Feedback collection</td><td>Agent</td><td>TBD</td><td><span class="tag tag-red">NOT STARTED</span></td><td>Showings occur</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RE-012: REALTOR WEEKLY WORKLOAD SUMMARY -->
+<div class="section-title">RE-012: Realtor Weekly Workload Summary</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📅</span> Weekly Operations Summary</div>
+  <div class="grid-3">
+    <div class="stat-box"><div class="stat-value">1</div><div class="stat-label">Active Listings</div></div>
+    <div class="stat-box highlight"><div class="stat-value">12</div><div class="stat-label">Open Tasks</div></div>
+    <div class="stat-box blue"><div class="stat-value">0</div><div class="stat-label">This Week's Deadlines</div></div>
+  </div>
+  <h4 style="color: var(--rhs-amber); margin: 20px 0 12px;">Top 5 Time-Saving Actions</h4>
+  <ol style="padding-left: 20px; color: var(--rhs-text-muted);">
+    <li>Call Montgomery County Tax Assessor (910-576-4241) to obtain parcel ID, owner, and assessment data</li>
+    <li>Request seller disclosures and property facts questionnaire</li>
+    <li>Schedule property photo shoot</li>
+    <li>Order current boundary survey</li>
+    <li>Verify zoning and flood zone with county planning</li>
+  </ol>
+</div>
+
+<!-- TRANSACTION COORDINATION (TC-001 through TC-006) -->
+<div class="section-title">Transaction Coordination (TC-001 – TC-006)</div>
+<div class="card">
+  <div class="card-title"><span class="icon">🤝</span> Transaction Coordination Modules</div>
+  <div class="grid-2">
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">TC-001: Contract-to-Close Tracker</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No active contract. This module activates upon executed purchase agreement.</p>
+      
+      <h4 style="color: var(--rhs-amber); margin: 20px 0 12px;">TC-002: Missing-Signature Audit</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No documents to audit. This module activates upon contract submission.</p>
+      
+      <h4 style="color: var(--rhs-amber); margin: 20px 0 12px;">TC-003: Contingency Reminder Calendar</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No deadlines to track. This module activates upon contract execution.</p>
+    </div>
+    <div>
+      <h4 style="color: var(--rhs-amber); margin-bottom: 12px;">TC-004: Closing Readiness Board</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No active closing. This module activates during contract period.</p>
+      
+      <h4 style="color: var(--rhs-amber); margin: 20px 0 12px;">TC-005: Vendor Coordination Log</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No vendors engaged. This module activates upon contract execution.</p>
+      
+      <h4 style="color: var(--rhs-amber); margin: 20px 0 12px;">TC-006: Post-Closing Archive</h4>
+      <p style="color: var(--rhs-text-muted); font-size: 13px;">No closing to archive. This module activates after closing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN ITEMS REGISTER -->
+<div class="section-title">Open Items Register</div>
+<div class="card">
+  <div class="card-title"><span class="icon">✅</span> All Open Items</div>
+  <table class="data-table">
+    <thead><tr><th>Priority</th><th>Item</th><th>Responsible</th><th>Next Step</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Parcel ID / PIN</td><td>Tax Assessor</td><td>Call 910-576-4241</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>2</td><td>Current Owner</td><td>Register of Deeds</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>3</td><td>Tax Assessment</td><td>Tax Assessor</td><td>Call 910-576-4241</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>4</td><td>Building Information</td><td>Tax Assessor</td><td>Call 910-576-4241</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>5</td><td>Zoning Classification</td><td>Planning Dept</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>6</td><td>Flood Zone</td><td>Planning Dept</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>7</td><td>Soil Classification</td><td>SWCD</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>8</td><td>Deed Book/Page</td><td>Register of Deeds</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>9</td><td>Recent Sales</td><td>Register of Deeds</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>10</td><td>Permit History</td><td>Building Inspections</td><td>Call 910-576-4221</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>11</td><td>Seller Disclosures</td><td>Seller</td><td>Request from seller</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>12</td><td>Current Survey</td><td>Surveyor</td><td>Order from licensed surveyor</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>13</td><td>Property Photos</td><td>Agent/Photographer</td><td>Schedule shoot</td><td><span class="tag tag-red">OPEN</span></td></tr>
+      <tr><td>14</td><td>Building Measurement</td><td>Agent/Measurer</td><td>Schedule measurement</td><td><span class="tag tag-red">OPEN</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SOURCE PROVENANCE -->
+<div class="section-title">Source Provenance & Limitations</div>
+<div class="card">
+  <div class="card-title"><span class="icon">📚</div> Data Sources</div>
+  <div class="provenance-item"><span class="provenance-source">U.S. Census Bureau Geocoder (geocoding.geo.census.gov)</span><span class="provenance-date">2026-09-11</span></div>
+  <div class="provenance-item"><span class="provenance-source">USGS EPQS Elevation Service (nationalmap.gov)</span><span class="provenance-date">2026-09-11</span></div>
+  <div class="provenance-item"><span class="provenance-source">2006 Preliminary Survey Plat (South Point Surveying, PLLC)</span><span class="provenance-date">2006-09</span></div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>IMPORTANT DISCLAIMER — READ BEFORE RELYING ON THIS REPORT</strong><br><br>
+  This report was prepared by RHS (Right Hand Services by JP) as an AI-assisted research and 
+  document-organization tool. It is <strong>NOT</strong> legal advice, a title opinion, title insurance, 
+  an appraisal, survey, inspection, or closing authorization. All information is sourced from 
+  publicly available government records and is provided "as-is" without warranty of accuracy, 
+  completeness, or timeliness.<br><br>
+  <strong>Montgomery County, NC does not provide public online access to tax, parcel, zoning, or deed records.</strong> 
+  This report contains significant data gaps that require in-person or phone research at Montgomery County offices.<br><br>
+  <strong>No purchase, closing, recording, solar transfer, generator/propane account transfer, 
+  lien release, or funds transfer should occur solely based on this AI-assisted report.</strong> 
+  A qualified real-estate closing attorney or title professional in the applicable jurisdiction, 
+  the buyer's lender, qualified inspector, insurer, and relevant service providers must review 
+  and approve the applicable items.<br><br>
+  <strong>Business Address:</strong> 514 Brutonville Rd, Candor NC 27229<br>
+  <strong>Contact:</strong> righthandservicesbyjp@gmail.com • 317-395-3309<br>
+  <strong>Report ID:</strong> CASE-NC-123-514-BRUTONVILLE-RD-20260911<br>
+  <strong>Generated:</strong> September 11, 2026
+</div>
+
+<!-- ACTION BAR -->
+<div class="action-bar">
+  <div><span style="color: var(--rhs-text-muted); font-size: 13px;">📄 RHS Property Research Packet — 514 Brutonville Rd, Candor NC</span></div>
+  <div style="display: flex; gap: 12px;">
+    <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+    <button class="btn btn-amber" onclick="window.print()">⬇️ Download PDF</button>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
